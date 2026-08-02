@@ -511,6 +511,48 @@
   body.night .trk-card{background:#1f1a13;}
   body.night .trk-card.zumbi{background:#241a10;}
   body.night .trk-con input,body.night .trk-add input{background:#211b13;color:var(--ink);}
+
+  /* ---------- Cartões do Tomo (Cultes des Goules) ---------- */
+  .tome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin:1.5em 0;}
+  .tome-card{perspective:1200px;cursor:pointer;}
+  .tome-inner{position:relative;transition:transform .7s cubic-bezier(.4,.1,.2,1);transform-style:preserve-3d;}
+  .tome-card.flipped .tome-inner{transform:rotateY(180deg);}
+  .tome-face{border-radius:4px;padding:20px 22px 16px;display:flex;flex-direction:column;gap:10px;min-height:230px;}
+  .tome-front{
+    position:relative;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(120,90,50,.14), transparent 60%),
+      linear-gradient(160deg,#f0e8d3,#dccfae);
+    border:1px solid #a8976f;
+    box-shadow:inset 0 0 44px rgba(92,74,50,.28), 0 8px 20px rgba(0,0,0,.28);
+  }
+  .tome-front::after{content:"";position:absolute;inset:7px;border:1px solid rgba(92,74,50,.35);pointer-events:none;border-radius:2px;}
+  .tome-back{
+    position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    transform:rotateY(180deg);
+    background:linear-gradient(160deg,#2a2118,#1c1610);
+    border:1px solid #4a3a22;color:#dcccA6;
+    box-shadow:0 8px 20px rgba(0,0,0,.4);
+  }
+  .tome-tag{
+    font-family:'IM Fell English SC',serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:#7c5a2e;border-bottom:1px dotted rgba(124,90,46,.5);padding-bottom:5px;
+  }
+  .tome-back .tome-tag{color:var(--gold);border-color:#4a3a22;}
+  .tome-fr{
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:1.06rem;line-height:1.75;color:#2a2014;margin:0;
+  }
+  .tome-fr::first-letter{font-family:'IM Fell English SC',serif;font-size:1.9em;line-height:1;color:var(--blood);}
+  .tome-pt{font-family:'Special Elite',monospace;font-size:.9rem;line-height:1.75;color:#e2d2ac;margin:0;}
+  .tome-note{font-size:.78rem;color:#9a8a68;font-style:italic;margin-top:auto;border-top:1px dotted #4a3a22;padding-top:7px;}
+  .tome-hint{margin-top:auto;font-family:'Special Elite',monospace;font-size:.64rem;color:#8a7550;letter-spacing:.08em;text-align:right;}
+  .tome-card.marginalia .tome-front{background:linear-gradient(160deg,#ece2c8,#d6c8a2);}
+  .tome-card.marginalia .tome-fr{
+    font-family:'Segoe Print','Bradley Hand',cursive;font-style:normal;
+    font-size:.95rem;color:#42403c;transform:rotate(-1.6deg);
+  }
+  .tome-card.marginalia .tome-fr::first-letter{font-family:inherit;font-size:inherit;color:inherit;}
 </style>
 </head>
 <body>
@@ -1142,6 +1184,86 @@ PANELS.act5 = `
 <p>Preparar o terreno exige <b>sete dias de leitura rápida</b> do <i>Cultes des Goules</i>. A cada dia, um teste de <b>Língua (Francês)</b>; falha = dia perdido. Ao fim da leitura rápida, perda de <span class="san">Sanidade <span class="roll">0/1D4</span></span> (metade do valor de leitura aprofundada, por ser leitura superficial). O Investigador ganha <b>+3% em Mitos de Cthulhu</b>.</p></div>
 <div class="tip"><span class="tag">Tradução e aprendizado — 3 dias</span>
 <p>Mais <b>2 dias</b> para traduzir e compreender o contrafeitiço (na língua dos Goules) e <b>1 dia</b> para aprendê-lo: 3 dias de trabalho. Cada dia exige um teste de <b>Língua (Francês)</b> e um de <b>Ideia</b>; precisa de dois sucessos para concluir a tradução. Quem dominou tudo pode <b>ensinar outro</b>: ambos testam <b>Ideia</b> com sucesso e mais um dia dedicado.</p></div>
+
+<h3>Cartões de tradução — lendo o tomo na mesa</h3>
+<p>A leitora do grupo domina o francês — então o livro fala <b>pela voz dela</b>. Mostre a face em <b>francês</b> na tela (é o que a personagem vê); depois <b>clique no cartão para virá-lo</b> e leia/mande a tradução para a jogadora declamar à mesa, como quem decifra na hora. A nota de Guardião em cada verso diz quando usar. Quem lê, paga: os testes diários de Língua (Francês) e a Sanidade da leitura são dela.</p>
+
+<div class="tome-grid">
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 1 · a folha de rosto</span>
+        <p class="tome-fr">« Cultes des Goules, contenant la vraie relation des sociétés des mangeurs de morts, de leurs rites, de leur langue et de leur dieu. Par François-Honoré Balfour, Comte d'Erlette. À Paris, M.DCC.III. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Cultos dos Goules, contendo a verdadeira relação das sociedades dos comedores de mortos, de seus ritos, de sua língua e de seu deus. Por François-Honoré Balfour, Conde d'Erlette. Em Paris, 1703."</p>
+        <span class="tome-note">Primeiro contato com o livro. Deixe a data (1703) e a palavra "comedores" fazerem o trabalho.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 2 · folheando ao acaso</span>
+        <p class="tome-fr">« La chair du mort n'appartient point aux vers, mais à ceux qui savent prier en mangeant. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"A carne do morto não pertence aos vermes, mas àqueles que sabem rezar enquanto comem."</p>
+        <span class="tome-note">O primeiro arrepio. Bom para o fim de uma cena de estudo, dito num tom neutro demais.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 3 · sobre o deus</span>
+        <p class="tome-fr">« Il ne promet rien qu'il ne tienne : tout ce qui pourrit monte vers Lui. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Ele nada promete que não cumpra: tudo o que apodrece sobe até Ele."</p>
+        <span class="tome-note">É a frase que <b>Brooks disse a eles</b>. Não aponte — deixe a mesa reconhecer sozinha que o fazendeiro citava as escrituras de cor.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">O sumário · a chave da Pista 4</span>
+        <p class="tome-fr">« Chapitre Quatrième : De la langue des goules, et de la manière de l'enseigner aux hommes. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Capítulo Quarto: Da língua dos goules, e da maneira de ensiná-la aos homens."</p>
+        <span class="tome-note">A placa de sinalização: é este capítulo que permite decifrar a <b>nota cifrada</b> (Pista 4) com o contrafeitiço.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card marginalia" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 4–5 · anotação a lápis, na margem</span>
+        <p class="tome-fr">« Le rite exige la bouche. Et si la maladie devenait elle-même la bouche ? »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"O rito exige a boca. E se a doença se tornasse, ela mesma, a boca?"</p>
+        <span class="tome-note">A letra é de <b>Brooks</b>. É o rascunho da epidemia — o momento exato em que a ideia nasceu. Reserve para o meio da leitura: é o soco do arco da leitora.</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h3>O Pó de Kzhoba</h3>
 <p>A caixa contém ervas, temperos, incensos e pós vindos diretamente da <b>Terra dos Sonhos (Dreamlands)</b>. Com eles se prepara o <b>Pó de Kzhoba</b>, capaz de curar a maldição. Mas há um preço.</p>
@@ -1993,6 +2115,12 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#lightbox')) lb.classList.remove('on');
 });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
+
+/* ---- Cartões do Tomo: virar no clique ---- */
+document.addEventListener('click',e=>{
+  const tc=e.target.closest('.tome-card');
+  if(tc) tc.classList.toggle('flipped');
+});
 
 /* initial */
 renderPrompts('all');
