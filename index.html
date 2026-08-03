@@ -8,19 +8,19 @@
   @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
 
   :root{
-    --ink:#1a1714;
-    --ink-soft:#3a342c;
-    --paper:#e8e0cf;
-    --paper-2:#ddd3bd;
-    --paper-edge:#cbbfa3;
-    --blood:#6e1414;
-    --blood-bright:#8f1d1d;
-    --rust:#7c4a21;
-    --sepia:#5c4a32;
-    --gold:#9c7a3c;
-    --green-rot:#4a5436;
-    --shadow:rgba(20,14,8,.5);
-    --tab-bg:#2a2118;
+    --ink:#161d16;
+    --ink-soft:#2f3a30f33;
+    --paper:#e2e5d3;
+    --paper-2:#d3d8c1;
+    --paper-edge:#b3bda0;
+    --blood:#6b1a17;
+    --blood-bright:#8f2a22;
+    --rust:#6e6330;
+    --sepia:#4c5738;
+    --gold:#8d9a55;
+    --green-rot:#3f5738;
+    --shadow:rgba(6,16,9,.55);
+    --tab-bg:#17251c;
   }
 
   *{box-sizing:border-box;}
@@ -32,9 +32,9 @@
     font-family:'Crimson Pro',Georgia,serif;
     color:var(--ink);
     background:
-      radial-gradient(circle at 20% 10%, rgba(110,20,20,.06), transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(40,30,18,.10), transparent 45%),
-      #16120c;
+      radial-gradient(circle at 20% 10%, rgba(90,140,80,.07), transparent 42%),
+      radial-gradient(circle at 80% 80%, rgba(20,50,30,.16), transparent 48%),
+      #0b120d;
     font-size:18px;
     line-height:1.65;
   }
@@ -68,7 +68,7 @@
     font-family:'IM Fell English SC',serif;
     font-size:clamp(2.6rem,9vw,5.6rem);
     margin:0;
-    color:#e8ddc6;
+    color:#e3e8ce;
     text-shadow:0 2px 0 #000, 0 0 30px rgba(143,29,29,.6);
     letter-spacing:.04em;
     line-height:.95;
@@ -76,19 +76,19 @@
   header.book-head .sub{
     font-family:'IM Fell English',serif;
     font-style:italic;
-    color:#bfae8c;
+    color:#b7c199;
     font-size:clamp(1rem,3vw,1.4rem);
     margin-top:10px;
   }
   header.book-head .credits{
-    margin-top:18px;font-size:.8rem;color:#8a7c61;font-family:'Special Elite',monospace;
+    margin-top:18px;font-size:.8rem;color:#8b9670;font-family:'Special Elite',monospace;
   }
 
   /* ---------- Tabs ---------- */
   nav.tabs{
     position:sticky;top:0;z-index:50;
     display:flex;flex-wrap:wrap;gap:2px;
-    background:linear-gradient(180deg,#0e0b07,#1d1610);
+    background:linear-gradient(180deg,#080e0a,#101911);
     border-bottom:2px solid var(--blood);
     padding:6px 6px 0;
     box-shadow:0 6px 18px rgba(0,0,0,.5);
@@ -98,7 +98,7 @@
     font-size:.82rem;
     letter-spacing:.06em;
     background:var(--tab-bg);
-    color:#a89878;
+    color:#9aa585;
     border:1px solid #000;
     border-bottom:none;
     padding:9px 14px 7px;
@@ -107,7 +107,7 @@
     transition:background .2s,color .2s,transform .1s;
     white-space:nowrap;
   }
-  nav.tabs button:hover{color:#e0d2b2;background:#3a2d1f;}
+  nav.tabs button:hover{color:#d9e0ba;background:#22352a;}
   nav.tabs button.active{
     background:var(--paper);
     color:var(--blood);
@@ -172,7 +172,7 @@
   .readaloud{
     margin:1.5em 0;
     padding:20px 24px 20px 28px;
-    background:linear-gradient(180deg,#f3ecdc,#e5dac2);
+    background:linear-gradient(180deg,#eceedd,#d9dec8);
     border-left:5px solid var(--blood);
     border-radius:2px;
     box-shadow:inset 0 0 30px rgba(120,90,50,.1), 0 4px 12px rgba(0,0,0,.12);
@@ -183,7 +183,7 @@
   .readaloud::before{
     content:"❝ LER EM VOZ ALTA";
     position:absolute;top:-11px;left:18px;
-    background:var(--blood);color:#f0e6d0;
+    background:var(--blood);color:#e9edd6;
     font-family:'IM Fell English SC',serif;
     font-size:.62rem;letter-spacing:.18em;padding:2px 10px;border-radius:2px;
   }
@@ -200,29 +200,29 @@
     font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
     padding:2px 9px;border-radius:2px;margin-bottom:6px;
   }
-  .tip .tag{background:var(--green-rot);color:#e9eddb;}
+  .tip .tag{background:var(--green-rot);color:#e7edda;}
   .lore{background:rgba(92,74,50,.12);border:1px dashed var(--sepia);}
-  .lore .tag{background:var(--sepia);color:#f0e6d0;}
+  .lore .tag{background:var(--sepia);color:#e9edd6;}
   .warn{background:rgba(143,29,29,.10);border:1px solid var(--blood);}
-  .warn .tag{background:var(--blood);color:#f0e6d0;}
-  .clue{background:#efe5cf;border:1px solid var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.14);}
-  .clue .tag{background:var(--gold);color:#2a2014;}
+  .warn .tag{background:var(--blood);color:#e9edd6;}
+  .clue{background:#e6e9d8;border:1px solid var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.14);}
+  .clue .tag{background:var(--gold);color:#1b2717;}
 
   .tip p,.lore p,.warn p,.clue p{margin:.4em 0;}
 
   /* ---------- Sanity callout ---------- */
   .san{
     display:inline-flex;align-items:center;gap:7px;
-    background:#2a1818;color:#e9c9c9;
+    background:#17251c;color:#cfdcc4;
     font-family:'Special Elite',monospace;font-size:.82rem;
     padding:3px 11px;border-radius:20px;border:1px solid var(--blood-bright);
     margin:.3em .2em;
   }
   .san::before{content:"☠";color:var(--blood-bright);}
   .roll{
-    display:inline-block;background:#1f1810;color:#d8c393;
+    display:inline-block;background:#131c15;color:#ccd4a2;
     font-family:'Special Elite',monospace;font-size:.8rem;
-    padding:2px 9px;border-radius:4px;border:1px solid #4a3a22;margin:0 2px;
+    padding:2px 9px;border-radius:4px;border:1px solid #39472f;margin:0 2px;
   }
 
   /* ---------- Lists ---------- */
@@ -236,36 +236,36 @@
     position:absolute;left:0;top:-2px;
     font-family:'IM Fell English SC',serif;font-size:1.3rem;color:var(--blood);
     border:1px solid var(--rust);border-radius:50%;width:32px;height:32px;
-    display:flex;align-items:center;justify-content:center;background:#efe5cf;
+    display:flex;align-items:center;justify-content:center;background:#e6e9d8;
   }
 
   /* ---------- NPC cards ---------- */
   .npc{
-    margin:1.6em 0;background:#efe6d0;border:1px solid var(--paper-edge);
+    margin:1.6em 0;background:#e6e9d8;border:1px solid var(--paper-edge);
     border-radius:3px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.16);
   }
   .npc summary{
     cursor:pointer;list-style:none;padding:16px 22px;
-    background:linear-gradient(90deg,#2a2118,#3a2d1f);
-    color:#e6d7b5;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    background:linear-gradient(90deg,#17251c,#22352a);
+    color:#dee4bd;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
   }
   .npc summary::-webkit-details-marker{display:none;}
-  .npc summary .nm{font-family:'IM Fell English SC',serif;font-size:1.25rem;color:#f0e2c2;}
-  .npc summary .role{font-style:italic;color:#b09a72;font-size:.95rem;}
+  .npc summary .nm{font-family:'IM Fell English SC',serif;font-size:1.25rem;color:#e9edcc;}
+  .npc summary .role{font-style:italic;color:#a7b184;font-size:.95rem;}
   .npc summary .chev{margin-left:auto;color:var(--blood-bright);transition:transform .2s;}
   .npc[open] summary .chev{transform:rotate(90deg);}
   .npc .npc-body{padding:20px 24px 26px;}
   .statline{
     font-family:'Special Elite',monospace;font-size:.84rem;
-    background:#241d14;color:#cdb98c;padding:12px 14px;border-radius:4px;
+    background:#16211a;color:#c2cc9c;padding:12px 14px;border-radius:4px;
     margin:.8em 0;line-height:1.9;letter-spacing:.02em;
   }
-  .statline b{color:#e7d3a3;}
+  .statline b{color:#dee5b2;}
   .statgrid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px;margin:.6em 0;
   }
   .statgrid div{
-    background:#efe5cf;border:1px solid var(--paper-edge);border-radius:3px;
+    background:#e6e9d8;border:1px solid var(--paper-edge);border-radius:3px;
     text-align:center;padding:7px 4px;
   }
   .statgrid div .k{font-family:'IM Fell English SC',serif;font-size:.66rem;color:var(--sepia);display:block;letter-spacing:.08em;}
@@ -273,25 +273,25 @@
 
   /* ---------- Image prompt blocks ---------- */
   .prompt{
-    margin:1.2em 0;background:#1c1610;border:1px solid #3d3020;border-radius:5px;
+    margin:1.2em 0;background:#0e1611;border:1px solid #2c3a2b;border-radius:5px;
     overflow:hidden;
   }
   .prompt .ph{
     display:flex;align-items:center;gap:10px;justify-content:space-between;
-    padding:11px 16px;background:linear-gradient(90deg,#2c2114,#1c1610);
-    border-bottom:1px solid #3d3020;
+    padding:11px 16px;background:linear-gradient(90deg,#182619,#0e1611);
+    border-bottom:1px solid #2c3a2b;
   }
-  .prompt .ph .ttl{font-family:'IM Fell English SC',serif;color:#e0cfa6;font-size:1rem;letter-spacing:.04em;}
-  .prompt .ph .badge{font-family:'Special Elite',monospace;font-size:.62rem;color:#8a7656;border:1px solid #4a3a22;padding:2px 8px;border-radius:20px;}
+  .prompt .ph .ttl{font-family:'IM Fell English SC',serif;color:#d8dfae;font-size:1rem;letter-spacing:.04em;}
+  .prompt .ph .badge{font-family:'Special Elite',monospace;font-size:.62rem;color:#8b9268;border:1px solid #39472f;padding:2px 8px;border-radius:20px;}
   .prompt .pbody{padding:16px;}
   .prompt textarea{
     width:100%;min-height:120px;resize:vertical;
-    background:#0e0b07;color:#c9b88f;border:1px solid #34281a;border-radius:4px;
+    background:#080e0a;color:#bfc99a;border:1px solid #243325;border-radius:4px;
     font-family:'Special Elite',monospace;font-size:.82rem;line-height:1.6;padding:12px;
   }
   .prompt .copy{
     margin-top:9px;font-family:'IM Fell English SC',serif;letter-spacing:.08em;
-    background:var(--blood);color:#f0e6d0;border:none;padding:7px 16px;border-radius:3px;
+    background:var(--blood);color:#e9edd6;border:none;padding:7px 16px;border-radius:3px;
     cursor:pointer;font-size:.78rem;transition:background .2s;
   }
   .prompt .copy:hover{background:var(--blood-bright);}
@@ -300,14 +300,14 @@
   .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin:1.2em 0;}
   .filter-row button{
     font-family:'IM Fell English SC',serif;font-size:.74rem;letter-spacing:.08em;
-    background:#2a2118;color:#a89878;border:1px solid #000;padding:6px 13px;border-radius:20px;cursor:pointer;
+    background:#17251c;color:#9aa585;border:1px solid #000;padding:6px 13px;border-radius:20px;cursor:pointer;
   }
-  .filter-row button.on{background:var(--blood);color:#f0e6d0;}
+  .filter-row button.on{background:var(--blood);color:#e9edd6;}
 
   /* ---------- Tables ---------- */
   table.stages{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.92rem;}
   table.stages th,table.stages td{border:1px solid var(--paper-edge);padding:9px 12px;text-align:left;vertical-align:top;}
-  table.stages th{background:#2a2118;color:#e0cfa6;font-family:'IM Fell English SC',serif;letter-spacing:.05em;}
+  table.stages th{background:#17251c;color:#d8dfae;font-family:'IM Fell English SC',serif;letter-spacing:.05em;}
   table.stages tr:nth-child(even) td{background:rgba(120,90,50,.07);}
   table.stages td:first-child{font-family:'Special Elite',monospace;color:var(--blood);font-weight:bold;text-align:center;width:54px;}
 
@@ -319,21 +319,21 @@
   .footnote{font-size:.82rem;color:var(--sepia);font-style:italic;}
 
   .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:.8em 0;}
-  .pill{background:#efe5cf;border:1px solid var(--rust);border-radius:20px;padding:3px 12px;font-size:.82rem;font-family:'Special Elite',monospace;color:var(--sepia);}
+  .pill{background:#e6e9d8;border:1px solid var(--rust);border-radius:20px;padding:3px 12px;font-size:.82rem;font-family:'Special Elite',monospace;color:var(--sepia);}
 
   /* ---------- Investigadores / vínculos ---------- */
-  .bond-card{margin:1.6em 0;background:#efe6d0;border:1px solid var(--paper-edge);border-radius:3px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.16);}
+  .bond-card{margin:1.6em 0;background:#e6e9d8;border:1px solid var(--paper-edge);border-radius:3px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.16);}
   .bond-card>summary{list-style:none;}
   .bond-card>summary::-webkit-details-marker{display:none;}
-  .bond-card .bc-head{display:flex;gap:18px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,#2a2118,#3a2d1f);color:#e6d7b5;flex-wrap:wrap;}
-  .portrait{width:96px;height:96px;border-radius:4px;object-fit:cover;border:2px solid var(--gold);box-shadow:0 4px 12px rgba(0,0,0,.4);background:#1c1610;flex-shrink:0;}
+  .bond-card .bc-head{display:flex;gap:18px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,#17251c,#22352a);color:#dee4bd;flex-wrap:wrap;}
+  .portrait{width:96px;height:96px;border-radius:4px;object-fit:cover;border:2px solid var(--gold);box-shadow:0 4px 12px rgba(0,0,0,.4);background:#0e1611;flex-shrink:0;}
   .portrait.sm{width:60px;height:60px;border-width:1px;}
-  .bond-card .bc-head .who .nm{font-family:'IM Fell English SC',serif;font-size:1.3rem;color:#f0e2c2;display:block;line-height:1.1;}
-  .bond-card .bc-head .who .role{font-style:italic;color:#b09a72;font-size:.95rem;}
-  .bond-card .bc-head .who .player{font-family:'Special Elite',monospace;font-size:.7rem;color:#8a7656;letter-spacing:.08em;display:block;margin-top:4px;}
+  .bond-card .bc-head .who .nm{font-family:'IM Fell English SC',serif;font-size:1.3rem;color:#e9edcc;display:block;line-height:1.1;}
+  .bond-card .bc-head .who .role{font-style:italic;color:#a7b184;font-size:.95rem;}
+  .bond-card .bc-head .who .player{font-family:'Special Elite',monospace;font-size:.7rem;color:#8b9268;letter-spacing:.08em;display:block;margin-top:4px;}
   .bond-card .bc-body{padding:18px 22px 22px;}
   .bond{background:rgba(156,122,60,.14);border-left:4px solid var(--gold);padding:12px 16px;margin:1em 0;border-radius:2px;}
-  .bond .tag{display:inline-block;font-family:'IM Fell English SC',serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#2a2014;padding:2px 9px;border-radius:2px;margin-bottom:6px;}
+  .bond .tag{display:inline-block;font-family:'IM Fell English SC',serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#1b2717;padding:2px 9px;border-radius:2px;margin-bottom:6px;}
   .kin{display:flex;flex-wrap:wrap;gap:14px;margin:1.1em 0;}
   .kin figure{margin:0;text-align:center;width:92px;}
   .kin figcaption{font-size:.72rem;color:var(--sepia);font-family:'Special Elite',monospace;margin-top:5px;line-height:1.3;}
@@ -342,7 +342,7 @@
   /* ---------- Ambientação / texto de apoio ---------- */
   .ambient{
     margin:1.7em 0;padding:24px 28px 22px;border:1px solid var(--gold);border-radius:3px;
-    background:linear-gradient(180deg,#efe7d2,#e6dabf);
+    background:linear-gradient(180deg,#e7ead7,#dbe0c7);
     box-shadow:inset 0 0 44px rgba(120,90,50,.14), 0 6px 16px rgba(0,0,0,.16);
     font-family:'IM Fell English',serif;font-size:1.06rem;line-height:1.7;color:var(--ink-soft);
     position:relative;
@@ -350,7 +350,7 @@
   .ambient::before{
     content:"✦ AMBIENTAÇÃO · narre ou parafraseie";
     position:absolute;top:-11px;left:18px;
-    background:var(--gold);color:#241a0c;
+    background:var(--gold);color:#1a2210;
     font-family:'IM Fell English SC',serif;font-size:.62rem;letter-spacing:.16em;padding:2px 11px;border-radius:2px;
   }
   .ambient.hist::before{content:"✦ CONTEXTO HISTÓRICO · 1924";}
@@ -380,28 +380,28 @@
   .lightbox img{
     max-width:min(92vw,560px);max-height:88vh;width:auto;height:auto;
     object-fit:contain;border:3px solid var(--gold);border-radius:4px;
-    background:#1c1610;box-shadow:0 24px 70px #000;
+    background:#0e1611;box-shadow:0 24px 70px #000;
   }
   .lightbox .lb-cap{
     position:absolute;bottom:24px;left:0;right:0;text-align:center;
-    color:#cdb98c;font-family:'IM Fell English SC',serif;letter-spacing:.06em;font-size:.92rem;
+    color:#c2cc9c;font-family:'IM Fell English SC',serif;letter-spacing:.06em;font-size:.92rem;
     text-shadow:0 1px 4px #000;padding:0 20px;
   }
   .lightbox .lb-close{
-    position:absolute;top:14px;right:26px;color:#e6d7b5;font-size:2.2rem;
+    position:absolute;top:14px;right:26px;color:#dee4bd;font-size:2.2rem;
     font-family:Georgia,serif;cursor:pointer;line-height:1;text-shadow:0 1px 4px #000;
   }
 
-  footer.bk{text-align:center;padding:40px 20px;color:#6a5d44;font-family:'Special Elite',monospace;font-size:.74rem;}
+  footer.bk{text-align:center;padding:40px 20px;color:#6d7752;font-family:'Special Elite',monospace;font-size:.74rem;}
 
   /* ---------- Ornamentos: tentáculos ---------- */
   :root{
-    --tent-div:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='26' viewBox='0 0 300 26'%3E%3Cg fill='none' stroke='%237c4a21' stroke-linecap='round'%3E%3Cpath d='M150%2013%20C120%206%2096%204%2076%2010%20C60%2015%2058%2023%2067%2025%20C76%2027%2080%2019%2074%2016' stroke-width='2.6'/%3E%3Cpath d='M150%2013%20C180%206%20204%204%20224%2010%20C240%2015%20242%2023%20233%2025%20C224%2027%20220%2019%20226%2016' stroke-width='2.6'/%3E%3C/g%3E%3Cg fill='%237c4a21'%3E%3Ccircle cx='150' cy='13' r='3'/%3E%3Ccircle cx='106' cy='8' r='1.6'/%3E%3Ccircle cx='194' cy='8' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    --tent-div:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='30'%20viewBox='0%200%20320%2030'%3E%3Cg%20fill='none'%20stroke='%236e6330'%20stroke-linecap='round'%3E%3Cpath%20d='M160%2014%20C140%208%20122%206%20106%208'%20stroke-width='5.4'/%3E%3Cpath%20d='M106%208%20C90%2010%2078%2016%2071%2022'%20stroke-width='3.8'/%3E%3Cpath%20d='M71%2022%20C64%2027%2056%2027%2054%2022'%20stroke-width='2.5'/%3E%3Cpath%20d='M54%2022%20C53%2018%2057%2016%2060%2018'%20stroke-width='1.6'/%3E%3Cpath%20d='M160%2014%20C180%208%20198%206%20214%208'%20stroke-width='5.4'/%3E%3Cpath%20d='M214%208%20C230%2010%20242%2016%20249%2022'%20stroke-width='3.8'/%3E%3Cpath%20d='M249%2022%20C256%2027%20264%2027%20266%2022'%20stroke-width='2.5'/%3E%3Cpath%20d='M266%2022%20C267%2018%20263%2016%20260%2018'%20stroke-width='1.6'/%3E%3C/g%3E%3Cg%20fill='%236e6330'%3E%3Ccircle%20cx='160'%20cy='14'%20r='3.4'/%3E%3Ccircle%20cx='138'%20cy='12'%20r='1.6'/%3E%3Ccircle%20cx='120'%20cy='11'%20r='1.4'/%3E%3Ccircle%20cx='103'%20cy='13'%20r='1.2'/%3E%3Ccircle%20cx='88'%20cy='17'%20r='1.0'/%3E%3Ccircle%20cx='182'%20cy='12'%20r='1.6'/%3E%3Ccircle%20cx='200'%20cy='11'%20r='1.4'/%3E%3Ccircle%20cx='217'%20cy='13'%20r='1.2'/%3E%3Ccircle%20cx='232'%20cy='17'%20r='1.0'/%3E%3C/g%3E%3C/svg%3E");
   }
   .tent-crown{margin:14px auto 0;width:min(460px,84%);color:var(--blood-bright);opacity:.8;}
   .tent-crown svg{width:100%;height:auto;display:block;}
   main{position:relative;z-index:2;}
-  .tent-deco{position:fixed;bottom:-10px;width:150px;z-index:1;pointer-events:none;color:#3f1d18;opacity:.6;}
+  .tent-deco{position:fixed;bottom:-10px;width:176px;z-index:1;pointer-events:none;color:#1d3423;opacity:.62;}
   .tent-deco svg{width:100%;height:auto;display:block;}
   .tent-left{left:-8px;}
   .tent-right{right:-8px;transform:scaleX(-1);}
@@ -419,13 +419,13 @@
   .theme-toggle{
     position:fixed;right:16px;bottom:16px;z-index:300;
     width:46px;height:46px;border-radius:50%;
-    background:#241d14;color:#d8c393;border:1px solid #4a3a22;
+    background:#16211a;color:#ccd4a2;border:1px solid #39472f;
     font-size:1.3rem;line-height:1;cursor:pointer;
     box-shadow:0 6px 18px rgba(0,0,0,.55);
     display:flex;align-items:center;justify-content:center;
     transition:transform .2s,background .25s,color .25s;
   }
-  .theme-toggle:hover{transform:scale(1.1);background:#31271a;}
+  .theme-toggle:hover{transform:scale(1.1);background:#1e2f22;}
 
   /* transições suaves na troca de tema */
   body,.sheet,.npc,.bond-card,.readaloud,.clue,.ambient,.statgrid div,.pill{
@@ -434,37 +434,37 @@
 
   /* ---------- MODO NOTURNO ---------- */
   body.night{
-    --ink:#cbbfa4;
-    --ink-soft:#a99d84;
-    --paper:#1e1913;
-    --paper-2:#181410;
-    --paper-edge:#3a3226;
-    --blood:#b04038;
-    --blood-bright:#c65a4e;
-    --rust:#a5754a;
-    --sepia:#b39c74;
-    --gold:#c19c60;
-    --green-rot:#77875c;
-    --shadow:rgba(0,0,0,.65);
-    --tent-div:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='26' viewBox='0 0 300 26'%3E%3Cg fill='none' stroke='%23a5754a' stroke-linecap='round'%3E%3Cpath d='M150%2013%20C120%206%2096%204%2076%2010%20C60%2015%2058%2023%2067%2025%20C76%2027%2080%2019%2074%2016' stroke-width='2.6'/%3E%3Cpath d='M150%2013%20C180%206%20204%204%20224%2010%20C240%2015%20242%2023%20233%2025%20C224%2027%20220%2019%20226%2016' stroke-width='2.6'/%3E%3C/g%3E%3Cg fill='%23a5754a'%3E%3Ccircle cx='150' cy='13' r='3'/%3E%3Ccircle cx='106' cy='8' r='1.6'/%3E%3Ccircle cx='194' cy='8' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    --ink:#c3cbb4;
+    --ink-soft:#9aa68d;
+    --paper:#151d17;
+    --paper-2:#111813;
+    --paper-edge:#33402f;
+    --blood:#b04a3e;
+    --blood-bright:#c86152;
+    --rust:#a89a55;
+    --sepia:#a6b47f;
+    --gold:#b6c46e;
+    --green-rot:#7d9463;
+    --shadow:rgba(0,0,0,.7);
+    --tent-div:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='320'%20height='30'%20viewBox='0%200%20320%2030'%3E%3Cg%20fill='none'%20stroke='%23a89a55'%20stroke-linecap='round'%3E%3Cpath%20d='M160%2014%20C140%208%20122%206%20106%208'%20stroke-width='5.4'/%3E%3Cpath%20d='M106%208%20C90%2010%2078%2016%2071%2022'%20stroke-width='3.8'/%3E%3Cpath%20d='M71%2022%20C64%2027%2056%2027%2054%2022'%20stroke-width='2.5'/%3E%3Cpath%20d='M54%2022%20C53%2018%2057%2016%2060%2018'%20stroke-width='1.6'/%3E%3Cpath%20d='M160%2014%20C180%208%20198%206%20214%208'%20stroke-width='5.4'/%3E%3Cpath%20d='M214%208%20C230%2010%20242%2016%20249%2022'%20stroke-width='3.8'/%3E%3Cpath%20d='M249%2022%20C256%2027%20264%2027%20266%2022'%20stroke-width='2.5'/%3E%3Cpath%20d='M266%2022%20C267%2018%20263%2016%20260%2018'%20stroke-width='1.6'/%3E%3C/g%3E%3Cg%20fill='%23a89a55'%3E%3Ccircle%20cx='160'%20cy='14'%20r='3.4'/%3E%3Ccircle%20cx='138'%20cy='12'%20r='1.6'/%3E%3Ccircle%20cx='120'%20cy='11'%20r='1.4'/%3E%3Ccircle%20cx='103'%20cy='13'%20r='1.2'/%3E%3Ccircle%20cx='88'%20cy='17'%20r='1.0'/%3E%3Ccircle%20cx='182'%20cy='12'%20r='1.6'/%3E%3Ccircle%20cx='200'%20cy='11'%20r='1.4'/%3E%3Ccircle%20cx='217'%20cy='13'%20r='1.2'/%3E%3Ccircle%20cx='232'%20cy='17'%20r='1.0'/%3E%3C/g%3E%3C/svg%3E");
     background:
       radial-gradient(circle at 20% 10%, rgba(110,20,20,.05), transparent 40%),
       radial-gradient(circle at 80% 80%, rgba(30,22,14,.12), transparent 45%),
-      #0c0a07;
+      #080d09;
   }
   body.night .sheet{box-shadow:0 18px 40px rgba(0,0,0,.75), inset 0 0 70px rgba(0,0,0,.4);}
   body.night .readaloud{background:linear-gradient(180deg,#241e15,#1d1812);box-shadow:inset 0 0 30px rgba(0,0,0,.3), 0 4px 12px rgba(0,0,0,.4);}
-  body.night .clue{background:#251f16;box-shadow:0 4px 14px rgba(0,0,0,.45);}
-  body.night ol.steps li::before{background:#251f16;}
-  body.night .statgrid div{background:#211b13;}
-  body.night .npc{background:#1f1a13;}
-  body.night .bond-card{background:#1f1a13;}
-  body.night .pill{background:#211b13;}
-  body.night .ambient{background:linear-gradient(180deg,#231d14,#1c1711);box-shadow:inset 0 0 44px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.4);}
+  body.night .clue{background:#1a231b;box-shadow:0 4px 14px rgba(0,0,0,.45);}
+  body.night ol.steps li::before{background:#1a231b;}
+  body.night .statgrid div{background:#18211a;}
+  body.night .npc{background:#161f18;}
+  body.night .bond-card{background:#161f18;}
+  body.night .pill{background:#18211a;}
+  body.night .ambient{background:linear-gradient(180deg,#19231b,#1c1711);box-shadow:inset 0 0 44px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.4);}
   body.night .portrait,body.night .loc-img{filter:brightness(.88);}
   body.night .grain{opacity:.035;}
-  body.night .tent-deco{color:#4b2019;opacity:.75;}
-  body.night .theme-toggle{background:#e8e0cf;color:#3a2d1f;border-color:#9c7a3c;}
+  body.night .tent-deco{color:#24462e;opacity:.78;}
+  body.night .theme-toggle{background:#e2e5d3;color:#22352a;border-color:#9c7a3c;}
 
   /* ---------- Tracker da Peste ---------- */
   .trk-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:1.3em 0;}
@@ -472,50 +472,50 @@
   .trk-day b{color:var(--blood);font-size:1.15rem;}
   .trk-btn{
     font-family:'IM Fell English SC',serif;letter-spacing:.06em;font-size:.8rem;
-    background:#2a2118;color:#d8c393;border:1px solid #000;
+    background:#17251c;color:#ccd4a2;border:1px solid #000;
     padding:7px 14px;border-radius:4px;cursor:pointer;transition:background .2s;
   }
-  .trk-btn:hover{background:#3a2d1f;}
-  .trk-btn.primary{background:var(--blood);color:#f0e6d0;}
+  .trk-btn:hover{background:#22352a;}
+  .trk-btn.primary{background:var(--blood);color:#e9edd6;}
   .trk-btn.primary:hover{background:var(--blood-bright);}
-  .trk-btn.danger{background:#3a1010;color:#e0b0a0;border-color:#5a1a1a;}
+  .trk-btn.danger{background:#331312;color:#cbd9bd;border-color:#4a2320;}
   .trk-btn.sm{padding:3px 10px;font-size:.85rem;}
-  .trk-card{background:#efe6d0;border:1px solid var(--paper-edge);border-left:5px solid var(--green-rot);border-radius:4px;margin:.9em 0;padding:14px 16px;box-shadow:0 6px 16px rgba(0,0,0,.14);}
+  .trk-card{background:#e6e9d8;border:1px solid var(--paper-edge);border-left:5px solid var(--green-rot);border-radius:4px;margin:.9em 0;padding:14px 16px;box-shadow:0 6px 16px rgba(0,0,0,.14);}
   .trk-card.infectado{border-left-color:var(--blood);}
   .trk-card.curado{border-left-color:var(--gold);}
-  .trk-card.morto{border-left-color:#444;opacity:.72;}
-  .trk-card.zumbi{border-left-color:#1a0505;background:#e8d9c2;}
+  .trk-card.morto{border-left-color:#3b463c;opacity:.72;}
+  .trk-card.zumbi{border-left-color:#1a0505;background:#dfe4cb;}
   .trk-head{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;}
   .trk-nm{font-family:'IM Fell English SC',serif;font-size:1.12rem;color:var(--ink);}
   .trk-status{font-family:'Special Elite',monospace;font-size:.66rem;letter-spacing:.08em;padding:2px 9px;border-radius:12px;}
-  .st-sao{background:var(--green-rot);color:#e9eddb;}
-  .st-infectado{background:var(--blood);color:#f0e6d0;}
-  .st-curado{background:var(--gold);color:#241a0c;}
-  .st-morto{background:#222;color:#999;}
+  .st-sao{background:var(--green-rot);color:#e7edda;}
+  .st-infectado{background:var(--blood);color:#e9edd6;}
+  .st-curado{background:var(--gold);color:#1a2210;}
+  .st-morto{background:#222;color:#93a08f;}
   .st-zumbi{background:#000;color:#c65a4e;border:1px solid var(--blood);}
   .trk-con{font-family:'Special Elite',monospace;font-size:.8rem;color:var(--sepia);}
-  .trk-con input{width:56px;background:#f5eedb;border:1px solid var(--paper-edge);border-radius:3px;padding:3px 6px;font-family:'Special Elite',monospace;color:var(--ink);text-align:center;}
+  .trk-con input{width:56px;background:#ecefdd;border:1px solid var(--paper-edge);border-radius:3px;padding:3px 6px;font-family:'Special Elite',monospace;color:var(--ink);text-align:center;}
   .trk-contact{font-size:.8rem;color:var(--sepia);font-family:'Special Elite',monospace;display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
   .trk-head .trk-btn.danger.sm{margin-left:auto;}
   .trk-pips{display:flex;flex-wrap:wrap;gap:4px;margin:.7em 0 .2em;}
   .trk-pip{width:24px;height:24px;border-radius:50%;border:1px solid var(--rust);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-family:'Special Elite',monospace;cursor:pointer;color:var(--sepia);user-select:none;}
-  .trk-pip.on{background:var(--blood);color:#f0e6d0;border-color:var(--blood);}
+  .trk-pip.on{background:var(--blood);color:#e9edd6;border-color:var(--blood);}
   .trk-eff{font-size:.85rem;color:var(--sepia);font-style:italic;margin:.25em 0 .55em;}
   .trk-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:.4em;}
   .trk-add{display:flex;flex-wrap:wrap;gap:8px;margin:1.3em 0;align-items:center;}
-  .trk-add input{background:#f5eedb;border:1px solid var(--paper-edge);border-radius:4px;padding:8px 10px;font-family:'Crimson Pro',serif;font-size:.95rem;color:var(--ink);}
-  .trk-log{font-family:'Special Elite',monospace;font-size:.8rem;background:#241d14;color:#cdb98c;border-radius:4px;padding:12px 16px;max-height:340px;overflow-y:auto;line-height:1.9;}
+  .trk-add input{background:#ecefdd;border:1px solid var(--paper-edge);border-radius:4px;padding:8px 10px;font-family:'Crimson Pro',serif;font-size:.95rem;color:var(--ink);}
+  .trk-log{font-family:'Special Elite',monospace;font-size:.8rem;background:#16211a;color:#c2cc9c;border-radius:4px;padding:12px 16px;max-height:340px;overflow-y:auto;line-height:1.9;}
   .trk-log .ok{color:#9fbf7f;}
   .trk-log .fail{color:#e08a7a;}
-  .trk-log .dayhdr{color:#e7d3a3;display:block;border-bottom:1px dotted #4a3a22;margin:2px 0;}
-  body.night .trk-card{background:#1f1a13;}
-  body.night .trk-card.zumbi{background:#241a10;}
-  body.night .trk-con input,body.night .trk-add input{background:#211b13;color:var(--ink);}
+  .trk-log .dayhdr{color:#dee5b2;display:block;border-bottom:1px dotted #39472f;margin:2px 0;}
+  body.night .trk-card{background:#161f18;}
+  body.night .trk-card.zumbi{background:#1a2317;}
+  body.night .trk-con input,body.night .trk-add input{background:#18211a;color:var(--ink);}
 
   /* ---------- Painel dos Investigadores (fichas vivas) ---------- */
   .inv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px;margin:1.4em 0;}
   .inv-card{
-    background:linear-gradient(170deg,#efe6d0,#e3d8bd);
+    background:linear-gradient(170deg,#e6e9d8,#d9dec4);
     border:1px solid var(--paper-edge);border-radius:5px;overflow:hidden;
     box-shadow:0 10px 26px rgba(0,0,0,.2);position:relative;
     display:flex;flex-direction:column;
@@ -528,12 +528,12 @@
   .inv-card[class*="st"]::before{background:var(--sev,var(--blood));}
   .inv-card.curado::before{background:var(--gold);}
   .inv-card.morto{opacity:.6;filter:grayscale(.6);}
-  .inv-card.morto::before{background:#333;}
-  .inv-head{display:flex;gap:13px;align-items:center;padding:14px 16px 12px 20px;background:linear-gradient(90deg,#2a2118,#3a2d1f);}
-  .inv-head img{width:58px;height:58px;object-fit:cover;border-radius:3px;border:1px solid var(--gold);flex-shrink:0;background:#1c1610;cursor:zoom-in;}
+  .inv-card.morto::before{background:#2f3a30;}
+  .inv-head{display:flex;gap:13px;align-items:center;padding:14px 16px 12px 20px;background:linear-gradient(90deg,#17251c,#22352a);}
+  .inv-head img{width:58px;height:58px;object-fit:cover;border-radius:3px;border:1px solid var(--gold);flex-shrink:0;background:#0e1611;cursor:zoom-in;}
   .inv-id{min-width:0;flex:1;}
-  .inv-id .nm{font-family:'IM Fell English SC',serif;font-size:1.14rem;color:#f0e2c2;display:block;line-height:1.15;}
-  .inv-id .rl{font-style:italic;color:#b09a72;font-size:.82rem;}
+  .inv-id .nm{font-family:'IM Fell English SC',serif;font-size:1.14rem;color:#e9edcc;display:block;line-height:1.15;}
+  .inv-id .rl{font-style:italic;color:#a7b184;font-size:.82rem;}
   .inv-body{padding:14px 16px 16px 20px;display:flex;flex-direction:column;gap:12px;flex:1;}
 
   /* espinha da infecção */
@@ -574,13 +574,13 @@
   .inv-kit{display:flex;flex-wrap:wrap;gap:5px;}
   .kit{font-family:'Special Elite',monospace;font-size:.66rem;background:rgba(92,74,50,.13);
     border:1px solid rgba(92,74,50,.3);border-radius:3px;padding:2px 7px;color:var(--sepia);}
-  .kit.key{background:rgba(156,122,60,.22);border-color:var(--gold);color:#6b5320;font-weight:bold;}
+  .kit.key{background:rgba(156,122,60,.22);border-color:var(--gold);color:#5c6b2c;font-weight:bold;}
   .kit.hurt{background:rgba(143,29,29,.14);border-color:var(--blood);color:var(--blood);}
   .inv-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px;}
   .inv-acts .trk-btn{font-size:.72rem;padding:5px 11px;}
   .inv-note{font-size:.76rem;color:var(--sepia);font-style:italic;border-top:1px dotted rgba(92,74,50,.35);padding-top:8px;}
 
-  body.night .inv-card{background:linear-gradient(170deg,#211b13,#191410);}
+  body.night .inv-card{background:linear-gradient(170deg,#18211a,#191410);}
   body.night .kit{background:rgba(200,170,110,.08);}
 
   /* relógio do cerco */
@@ -606,35 +606,35 @@
     position:relative;backface-visibility:hidden;-webkit-backface-visibility:hidden;
     background:
       radial-gradient(ellipse at 30% 20%, rgba(120,90,50,.14), transparent 60%),
-      linear-gradient(160deg,#f0e8d3,#dccfae);
-    border:1px solid #a8976f;
+      linear-gradient(160deg,#e8ebd9,#cfd7b6);
+    border:1px solid #a3ad86;
     box-shadow:inset 0 0 44px rgba(92,74,50,.28), 0 8px 20px rgba(0,0,0,.28);
   }
   .tome-front::after{content:"";position:absolute;inset:7px;border:1px solid rgba(92,74,50,.35);pointer-events:none;border-radius:2px;}
   .tome-back{
     position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
     transform:rotateY(180deg);
-    background:linear-gradient(160deg,#2a2118,#1c1610);
-    border:1px solid #4a3a22;color:#dcccA6;
+    background:linear-gradient(160deg,#17251c,#0e1611);
+    border:1px solid #39472f;color:#d6dfae;
     box-shadow:0 8px 20px rgba(0,0,0,.4);
   }
   .tome-tag{
     font-family:'IM Fell English SC',serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
-    color:#7c5a2e;border-bottom:1px dotted rgba(124,90,46,.5);padding-bottom:5px;
+    color:#6b7534;border-bottom:1px dotted rgba(124,90,46,.5);padding-bottom:5px;
   }
-  .tome-back .tome-tag{color:var(--gold);border-color:#4a3a22;}
+  .tome-back .tome-tag{color:var(--gold);border-color:#39472f;}
   .tome-fr{
     font-family:'IM Fell English',serif;font-style:italic;
-    font-size:1.06rem;line-height:1.75;color:#2a2014;margin:0;
+    font-size:1.06rem;line-height:1.75;color:#1b2717;margin:0;
   }
   .tome-fr::first-letter{font-family:'IM Fell English SC',serif;font-size:1.9em;line-height:1;color:var(--blood);}
-  .tome-pt{font-family:'Special Elite',monospace;font-size:.9rem;line-height:1.75;color:#e2d2ac;margin:0;}
-  .tome-note{font-size:.78rem;color:#9a8a68;font-style:italic;margin-top:auto;border-top:1px dotted #4a3a22;padding-top:7px;}
+  .tome-pt{font-family:'Special Elite',monospace;font-size:.9rem;line-height:1.75;color:#dbe3b4;margin:0;}
+  .tome-note{font-size:.78rem;color:#96a077;font-style:italic;margin-top:auto;border-top:1px dotted #39472f;padding-top:7px;}
   .tome-hint{margin-top:auto;font-family:'Special Elite',monospace;font-size:.64rem;color:#8a7550;letter-spacing:.08em;text-align:right;}
-  .tome-card.marginalia .tome-front{background:linear-gradient(160deg,#ece2c8,#d6c8a2);}
+  .tome-card.marginalia .tome-front{background:linear-gradient(160deg,#e4e8d1,#cdd4ac);}
   .tome-card.marginalia .tome-fr{
     font-family:'Segoe Print','Bradley Hand',cursive;font-style:normal;
-    font-size:.95rem;color:#42403c;transform:rotate(-1.6deg);
+    font-size:.95rem;color:#3a423a;transform:rotate(-1.6deg);
   }
   .tome-card.marginalia .tome-fr::first-letter{font-family:inherit;font-size:inherit;color:inherit;}
 </style>
@@ -643,24 +643,64 @@
 <div class="grain"></div>
 <div class="lightbox" id="lightbox"><span class="lb-close" aria-label="Fechar">×</span><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
 <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo noturno" title="Ativar modo noturno">☾</button>
-<div class="tent-deco tent-left" aria-hidden="true"><svg viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg">
+<div class="tent-deco tent-left" aria-hidden="true"><svg viewBox="0 0 170 285" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" stroke="currentColor" stroke-linecap="round">
-    <path d="M28 262 C 18 210 40 180 58 150 C 80 114 76 78 54 60 C 38 47 18 54 20 72 C 22 88 42 88 39 74" stroke-width="9"/>
-    <path d="M62 262 C 60 226 76 206 94 186 C 110 168 112 148 100 138 C 90 130 78 137 81 148" stroke-width="6" opacity=".8"/>
-    <path d="M8 262 C 10 236 4 220 12 204 C 18 192 30 194 28 204" stroke-width="4" opacity=".6"/>
+    <path d="M22 290 C 26 250 28 232 40 208" stroke-width="26"/>
+    <path d="M40 208 C 50 186 58 172 73 152" stroke-width="20"/>
+    <path d="M73 152 C 86 134 92 120 89 104" stroke-width="15"/>
+    <path d="M89 104 C 86 88 77 76 64 74" stroke-width="10.5"/>
+    <path d="M64 74 C 53 72 45 81 48 92" stroke-width="7"/>
+    <path d="M48 92 C 50 100 58 103 62 98" stroke-width="4.5"/>
   </g>
-  <g fill="currentColor" opacity=".5">
-    <circle cx="36" cy="200" r="2.6"/><circle cx="43" cy="178" r="2.4"/><circle cx="53" cy="157" r="2.2"/><circle cx="63" cy="134" r="2"/><circle cx="63" cy="110" r="1.8"/>
+  <g fill="none" stroke="currentColor" stroke-linecap="round" opacity=".75">
+    <path d="M64 290 C 66 252 76 228 92 206" stroke-width="13"/>
+    <path d="M92 206 C 106 188 114 172 110 156" stroke-width="9"/>
+    <path d="M110 156 C 106 142 94 136 86 144" stroke-width="6"/>
+    <path d="M86 144 C 81 150 86 157 92 154" stroke-width="3.5"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-linecap="round" opacity=".55">
+    <path d="M4 290 C 6 262 2 246 10 232" stroke-width="7"/>
+    <path d="M10 232 C 15 224 26 226 24 236" stroke-width="4"/>
+  </g>
+  <g fill="currentColor" opacity=".42">
+    <circle cx="12" cy="258" r="3.6"/><circle cx="16" cy="232" r="3.4"/><circle cx="24" cy="210" r="3.2"/>
+    <circle cx="34" cy="190" r="3"/><circle cx="45" cy="171" r="2.8"/><circle cx="57" cy="152" r="2.6"/>
+    <circle cx="69" cy="133" r="2.3"/><circle cx="76" cy="113" r="2.1"/><circle cx="74" cy="95" r="1.8"/>
+    <circle cx="65" cy="83" r="1.5"/><circle cx="55" cy="88" r="1.2"/>
+  </g>
+  <g fill="currentColor" opacity=".22">
+    <circle cx="36" cy="256" r="2.4"/><circle cx="40" cy="234" r="2.2"/><circle cx="49" cy="214" r="2"/>
+    <circle cx="60" cy="196" r="1.8"/><circle cx="72" cy="178" r="1.6"/>
   </g>
 </svg></div>
-<div class="tent-deco tent-right" aria-hidden="true"><svg viewBox="0 0 160 260" xmlns="http://www.w3.org/2000/svg">
+<div class="tent-deco tent-right" aria-hidden="true"><svg viewBox="0 0 170 285" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" stroke="currentColor" stroke-linecap="round">
-    <path d="M28 262 C 18 210 40 180 58 150 C 80 114 76 78 54 60 C 38 47 18 54 20 72 C 22 88 42 88 39 74" stroke-width="9"/>
-    <path d="M62 262 C 60 226 76 206 94 186 C 110 168 112 148 100 138 C 90 130 78 137 81 148" stroke-width="6" opacity=".8"/>
-    <path d="M8 262 C 10 236 4 220 12 204 C 18 192 30 194 28 204" stroke-width="4" opacity=".6"/>
+    <path d="M22 290 C 26 250 28 232 40 208" stroke-width="26"/>
+    <path d="M40 208 C 50 186 58 172 73 152" stroke-width="20"/>
+    <path d="M73 152 C 86 134 92 120 89 104" stroke-width="15"/>
+    <path d="M89 104 C 86 88 77 76 64 74" stroke-width="10.5"/>
+    <path d="M64 74 C 53 72 45 81 48 92" stroke-width="7"/>
+    <path d="M48 92 C 50 100 58 103 62 98" stroke-width="4.5"/>
   </g>
-  <g fill="currentColor" opacity=".5">
-    <circle cx="36" cy="200" r="2.6"/><circle cx="43" cy="178" r="2.4"/><circle cx="53" cy="157" r="2.2"/><circle cx="63" cy="134" r="2"/><circle cx="63" cy="110" r="1.8"/>
+  <g fill="none" stroke="currentColor" stroke-linecap="round" opacity=".75">
+    <path d="M64 290 C 66 252 76 228 92 206" stroke-width="13"/>
+    <path d="M92 206 C 106 188 114 172 110 156" stroke-width="9"/>
+    <path d="M110 156 C 106 142 94 136 86 144" stroke-width="6"/>
+    <path d="M86 144 C 81 150 86 157 92 154" stroke-width="3.5"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-linecap="round" opacity=".55">
+    <path d="M4 290 C 6 262 2 246 10 232" stroke-width="7"/>
+    <path d="M10 232 C 15 224 26 226 24 236" stroke-width="4"/>
+  </g>
+  <g fill="currentColor" opacity=".42">
+    <circle cx="12" cy="258" r="3.6"/><circle cx="16" cy="232" r="3.4"/><circle cx="24" cy="210" r="3.2"/>
+    <circle cx="34" cy="190" r="3"/><circle cx="45" cy="171" r="2.8"/><circle cx="57" cy="152" r="2.6"/>
+    <circle cx="69" cy="133" r="2.3"/><circle cx="76" cy="113" r="2.1"/><circle cx="74" cy="95" r="1.8"/>
+    <circle cx="65" cy="83" r="1.5"/><circle cx="55" cy="88" r="1.2"/>
+  </g>
+  <g fill="currentColor" opacity=".22">
+    <circle cx="36" cy="256" r="2.4"/><circle cx="40" cy="234" r="2.2"/><circle cx="49" cy="214" r="2"/>
+    <circle cx="60" cy="196" r="1.8"/><circle cx="72" cy="178" r="1.6"/>
   </g>
 </svg></div>
 
@@ -668,23 +708,34 @@
   <div class="kicker">Chamado de Cthulhu · 7ª Edição · Guia do Guardião</div>
   <h1>Rigor Mortis</h1>
   <div class="sub">Uma mórbida aventura de Horror e Investigação</div>
-  <div class="tent-crown" aria-hidden="true"><svg viewBox="0 0 640 84" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="currentColor" stroke-linecap="round">
-      <g>
-        <path d="M296 46 C 252 60 206 62 172 50 C 144 40 140 20 158 14 C 172 9 182 21 173 28 C 167 33 158 28 161 21" stroke-width="4.5"/>
-        <path d="M298 34 C 262 20 224 14 194 20 C 176 24 172 36 184 40 C 193 43 200 34 193 30" stroke-width="3" opacity=".75"/>
+  <div class="tent-crown" aria-hidden="true"><svg viewBox="0 0 680 116" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="octoArm">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M304 58 C 266 72 228 78 190 72" stroke-width="13"/>
+          <path d="M190 72 C 158 66 134 54 116 42" stroke-width="9.5"/>
+          <path d="M116 42 C 100 32 82 32 76 44" stroke-width="6.5"/>
+          <path d="M76 44 C 71 54 80 63 90 59" stroke-width="4"/>
+          <path d="M90 59 C 96 56 97 49 93 46" stroke-width="2.6"/>
+        </g>
+        <g fill="currentColor" opacity=".5">
+          <circle cx="278" cy="69" r="2.2"/><circle cx="252" cy="74" r="2.1"/><circle cx="226" cy="76" r="2"/>
+          <circle cx="200" cy="74" r="1.9"/><circle cx="176" cy="67" r="1.7"/><circle cx="154" cy="57" r="1.6"/>
+          <circle cx="134" cy="47" r="1.4"/><circle cx="116" cy="37" r="1.2"/><circle cx="99" cy="35" r="1.1"/>
+        </g>
+        <g fill="currentColor" opacity=".28">
+          <circle cx="272" cy="53" r="1.5"/><circle cx="246" cy="58" r="1.4"/><circle cx="220" cy="60" r="1.3"/>
+          <circle cx="196" cy="58" r="1.2"/><circle cx="172" cy="51" r="1.1"/>
+        </g>
       </g>
-      <g transform="translate(640,0) scale(-1,1)">
-        <path d="M296 46 C 252 60 206 62 172 50 C 144 40 140 20 158 14 C 172 9 182 21 173 28 C 167 33 158 28 161 21" stroke-width="4.5"/>
-        <path d="M298 34 C 262 20 224 14 194 20 C 176 24 172 36 184 40 C 193 43 200 34 193 30" stroke-width="3" opacity=".75"/>
-      </g>
-      <ellipse cx="320" cy="40" rx="26" ry="13" stroke-width="2.5"/>
+    </defs>
+    <use href="#octoArm"/>
+    <use href="#octoArm" transform="translate(680,0) scale(-1,1)"/>
+    <g fill="none" stroke="currentColor">
+      <path d="M310 58 C 322 42 358 42 370 58 C 358 74 322 74 310 58 Z" stroke-width="2.6"/>
     </g>
-    <circle cx="320" cy="40" r="5" fill="currentColor"/>
-    <g fill="currentColor" opacity=".55">
-      <circle cx="246" cy="57" r="1.9"/><circle cx="222" cy="58" r="1.7"/><circle cx="200" cy="55" r="1.6"/><circle cx="182" cy="48" r="1.5"/>
-      <circle cx="394" cy="57" r="1.9"/><circle cx="418" cy="58" r="1.7"/><circle cx="440" cy="55" r="1.6"/><circle cx="458" cy="48" r="1.5"/>
-    </g>
+    <circle cx="340" cy="58" r="7.5" fill="currentColor" opacity=".85"/>
+    <ellipse cx="340" cy="58" rx="5.6" ry="2" fill="#0b120d"/>
   </svg></div>
   <div class="credits">Clayton Mamedes &amp; Eli Andreoli · Shellburne Falls, 1924 · estrutura em atos por capítulo</div>
 </header>
@@ -1171,6 +1222,9 @@ PANELS.act3 = `
 <h2 class="act-title">Ação e Reação</h2>
 <p class="lead">A investigação sai da clínica e vai a campo: a água, as entrevistas, a fazenda. E, no meio disso, o mundo desaba sobre Shellburne Falls. O Exército chega, e o relógio passa a correr contra todos.</p>
 
+<div class="clue"><span class="tag">✔ Ato jogado · Sessões 2–3</span>
+<p>Entrevistaram Brooks na fazenda (Grace desconfiou do perfume), ouviram a lenda do Javali por <b>Gabriel Bah</b> e pela zombaria de <b>Terence Hall</b>, e rastrearam a ligação Joseph ↔ riacho ↔ Brooks. <b>O cerco chegou no fim da Sessão 3</b>, quando voltavam da fazenda — houve luta. A partir daqui, use a aba <b>O Cerco</b> para conduzir o que vem: as nove fases do sítio e os eventos da cidade fechada.</p></div>
+
 <h3>A análise das águas do riacho</h3>
 <p>Poços, encanamentos e reservatórios estão limpos. O <b>riacho</b>, não. Divida o curso em quatro setores (A a D no mapa do Guardião). Só o <b>Setor B</b> está sem anomalia; todos os outros acusam contaminação.</p>
 <div class="warn"><span class="tag">O que os exames revelam</span>
@@ -1220,6 +1274,9 @@ PANELS.act4 = `
 <h2 class="act-title">No Coração da Besta</h2>
 <p class="lead">A esta altura, o grupo já sente que a fazenda de Brooks esconde tudo. E, a esta altura, Brooks já sumiu. Os trabalhadores barram a entrada com desculpas esfarrapadas e ninguém mais consegue falar com o dono. O caminho agora é por baixo.</p>
 
+<div class="clue"><span class="tag">✔ Ato jogado · Sessão 3</span>
+<p>Aconteceu <b>de forma diferente e mais rápida</b> que o previsto: Brooks recebeu o grupo na fazenda pela manhã e <b>fingiu ir à cidade</b> para atraí-los ao subterrâneo (armadilha dele, não descuido). Nos túneis: acharam tudo, <b>Artemy pegou as cartas, Grace pegou os livros</b>, enfrentaram o Javali e puseram fogo na sala. <b>David foi mordido</b>, <b>Grace levou garras de Brooks</b> — ambos avançaram um estágio. <b>Brooks morreu sem falar</b>, e eles <b>explodiram o laboratório</b> na saída. Guarde este ato como referência das fichas e do covil; o que segue vale para consulta, não para jogar de novo.</p></div>
+
 <div class="lore"><span class="tag">Mapa da fazenda</span>
 <ul class="cl" style="margin:.4em 0;">
   <li>Um <b>barracão a oeste</b> abriga o maquinário da cervejaria — alvo de investigação.</li>
@@ -1257,7 +1314,16 @@ PANELS.act4 = `
 <p>Uma folha coberta de símbolos da <b>língua dos Goules</b>, acompanhada de dois sigilos: um disco com um crânio e tentáculos, e um homem vitruviano inscrito num pentagrama. É o <b>contrafeitiço</b>, só decifrável depois de estudar o <i>Cultes des Goules</i> (ver Ato 5). Entregue como prop visual; não traduza ainda.</p></div>
 
 <div class="lore"><span class="tag">Detalhes do covil</span>
-<p>Num canto, a fonte da contaminação da água: a câmara foi cavada perto da nascente e <b>expôs o lençol freático</b>, que escorre pela parede. É exatamente nesse canto que Brooks despeja restos de experiências, fragmentos humanos e dejetos, que infiltram a água. No forno, ainda quente de uso recente, há um <b>pedaço de uniforme militar</b>: Brooks provavelmente matou um soldado e fugiu da cidade com o disfarce.</p></div>
+<p>Num canto, a fonte da contaminação da água: a câmara foi cavada perto da nascente e <b>expôs o lençol freático</b>, que escorre pela parede. É exatamente nesse canto que Brooks despeja restos de experiências, fragmentos humanos e dejetos, que infiltram a água. No forno, ainda quente de uso recente, há um <b>pedaço de uniforme militar</b>: no módulo original, é o sinal de que Brooks matou um soldado e fugiu disfarçado.</p></div>
+
+<div class="warn"><span class="tag">Nesta campanha · o fio solto do uniforme</span>
+<p>Brooks <b>não fugiu</b> — morreu ali. Então o uniforme queimado no forno <b>continua sem explicação</b>, e vira um dos melhores ganchos que você tem em mãos: <b>um soldado sumiu</b>, e o Exército sabe disso. Três usos, à sua escolha:</p>
+<ul class="cl" style="margin:.4em 0;">
+  <li><b>O desaparecido.</b> A guarnição procura um homem que não voltou da ronda. Se descobrirem que os Investigadores estiveram na fazenda — e a explodiram —, os quatro viram suspeitos de assassinar um soldado americano.</li>
+  <li><b>Brooks comia.</b> A explicação mais simples e mais feia: ele era meio-Carniçal, o soldado se aproximou demais do covil, e o forno faz o resto. Se alguém periciar os ossos do forno com <b>Medicina</b>, vai achar um fêmur recente demais para ser antigo.</li>
+  <li><b>Nem tudo queimou.</b> Se você quiser um vilão residual sem inventar outro: alguém <b>saiu daqueles túneis de farda</b> antes da dinamite. Não precisa ser Brooks. Não precisa nem ser humano.</li>
+</ul>
+<p class="footnote">Como o laboratório foi ao ar, essa pista só existe se alguém a tiver <b>visto ou levado</b> na Sessão 3. Se ninguém pegou, use a versão "o desaparecido": o Exército traz o assunto até eles.</p></div>
 
 <div class="warn"><span class="tag">Sanidade — o laboratório profano</span>
 <p><span class="san">Perda de Sanidade <span class="roll">1/1D8</span></span> ao vasculhar a câmara e compreender o que se fez ali.</p></div>
@@ -1274,6 +1340,15 @@ PANELS.act5 = `
 <div class="act-eyebrow">Ato Quinto</div>
 <h2 class="act-title">Salvando Shellburne Falls (?)</h2>
 <p class="lead">Ficou claro: a doença não tem causa natural e não há cura convencional. As cartas, a caixa de ingredientes e o <i>Cultes des Goules</i> dão aos Investigadores tudo de que precisam para "salvar" a cidade. O ponto de interrogação no título é proposital, e cruel.</p>
+
+<div class="warn"><span class="tag">⚠ Estado desta campanha · leia antes de usar este ato</span>
+<p>O módulo pressupõe que os Investigadores cheguem aqui <b>tarde</b>, depois de semanas de cerco, e que <b>Brooks tenha fugido vivo</b>. Na sua mesa, nada disso aconteceu. Ajuste assim:</p>
+<ul class="cl" style="margin:.4em 0;">
+  <li><b>Eles já têm tudo</b> — tomo, cartas e caixa saíram dos túneis na Sessão 3. Este ato <b>começa agora</b>, com o cerco na fase 1, e não daqui a semanas. É uma vantagem enorme: eles têm tempo. Use-o para apertar o resto.</li>
+  <li><b>Brooks está morto e mudo.</b> Não haverá revelação por boca dele. Tudo o que a mesa entender virá do que a <b>Grace ler</b> e do que o <b>Artemy periciar</b> nas cartas. Se travarem, a saída é sempre <i>estudar mais</i>, nunca <i>encontrar alguém que conte</i>.</li>
+  <li><b>O laboratório não existe mais.</b> Foi ao ar com a dinamite — e isso <b>elimina o melhor esconderijo do ato</b> (ver "A fuga", adiante). Foi a decisão deles; deixe custar.</li>
+  <li><b>A epidemia continua.</b> Matar o autor não desfaz a maldição. Se a mesa presumir que resolveu, deixe-os contarem os casos e descobrirem que a curva não mudou.</li>
+</ul></div>
 
 <div class="lore"><span class="tag">O tomo · Cultes des Goules</span>
 <p>Escrito por <b>François Honore-Balfour</b>, o Comte d'Erlette, o <i>Cultes des Goules</i> foi publicado na França em <b>1703</b> (por isso o livro é em francês). Ele alega a existência de necromancia e necrofilia na França por volta do século XVIII, descrevendo uma sociedade de ladrões de túmulos e detalhando seus rituais e práticas. Atos de <b>necrofagia e necrofilia</b> — alimentar-se de e copular com mortos, respectivamente — eram impostos na cerimônia de iniciação, e seus membros referiam-se a si como "<b>goules</b>". O tomo também relata atos voltados à ressurreição, ou ao menos à reanimação, dos mortos, com fins de adoração e conjugação. Somente o original francês é conhecido. Acredita-se existirem <b>no mínimo quatorze cópias</b> — incluindo esta, agora em posse dos Investigadores.</p></div>
@@ -1397,7 +1472,7 @@ PANELS.act5 = `
 <ul class="cl">
   <li><b>Correr:</b> a forma mais infeliz de morrer. Soldados não deixam um grupo cruzar os campos a pé.</li>
   <li><b>Furtividade:</b> possível, mas exige perícia que médicos raramente têm.</li>
-  <li><b>Esconder-se:</b> talvez o mais esperto. Ficar no <b>laboratório subterrâneo de Brooks</b> até o Exército julgar a cidade morta e ir embora. Dias de fome, mas há água, e ali não há mais risco de contágio (eles não precisam saber disso).</li>
+  <li><b>Esconder-se:</b> era o caminho mais esperto do módulo — esperar no <b>laboratório subterrâneo</b> até o Exército julgar a cidade morta. <b class="open-hook">Não é mais possível nesta campanha: eles dinamitaram o lugar.</b> Ofereça substitutos piores, e deixe a ironia doer: o porão da igreja do Reverendo Charles, a adega da cerveja, o sótão do hotel dos Hall — todos com gente dentro, todos capazes de condenar quem os abriga.</li>
   <li><b>Disfarce:</b> roubar fardas de soldados. Interagir com qualquer militar quase certamente expõe o disfarce; o certo é usá-lo só para sair rápido.</li>
   <li><b>Na bala:</b> médicos com armas velhas contra soldados treinados acabam em tragédia. E no silêncio do interior, um único tiro ecoa por quilômetros e denuncia tudo.</li>
 </ul>
@@ -1872,6 +1947,10 @@ PANELS.tracker = `
   <label class="trk-btn" style="display:inline-flex;align-items:center;">⬆ Importar<input type="file" id="trkImport" accept=".json" hidden></label>
   <button class="trk-btn danger" data-act="reset">Zerar tudo</button>
 </div>
+
+<h3>Relógio do Cerco</h3>
+<p class="footnote">As nove fases do Ato 5. Clique numa fase para marcar onde a campanha está — regra prática: <b>uma fase por dia de leitura</b>. (Detalhes e eventos na aba <b>O Cerco</b>.)</p>
+<div class="siege" id="siegeStepsTrk"></div>
 
 <h3>Os Investigadores</h3>
 <p class="footnote">Clique nos degraus da <b>espinha</b> para ajustar o estágio · clique nos números de SAN/PV para editar · a foto abre ampliada.</p>
@@ -2525,13 +2604,13 @@ function trkRenderAll(){
   const d=document.getElementById('trkDay');if(d)d.textContent=TRK.day;
   trkRenderInv();
   trkRenderChars();
-  const sg=document.getElementById('siegeSteps');
-  if(sg){
-    sg.innerHTML=SIEGE.map((s,i)=>{
-      const n=i+1, cls=n<(TRK.siege||0)?'done':(n===(TRK.siege||0)?'now':'');
-      return '<div class="siege-step '+cls+'" data-act="siege" data-v="'+n+'"><span class="sn">FASE '+n+'</span>'+s+'</div>';
-    }).join('');
-  }
+  const sgHTML=SIEGE.map((s,i)=>{
+    const n=i+1, cls=n<(TRK.siege||0)?'done':(n===(TRK.siege||0)?'now':'');
+    return '<div class="siege-step '+cls+'" data-act="siege" data-v="'+n+'"><span class="sn">FASE '+n+'</span>'+s+'</div>';
+  }).join('');
+  ['siegeSteps','siegeStepsTrk'].forEach(id=>{
+    const sg=document.getElementById(id); if(sg) sg.innerHTML=sgHTML;
+  });
   const lg=document.getElementById('trkLog');
   if(lg)lg.innerHTML=TRK.log.length?TRK.log.join('<br>'):'<i>— sem rolagens ainda. Ajuste as CON e clique em "Rolar o dia". —</i>';
 }
