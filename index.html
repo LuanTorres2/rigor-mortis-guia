@@ -512,6 +512,90 @@
   body.night .trk-card.zumbi{background:#241a10;}
   body.night .trk-con input,body.night .trk-add input{background:#211b13;color:var(--ink);}
 
+  /* ---------- Painel dos Investigadores (fichas vivas) ---------- */
+  .inv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px;margin:1.4em 0;}
+  .inv-card{
+    background:linear-gradient(170deg,#efe6d0,#e3d8bd);
+    border:1px solid var(--paper-edge);border-radius:5px;overflow:hidden;
+    box-shadow:0 10px 26px rgba(0,0,0,.2);position:relative;
+    display:flex;flex-direction:column;
+  }
+  .inv-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--green-rot);}
+  .inv-card.st1,.inv-card.st2,.inv-card.st3{--sev:#8a7a3c;}
+  .inv-card.st4,.inv-card.st5,.inv-card.st6{--sev:#a35a1e;}
+  .inv-card.st7,.inv-card.st8{--sev:#8f1d1d;}
+  .inv-card.st9,.inv-card.st10{--sev:#4a0d0d;}
+  .inv-card[class*="st"]::before{background:var(--sev,var(--blood));}
+  .inv-card.curado::before{background:var(--gold);}
+  .inv-card.morto{opacity:.6;filter:grayscale(.6);}
+  .inv-card.morto::before{background:#333;}
+  .inv-head{display:flex;gap:13px;align-items:center;padding:14px 16px 12px 20px;background:linear-gradient(90deg,#2a2118,#3a2d1f);}
+  .inv-head img{width:58px;height:58px;object-fit:cover;border-radius:3px;border:1px solid var(--gold);flex-shrink:0;background:#1c1610;cursor:zoom-in;}
+  .inv-id{min-width:0;flex:1;}
+  .inv-id .nm{font-family:'IM Fell English SC',serif;font-size:1.14rem;color:#f0e2c2;display:block;line-height:1.15;}
+  .inv-id .rl{font-style:italic;color:#b09a72;font-size:.82rem;}
+  .inv-body{padding:14px 16px 16px 20px;display:flex;flex-direction:column;gap:12px;flex:1;}
+
+  /* espinha da infecção */
+  .spine{display:flex;gap:3px;align-items:flex-end;height:34px;}
+  .spine i{
+    flex:1;border-radius:2px 2px 0 0;background:rgba(92,74,50,.16);
+    border:1px solid rgba(92,74,50,.28);border-bottom:none;
+    cursor:pointer;transition:height .45s cubic-bezier(.3,1.4,.5,1),background .3s;
+    position:relative;
+  }
+  .spine i:nth-child(1){height:34%;} .spine i:nth-child(2){height:40%;}
+  .spine i:nth-child(3){height:46%;} .spine i:nth-child(4){height:52%;}
+  .spine i:nth-child(5){height:58%;} .spine i:nth-child(6){height:66%;}
+  .spine i:nth-child(7){height:74%;} .spine i:nth-child(8){height:83%;}
+  .spine i:nth-child(9){height:92%;} .spine i:nth-child(10){height:100%;}
+  .spine i.on{background:var(--sev,var(--blood));border-color:var(--sev,var(--blood));}
+  .spine i.tip{box-shadow:0 0 0 2px rgba(143,29,29,.35);}
+  @keyframes pulseStage{0%{transform:scaleY(.75);opacity:.4;}60%{transform:scaleY(1.12);}100%{transform:scaleY(1);opacity:1;}}
+  .spine i.just{animation:pulseStage .55s ease-out;transform-origin:bottom;}
+  .spine-cap{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .spine-n{font-family:'Special Elite',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--sepia);}
+  .spine-n b{color:var(--blood);font-size:1.5rem;line-height:1;vertical-align:-2px;}
+  .spine-fx{font-size:.8rem;font-style:italic;color:var(--ink-soft);line-height:1.45;min-height:2.4em;}
+
+  /* barras */
+  .bars{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .bar{display:flex;flex-direction:column;gap:3px;}
+  .bar .lb{display:flex;justify-content:space-between;font-family:'Special Elite',monospace;font-size:.64rem;letter-spacing:.1em;color:var(--sepia);}
+  .bar .lb b{color:var(--ink);font-size:.82rem;}
+  .bar .track{height:7px;background:rgba(92,74,50,.18);border-radius:4px;overflow:hidden;}
+  .bar .fill{height:100%;border-radius:4px;transition:width .5s ease;}
+  .bar.san .fill{background:linear-gradient(90deg,#5a6b8a,#8fa3c4);}
+  .bar.pv .fill{background:linear-gradient(90deg,#6e1414,#b5453a);}
+  .bar input{width:44px;background:transparent;border:none;border-bottom:1px dotted var(--rust);
+    font-family:'Special Elite',monospace;font-size:.82rem;color:var(--ink);text-align:right;padding:0 2px;}
+  .bar input:focus{outline:none;border-bottom-color:var(--blood);}
+
+  .inv-kit{display:flex;flex-wrap:wrap;gap:5px;}
+  .kit{font-family:'Special Elite',monospace;font-size:.66rem;background:rgba(92,74,50,.13);
+    border:1px solid rgba(92,74,50,.3);border-radius:3px;padding:2px 7px;color:var(--sepia);}
+  .kit.key{background:rgba(156,122,60,.22);border-color:var(--gold);color:#6b5320;font-weight:bold;}
+  .kit.hurt{background:rgba(143,29,29,.14);border-color:var(--blood);color:var(--blood);}
+  .inv-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px;}
+  .inv-acts .trk-btn{font-size:.72rem;padding:5px 11px;}
+  .inv-note{font-size:.76rem;color:var(--sepia);font-style:italic;border-top:1px dotted rgba(92,74,50,.35);padding-top:8px;}
+
+  body.night .inv-card{background:linear-gradient(170deg,#211b13,#191410);}
+  body.night .kit{background:rgba(200,170,110,.08);}
+
+  /* relógio do cerco */
+  .siege{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin:1.3em 0;}
+  .siege-step{
+    background:rgba(92,74,50,.09);border:1px solid var(--paper-edge);border-left:3px solid var(--paper-edge);
+    border-radius:3px;padding:9px 11px;font-size:.78rem;line-height:1.4;color:var(--ink-soft);
+    cursor:pointer;transition:background .25s,border-color .25s,transform .2s;
+  }
+  .siege-step:hover{transform:translateY(-2px);}
+  .siege-step .sn{font-family:'Special Elite',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--sepia);display:block;margin-bottom:3px;}
+  .siege-step.done{background:rgba(143,29,29,.14);border-left-color:var(--blood);color:var(--ink);}
+  .siege-step.done .sn{color:var(--blood);}
+  .siege-step.now{border-left-color:var(--gold);background:rgba(156,122,60,.16);box-shadow:0 0 0 1px var(--gold) inset;}
+
   /* ---------- Cartões do Tomo (Cultes des Goules) ---------- */
   .tome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin:1.5em 0;}
   .tome-card{perspective:1200px;cursor:pointer;}
@@ -846,6 +930,24 @@ PANELS.chronicle = `
   <li><b>Timóteo</b> — dono do bar na zona menos contaminada.</li>
   <li><b>Terrence e Cristina Hall</b> (~50 anos, simpáticos) + filho <b>Jr</b> (proibido de ir à escola; família não contaminada) — donos do hotel herdado da avó de Terence, relíquia de uma rota comercial que nunca existiu.</li>
 </ul>
+
+<hr class="div">
+
+<div class="act-eyebrow">Sessão 3 · a mais longa até agora</div>
+<h3>O que aconteceu <span class="footnote">(ainda o Dia 1 — e ele finalmente acabou)</span></h3>
+<ul class="cl">
+  <li><b>Loja de caça.</b> NPC novo: <b>Jay Solbonaro</b>, o velho dono, já no <b>estágio 4</b>. Equiparam-se: David (canivete, lanterna, <b>dinamite</b>), Grace (rifle + 6 balas, corda, lanterna, facão), Cornélius (lanterna, corda), Artemy (facão, lanterna).</li>
+  <li><b>A confissão de Crawford.</b> Ele <b>ouviu Kelly gritar durante a noite e não foi</b> — de medo. Só apareceu de manhã. Chorou, envergonhado, sem saber o que fazer. <b>David lhe deu um tapa</b> (e, com isso, contato direto).</li>
+  <li><b>A morte de Joseph.</b> David, Cornélius e Artemy foram ao casebre (20–25 min a pé da clínica) e o destruíram a tiros. Os disparos trouxeram Grace e Crawford correndo — a batalha já havia acabado.</li>
+  <li><b>Decisão do grupo:</b> Crawford se recompõe e <b>queima todos os corpos da vala</b>, para que ninguém mais se levante.</li>
+  <li><b>A fazenda, pela manhã.</b> Conversaram com Brooks, andaram pela propriedade. <b>Grace desconfiou do cheiro.</b> Enquanto iam à nascente, Brooks <b>fingiu ir à cidade</b> — a armadilha: sabia que desceriam.</li>
+  <li><b>Os túneis.</b> Acharam tudo. <b>Artemy pegou as cartas; Grace pegou os livros</b> e descobriram a cura ali mesmo. O <b>Javali</b> atacou; puseram <b>fogo na sala</b>; Grace leu enquanto os outros saíam.</li>
+  <li><b>O preço:</b> <b>David foi mordido</b> (braço muito ferido) e <b>Grace levou as garras de Brooks</b>. Ambos resistiram à CON e <b>avançaram só um estágio</b>. Cornélius voltou a tocar um dos corpos.</li>
+  <li><b>Brooks morreu antes de dizer qualquer coisa.</b> Saíram e <b>explodiram tudo com a dinamite</b>.</li>
+  <li>Conversaram no carro na volta — e, ao chegar à cidade, <b>o cerco começou</b>. Houve luta.</li>
+</ul>
+<div class="warn"><span class="tag">O que isso mudou na campanha</span>
+<p>O vilão morreu <b>mudo</b> (nada de interrogatório) e o laboratório <b>não existe mais</b> — toda resposta futura terá de sair dos <b>livros com Grace</b> e das <b>cartas com Artemy</b>. Em compensação, o grupo tem a cura nas mãos <b>antes</b> do cerco apertar. A campanha entra no Ato 5 pela porta da frente: ver a aba <b>O Cerco</b>.</p></div>
 
 <hr class="div">
 
@@ -1565,6 +1667,16 @@ PANELS.npcs = `
 </details>
 
 <details class="npc">
+  <summary><span class="nm">Jay Solbonaro</span><span class="role">Loja de caça · infectado (estágio 4)</span><span class="chev">▶</span></summary>
+  <div class="npc-body">
+    <p>Velho dono da loja de caça e ferragens — foi dele que saiu o arsenal do grupo na Sessão 3, incluindo a <b>dinamite</b> que reduziu o laboratório de Brooks a uma cratera. Já está no <b>estágio 4</b>: pele arroxeando nas mãos, dormência, mau hálito que nenhuma higiene resolve. Ainda atende no balcão, porque não sabe fazer outra coisa.</p>
+    <div class="warn"><span class="tag">Duas bombas-relógio</span>
+    <p><b>1 · A dinamite tem rastro.</b> O Exército vai investigar a explosão na fazenda, e o caminho até o vendedor é curto. Se pressionado, Solbonaro entrega os nomes — ou mente por eles, dependendo de como o trataram.</p>
+    <p><b>2 · Um homem armado apodrecendo.</b> Quando chegar ao <b>estágio 7</b> (fúria e impulsividade), ele terá munição para a cidade inteira e a cabeça de alguém que já não raciocina. Não é monstro nenhum: é o vizinho com um rifle. Ver evento 13 na aba <b>O Cerco</b>.</p></div>
+  </div>
+</details>
+
+<details class="npc">
   <summary><span class="nm">Timóteo</span><span class="role">Dono do bar · zona limpa</span><span class="chev">▶</span></summary>
   <div class="npc-body">
     <p>Dono do <b>Bar do Timóteo</b>, na parte da cidade <b>menos contaminada</b> (a zona Verde do mapa do Guardião). O bar é o contraponto do barracão: onde a cidade ainda finge normalidade, bebe (a cerveja de Brooks?, cuidado…) e fala mal dos forasteiros. Bom palco para boatos, tensão social e para medir o humor da cidade conforme o cerco aperta.</p>
@@ -1761,6 +1873,12 @@ PANELS.tracker = `
   <button class="trk-btn danger" data-act="reset">Zerar tudo</button>
 </div>
 
+<h3>Os Investigadores</h3>
+<p class="footnote">Clique nos degraus da <b>espinha</b> para ajustar o estágio · clique nos números de SAN/PV para editar · a foto abre ampliada.</p>
+<div class="inv-grid" id="trkInv"></div>
+
+<h3>Shellburne Falls</h3>
+<p class="footnote">NPCs e o resto da cidade. O relógio corre para todos.</p>
 <div id="trkChars"></div>
 
 <form id="trkAdd" class="trk-add">
@@ -1771,6 +1889,97 @@ PANELS.tracker = `
 
 <h3>Diário de rolagens</h3>
 <div id="trkLog" class="trk-log"></div>
+`;
+/* ---------- O CERCO ---------- */
+PANELS.siege = `
+<div class="act-eyebrow">Onde a campanha está agora</div>
+<h2 class="act-title">O Cerco</h2>
+<p class="lead">Brooks está morto. O laboratório virou cratera. Os livros, as cartas e a caixa de ingredientes estão nas mãos dos Investigadores — e o Exército fechou a cidade. Esta aba resolve o problema mais difícil que você tem pela frente: <b>como jogar os dias de leitura sem que virem uma planilha</b>, e o que acontece numa cidade sitiada quando o vilão já morreu.</p>
+
+<div class="warn"><span class="tag">O problema de ritmo, dito sem rodeios</span>
+<p>Cinco sessões, <b>um único dia de ficção</b>. E o que vem agora, no papel, são <b>sete dias de leitura + três de tradução</b>. Se você narrar isso do mesmo jeito minuto-a-minuto, a campanha morre de tédio na reta final. A solução não é acelerar a leitura — é <b>trocar a unidade de tempo</b>: até aqui, uma cena = alguns minutos. De agora em diante, <b>uma rodada de mesa = um dia inteiro</b>, e o relógio passa a ser o antagonista.</p></div>
+
+<h3>O Interlúdio — a mecânica dos Turnos de Dia</h3>
+<p>Trate cada dia como um <b>turno de jogo de tabuleiro</b>, em quatro tempos fixos. Um dia leva 15–25 minutos de mesa; a semana inteira cabe em uma sessão e meia, com todo mundo agindo.</p>
+<ol class="steps">
+  <li><b>MANHÃ · O Exército age.</b> Avance uma casa no relógio do cerco (abaixo) e narre em três frases. É a pressão que dá sentido a tudo. <span class="footnote">Não pergunte, não negocie: o Exército não reage aos jogadores, ele cumpre cronograma.</span></li>
+  <li><b>DIA · Cada jogador declara UMA ação significativa.</b> Uma cena curta por pessoa (5 minutos, 1–2 testes). Grace lê; os outros têm as próprias agendas (ver abaixo). Ninguém fica assistindo alguém rolar Francês.</li>
+  <li><b>NOITE · O relógio da carne.</b> Role os testes de <b>CON</b> de todos <b>à vista da mesa</b>, um por um, em silêncio. Este é o momento de terror da sessão: quatro dados que decidem quem coça, quem arroxeia, quem piora. Use a aba <b>Painel dos Investigadores</b> na tela compartilhada.</li>
+  <li><b>MADRUGADA · Um evento.</b> Puxe um da tabela de eventos (adiante). Só um. Termine o dia nele.</li>
+</ol>
+
+<div class="tip"><span class="tag">A regra de ouro do interlúdio</span>
+<p><b>A leitura nunca é a cena — é o pano de fundo da cena.</b> Ninguém joga "sete dias lendo". Eles jogam <i>sete dias sobrevivendo enquanto alguém lê</i>. Se em algum dia você não tiver nada acontecendo além da leitura, pule o dia com uma frase e vá para o próximo. O tédio é sempre culpa do dia vazio, nunca da rolagem.</p></div>
+
+<h3>O que cada um faz enquanto Grace lê</h3>
+<div class="twocol">
+  <div>
+    <h4>Grace — a leitora</h4>
+    <p>1 teste de <b>Língua (Francês)</b> por dia; falha = dia perdido. Ao fim, <span class="san">SAN <span class="roll">0/1D4</span></span>. Use os <b>cartões de tradução</b> (Ato V) como o beat visual de cada dia. Ela paga o preço sozinha — e o grupo inteiro depende dela. Esse desequilíbrio é drama de graça.</p>
+    <h4>David — o posto de observação</h4>
+    <p>O quarto com vista virou <b>sala de guerra</b>: contar soldados, mapear turnos de guarda, achar o ponto cego do cerco. Testes de <b>Encontrar</b>/<b>Psicologia</b> a cada dia rendem um dado de bônus na fuga final. E o <b>braço mordido</b> é um relógio próprio: <b>Medicina</b> a cada dois dias ou infecta.</p>
+  </div>
+  <div>
+    <h4>Cornélius — o tradutor de coisas</h4>
+    <p>Os túneis viraram entulho, mas ele salvou <b>o que estava na estante</b>. Arqueologia/Ocultismo sobre os sigilos, o forno de ossos, a arquitetura da câmara: cada sucesso rende <b>+10% no teste de tradução da Grace</b> (contexto vale tanto quanto dicionário). É como um acadêmico ajuda numa guerra.</p>
+    <h4>Artemy — as cartas e as pessoas</h4>
+    <p>Ele tem as <b>Pistas 2–4</b>. Antiquário lê papel: tipo de tinta, marca-d'água, procedência — <b>quem é J.M. e onde fica a "nossa comunidade"</b>. E, sendo o coração do grupo, é ele quem segura Crawford inteiro, negocia com os Hall, acalma o hotel. CON 38: cada noite dói mais nele.</p>
+  </div>
+</div>
+<div class="lore"><span class="tag">Crawford, o quinto jogador</span>
+<p>Ele fala francês, está no <b>estágio 5</b> e carrega a culpa de não ter socorrido Kelly. Dê a ele uma função mecânica: <b>ler junto</b> (2 leitores = ~metade do tempo, se você quiser aliviar o relógio) e, em troca, uma cena de expiação por dia — queimar a vala, atender os doentes, confessar-se ao Reverendo. Se ele morrer antes do fim da tradução, o francês morre com ele. A mesa deveria sentir isso.</p></div>
+
+<hr class="div">
+
+<h3>Relógio do Cerco</h3>
+<p>As nove fases do Ato 5. <b>Clique numa fase</b> para marcar onde a campanha está — fica salvo junto com o tracker. Regra prática: <b>uma fase por dia de leitura</b>. Quando a leitura terminar, o Exército estará na fase 7 — e é aí que o desespero encontra a cura.</p>
+<div class="siege" id="siegeSteps"></div>
+
+<div class="warn"><span class="tag">O nó da campanha</span>
+<p>São <b>7 ou 8 porções</b> de Pó de Kzhoba para <b>1.256 habitantes</b>. Os Investigadores vão terminar a tradução com a cura na mão e a certeza de que ela não alcança nem uma rua. A pergunta que fecha a campanha não é "conseguimos a cura?" — é <b>"quem a gente escolhe?"</b>. Comece a plantar essa pergunta agora: cada NPC que eles salvarem hoje é um rosto na lista depois. Jr Hall. Evelyn. Crawford. Carrie. Yoshi.</p></div>
+
+<hr class="div">
+
+<h3>Eventos da cidade sitiada</h3>
+<p>Um por dia, na madrugada. Escolha (melhor que rolar) o que responde ao que a mesa fez naquele dia. Os marcados <span class="roll">◆</span> são consequências diretas das ações da Sessão 3 — use-os primeiro.</p>
+
+<table class="stages">
+<thead><tr><th>#</th><th>Evento</th></tr></thead>
+<tbody>
+<tr><td>1 ◆</td><td><b>A explosão teve dono.</b> Soldados foram à fazenda e acharam a cratera. Sabotagem durante quarentena é lei marcial. Alguém viu o Ford voltando de lá — o Exército começa a perguntar. <i>(Jay Solbonaro sabe de onde veio a dinamite.)</i></td></tr>
+<tr><td>2 ◆</td><td><b>A morte não parou.</b> Brooks morreu; a peste continua. Os casos <b>não diminuem</b> — e essa é a descoberta mais assustadora possível para quem achou que matar o vilão resolveria. Deixe-os testar, contar, verificar. Nada mudou.</td></tr>
+<tr><td>3 ◆</td><td><b>A fumaça da vala.</b> Crawford está queimando os corpos, como pediram. A coluna de fumaça é visível de longe — o Exército vai investigar quem está queimando cadáveres <b>sem autorização</b>, e Mendel vai querer saber o que foi destruído.</td></tr>
+<tr><td>4</td><td><b>Revista no hotel.</b> Soldados vasculham os quartos. O <i>Cultes des Goules</i>, as cartas e a caixa de ingredientes são <b>contrabando</b>: se Mendel puser as mãos na caixa, a única cura do mundo vira amostra de laboratório. Testes de <b>Furtividade/Lábia</b>, ou uma boa ideia de esconderijo.</td></tr>
+<tr><td>5</td><td><b>Exame médico obrigatório.</b> Fase 3 do cerco. Mendel examina todos — e <b>os quatro estão infectados</b>. Separação por zonas, braçadeiras, a leitura interrompida. Como se esconde um estágio 1 de um microbiologista?</td></tr>
+<tr><td>6</td><td><b>Manuel Almeida bate à porta.</b> Mendel o "declarou contaminado" e o abandonou. Ele traz o que sabe do lado militar — e precisa de abrigo. O aliado que o módulo promete, entregue quando mais dói.</td></tr>
+<tr><td>7</td><td><b>Jr Hall está coçando o braço.</b> A família que os abriga. A criança. Mostre a coceira, não diga o nome dela.</td></tr>
+<tr><td>8</td><td><b>O sermão do Reverendo Charles.</b> Ele abre a igreja como abrigo e enfermaria — ou, se a mesa o traiu, prega que os forasteiros trouxeram o castigo. Dependendo da relação com David, a cidade inteira muda de lado.</td></tr>
+<tr><td>9</td><td><b>Carrie Blissfull cai.</b> Estágio 4-5: manchas visíveis. O hospital fica com uma enfermeira só. Margareth pede ajuda ao grupo — e ajudar custa horas de leitura.</td></tr>
+<tr><td>10</td><td><b>A menina do hospital.</b> O corpo que mexeu o olho <b>sumiu do necrotério</b>. Ou está andando. Ou alguém o levou. Você escolhe — mas o fio volta.</td></tr>
+<tr><td>11</td><td><b>Gabriel Bah morre</b> — e o Exército queima o corpo antes que a família chegue. Um funeral negado é o tipo de coisa que faz uma cidade pegar em foice.</td></tr>
+<tr><td>12</td><td><b>Tiros na madrugada.</b> Alguém tentou furar o cerco. De manhã, o corpo continua no arame, e ninguém tem permissão de recolher. A cidade aprende o que "quarentena absoluta" significa.</td></tr>
+<tr><td>13</td><td><b>Jay Solbonaro no estágio 6.</b> O velho da loja de caça está armado, febril e furioso — e tem munição para a cidade inteira. Um estágio 7 (fúria, impulsividade) com um rifle é um problema humano, não sobrenatural.</td></tr>
+<tr><td>14</td><td><b>Robert Redford hesita.</b> O estudante procura os Investigadores para "conversar sobre ética". É uma brecha de informação — ou uma armadilha de Mendel. Que ele mesmo não sabe qual das duas é.</td></tr>
+<tr><td>15</td><td><b>Um segundo Morto que Anda.</b> O módulo prevê <b>no máximo dois</b> — Joseph foi o primeiro. Guarde este para o clímax, e prefira que seja <b>alguém que a mesa conhece pelo nome</b>.</td></tr>
+<tr><td>16</td><td><b>Os canários do Seu Bastião morreram todos.</b> Nenhum drama, nenhuma explicação. Só as gaiolas em silêncio, e o velho sentado ao lado delas sem saber o que fazer com as mãos.</td></tr>
+</tbody>
+</table>
+
+<div class="tip"><span class="tag">Como escolher o evento do dia</span>
+<p>Pergunte-se o que a mesa <b>fez</b> naquele dia e escolha o evento que cobra a conta. Fizeram barulho? #1 ou #12. Cuidaram de alguém? #7 ou #9. Ficaram trancados lendo? #4 ou #5 — o mundo vem até eles. <b>Nunca dois eventos por dia</b>: o dia precisa ter espaço para respirar, senão vira ruído.</p></div>
+
+<hr class="div">
+
+<h3>Com Brooks morto, quem é o antagonista?</h3>
+<p>Esta é a virada do terceiro ato, e ela é boa: a aventura <b>sempre</b> teve dois vilões, e o pior deles ainda está de pé.</p>
+<ul class="cl">
+  <li><b>O Exército não pode ser convencido.</b> O módulo é explícito: será impossível fazer soldados, Mendel ou o General Warren acreditarem em maldição. Não dê a eles uma saída racional — o horror é <b>ninguém acreditar</b>.</li>
+  <li><b>A doença é o vilão que sobrou.</b> Ela não precisava de Brooks para continuar; ela nunca precisou. Está nos quatro Investigadores, no cão, no médico, nas enfermeiras. Todo teste noturno de CON é o vilão atacando.</li>
+  <li><b>O relógio é o terceiro vilão.</b> Dez dias de estudo contra nove fases de cerco. Eles vão ganhar a cura e perder a cidade — essa é a tragédia projetada.</li>
+  <li><b>E há o que ficou por explicar.</b> Brooks morreu sem falar: ninguém sabe o que era aquilo, o que é Mordigian, quem é <b>J.M./Christian</b>, o que a caixa realmente contém. As <b>cartas com Artemy</b> e o <b>tomo com Grace</b> são as únicas testemunhas. A investigação não acabou — ela só perdeu a boca que responderia.</li>
+</ul>
+<div class="lore"><span class="tag">Gancho de fim de campanha</span>
+<p>Quando abrirem a caixa para preparar o Pó, deixem faltar algo — ou sobrar. Um frasco a mais do que a receita pede, com um símbolo que não está no livro. J.M. escreveu que o conteúdo <b>não pode sair das mãos de Brooks</b> e que ele devia <b>voltar para prestar contas</b>. Brooks não voltou. Alguém, em algum lugar, está esperando por uma encomenda que não retornou — e agora ela está com quatro forasteiros.</p></div>
 `;
 /* ---------- LOCALIDADES ---------- */
 PANELS.locations = `
@@ -2025,7 +2234,8 @@ const TABS = [
   {id:"npcs",         label:"Personagens",         num:""},
   {id:"creatures",    label:"Criaturas & Mortos",  num:""},
   {id:"disease",      label:"A Doença",            num:""},
-  {id:"tracker",      label:"Tracker da Peste",    num:""},
+  {id:"tracker",      label:"Painel & Tracker",    num:""},
+  {id:"siege",        label:"O Cerco",             num:""},
   {id:"locations",    label:"Localidades",         num:""},
   {id:"images",       label:"Gerador de Imagens",  num:""},
 ];
@@ -2140,20 +2350,68 @@ const STG_FX=['—',
 const TRK_KEY='rm-tracker';
 let TRK=null;
 function trkDefault(){
-  return {day:1,seq:7,log:[],chars:[
-    {id:1,name:'Grace Rivers',con:50,status:'sao',stage:0,contact:false},
-    {id:2,name:'Cornélius',con:50,status:'sao',stage:0,contact:false},
-    {id:3,name:'Artemy Burakh',con:50,status:'sao',stage:0,contact:false},
-    {id:4,name:'David Jasper',con:50,status:'sao',stage:0,contact:false},
-    {id:5,name:'Dr. Clark Crawford',con:65,status:'infectado',stage:4,contact:true},
-    {id:6,name:'Jordan (enfermeira)',con:50,status:'infectado',stage:2,contact:true}
+  return {day:1,siege:1,seq:20,log:[],chars:[
+    {id:1,name:'Grace Rivers',pc:true,role:'Pesquisadora · Oxford',player:'Nyara',
+     photo:'img/grace.jpg',con:50,status:'infectado',stage:2,contact:true,
+     san:{cur:45,max:60},pv:{cur:11,max:11},
+     items:['rifle','6 balas','corda','lanterna','facão'],keys:['Cultes des Goules','caixa de ingredientes'],hurt:[],
+     note:'Garras de Brooks nos túneis — resistiu à CON, avançou 1 estágio. É a leitora do tomo.'},
+    {id:2,name:'Cornélius',pc:true,role:'Arqueólogo',player:'Caio',
+     photo:'img/cornelius.jpg',con:60,status:'infectado',stage:1,contact:true,
+     san:{cur:50,max:60},pv:{cur:12,max:12},
+     items:['lanterna','corda'],keys:[],hurt:[],
+     note:'Voltou a tocar um dos corpos no subterrâneo. Yoshi (cão) também infectado.'},
+    {id:3,name:'Artemy Burakh',pc:true,role:'Antiquário · 58 anos',player:'Brian',
+     photo:'img/artemy-burakh.jpg',con:38,status:'infectado',stage:1,contact:true,
+     san:{cur:42,max:60},pv:{cur:10,max:10},
+     items:['facão','lanterna'],keys:['as cartas (Pistas 2-4)'],hurt:[],
+     note:'CON 38 — o mais frágil ao contágio. Único a perder SAN na Sessão 1.'},
+    {id:4,name:'David Jasper',pc:true,role:'Ilusionista · "Mr. Lapin"',player:'Álvaro',
+     photo:'img/david-jasper.jpg',con:50,status:'infectado',stage:2,contact:true,
+     san:{cur:44,max:60},pv:{cur:8,max:12},
+     items:['canivete','lanterna','Derringer .25'],keys:[],hurt:['braço mordido (Javali)'],
+     note:'Mordida do Javali no braço — avançou 1 estágio. Trouxe a dinamite do Solbonaro. Quarto com vista.'},
+    {id:5,name:'Dr. Clark Crawford',con:65,status:'infectado',stage:5,contact:true,
+     note:'Ouviu Kelly gritar e não foi. Culpa aberta. Fala francês — par de estudo da Grace.'},
+    {id:6,name:'Jordan (enfermeira)',con:50,status:'infectado',stage:3,contact:true},
+    {id:7,name:'Yoshi (cão do Cornélius)',con:50,status:'infectado',stage:1,contact:false},
+    {id:8,name:'Carrie Blissfull (enfermeira)',con:50,status:'infectado',stage:3,contact:true},
+    {id:9,name:'Margareth Happiness (enfermeira)',con:50,status:'sao',stage:0,contact:true},
+    {id:10,name:'Gabriel Bah (paciente)',con:50,status:'infectado',stage:7,contact:true},
+    {id:11,name:'Jay Solbonaro (loja de caça)',con:50,status:'infectado',stage:4,contact:false},
+    {id:12,name:'Terrence Hall',con:50,status:'sao',stage:0,contact:false},
+    {id:13,name:'Cristina Hall',con:50,status:'sao',stage:0,contact:false},
+    {id:14,name:'Jr Hall (criança)',con:40,status:'sao',stage:0,contact:false},
+    {id:15,name:'Reverendo Charles',con:50,status:'sao',stage:0,contact:true}
   ]};
 }
+/* fases do cerco — Ato 5 do módulo */
+const SIEGE=[
+ 'Quarentena declarada · saídas fechadas',
+ 'Queima dos corpos na vala',
+ 'Exames médicos em TODOS · Mendel descobre os infectados',
+ 'Queima das casas vazias',
+ 'Mendel começa a raptar pessoas para estudo',
+ 'Desapropriação · famílias separadas por zona',
+ '2 semanas: extermínio dos casos avançados',
+ '3 semanas: novas chacinas',
+ 'Erradicação da cidade'
+];
 function trkLoad(){
   try{const s=localStorage.getItem(TRK_KEY);if(s){TRK=JSON.parse(s);}}catch(e){}
   if(!TRK||!TRK.chars) TRK=trkDefault();
   if(!TRK.seq) TRK.seq=TRK.chars.reduce((m,c)=>Math.max(m,c.id||0),0)+1;
   if(!TRK.log) TRK.log=[];
+  if(TRK.siege===undefined) TRK.siege=0;
+  /* migração: registros antigos não tinham fichas de PC — enriquece pelo nome, preservando estágio/status já jogados */
+  if(!TRK.chars.some(c=>c.pc)){
+    const def=trkDefault();
+    TRK.chars=TRK.chars.map(c=>{
+      const d=def.chars.find(x=>x.pc&&x.name===c.name);
+      return d?Object.assign({},d,{con:c.con,status:c.status,stage:c.stage,contact:c.contact}):c;
+    });
+    trkLog('<span class="dayhdr">— fichas dos Investigadores atualizadas (estágios preservados) —</span>');
+  }
 }
 function trkSave(){try{localStorage.setItem(TRK_KEY,JSON.stringify(TRK));}catch(e){}}
 function d100(){return Math.floor(Math.random()*100)+1;}
@@ -2184,10 +2442,59 @@ function trkDailyFor(c){
     if(!trkTest(c,'progressão'))trkProgress(c);
   }
 }
+/* ---- fichas ricas dos Investigadores ---- */
+function trkRenderInv(){
+  const w=document.getElementById('trkInv');if(!w)return;
+  w.innerHTML='';
+  TRK.chars.filter(c=>c.pc).forEach(c=>{
+    const st=c.status==='infectado'?c.stage:(c.status==='curado'?0:0);
+    const card=document.createElement('div');
+    card.className='inv-card '+(c.status==='infectado'?('st'+st):c.status);
+    let spine='';
+    for(let i=1;i<=10;i++)
+      spine+='<i class="'+(i<=st?'on':'')+(i===st?' tip':'')+'" data-id="'+c.id+'" data-act="stage" data-v="'+i+'" title="estágio '+i+'"></i>';
+    const san=c.san||{cur:0,max:0}, pv=c.pv||{cur:0,max:0};
+    const sanPct=san.max?Math.max(0,Math.min(100,100*san.cur/san.max)):0;
+    const pvPct=pv.max?Math.max(0,Math.min(100,100*pv.cur/pv.max)):0;
+    const kits=[]
+      .concat((c.keys||[]).map(k=>'<span class="kit key">✦ '+k+'</span>'))
+      .concat((c.hurt||[]).map(k=>'<span class="kit hurt">✚ '+k+'</span>'))
+      .concat((c.items||[]).map(k=>'<span class="kit">'+k+'</span>')).join('');
+    card.innerHTML=
+      '<div class="inv-head">'+
+        (c.photo?'<img class="portrait" src="'+c.photo+'" alt="'+c.name+'">':'')+
+        '<div class="inv-id"><span class="nm">'+c.name+'</span>'+
+          '<span class="rl">'+(c.role||'')+(c.player?' · '+c.player:'')+'</span></div>'+
+        '<span class="trk-status st-'+c.status+'">'+trkStName(c.status)+'</span>'+
+      '</div>'+
+      '<div class="inv-body">'+
+        '<div><div class="spine">'+spine+'</div>'+
+        '<div class="spine-cap"><span class="spine-n">ESTÁGIO <b>'+st+'</b>/10</span>'+
+          '<span class="spine-n">CON <input type="number" min="1" max="99" value="'+c.con+'" data-id="'+c.id+'" data-act="con" style="width:38px;background:transparent;border:none;border-bottom:1px dotted var(--rust);color:var(--blood);font-family:inherit;text-align:center;"></span></div>'+
+        '<div class="spine-fx">'+(st?STG_FX[st]:'Sem sinais da maldição.')+'</div></div>'+
+        '<div class="bars">'+
+          '<div class="bar san"><div class="lb"><span>SANIDADE</span><b><input type="number" value="'+san.cur+'" data-id="'+c.id+'" data-act="san"></b></div>'+
+            '<div class="track"><div class="fill" style="width:'+sanPct+'%"></div></div></div>'+
+          '<div class="bar pv"><div class="lb"><span>PONTOS DE VIDA</span><b><input type="number" value="'+pv.cur+'" data-id="'+c.id+'" data-act="pv"></b></div>'+
+            '<div class="track"><div class="fill" style="width:'+pvPct+'%"></div></div></div>'+
+        '</div>'+
+        (kits?'<div class="inv-kit">'+kits+'</div>':'')+
+        (c.note?'<div class="inv-note">'+c.note+'</div>':'')+
+        '<div class="inv-acts">'+
+          (c.status==='sao'?'<button class="trk-btn" data-id="'+c.id+'" data-act="test-cont">Teste de contágio</button>':'')+
+          (c.status==='infectado'?'<button class="trk-btn" data-id="'+c.id+'" data-act="test-prog">Teste de progressão</button>'+
+            '<button class="trk-btn sm" data-id="'+c.id+'" data-act="st-">− estágio</button>'+
+            '<button class="trk-btn primary" data-id="'+c.id+'" data-act="cure">✚ Pó de Kzhoba</button>':'')+
+          (c.status!=='sao'&&c.status!=='infectado'&&c.status!=='curado'?'<button class="trk-btn sm" data-id="'+c.id+'" data-act="revive">Reverter</button>':'')+
+        '</div>'+
+      '</div>';
+    w.appendChild(card);
+  });
+}
 function trkRenderChars(){
   const w=document.getElementById('trkChars');if(!w)return;
   w.innerHTML='';
-  TRK.chars.forEach(c=>{
+  TRK.chars.filter(c=>!c.pc).forEach(c=>{
     const card=document.createElement('div');
     card.className='trk-card '+c.status;
     let pips='';
@@ -2216,11 +2523,19 @@ function trkRenderChars(){
 }
 function trkRenderAll(){
   const d=document.getElementById('trkDay');if(d)d.textContent=TRK.day;
+  trkRenderInv();
   trkRenderChars();
+  const sg=document.getElementById('siegeSteps');
+  if(sg){
+    sg.innerHTML=SIEGE.map((s,i)=>{
+      const n=i+1, cls=n<(TRK.siege||0)?'done':(n===(TRK.siege||0)?'now':'');
+      return '<div class="siege-step '+cls+'" data-act="siege" data-v="'+n+'"><span class="sn">FASE '+n+'</span>'+s+'</div>';
+    }).join('');
+  }
   const lg=document.getElementById('trkLog');
   if(lg)lg.innerHTML=TRK.log.length?TRK.log.join('<br>'):'<i>— sem rolagens ainda. Ajuste as CON e clique em "Rolar o dia". —</i>';
 }
-const TRK_ACTS=['day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage'];
+const TRK_ACTS=['day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege'];
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');
   if(!b||!TRK_ACTS.includes(b.dataset.act))return;
@@ -2249,6 +2564,12 @@ document.addEventListener('click',e=>{
     case 'revive':if(c){c.status='infectado';c.stage=Math.min(9,c.stage||9);trkLog(c.name+' revertido para infectado (estágio '+c.stage+', ajuste manual).');}break;
     case 'del':if(c&&confirm('Remover '+c.name+' do tracker?')){TRK.chars=TRK.chars.filter(x=>x!==c);}break;
     case 'stage':if(c){c.stage=+b.dataset.v;if(c.status!=='infectado')c.status='infectado';trkLog(c.name+' ajustado manualmente para o estágio '+c.stage+'.');}break;
+    case 'siege':{
+      const n=+b.dataset.v;
+      TRK.siege=(TRK.siege===n)?n-1:n;
+      trkLog('<span class="dayhdr">— Cerco: fase '+TRK.siege+' ('+(SIEGE[TRK.siege-1]||'nenhuma')+') —</span>');
+      break;
+    }
   }
   trkSave();trkRenderAll();
 });
@@ -2256,8 +2577,12 @@ document.addEventListener('change',e=>{
   const t=e.target;
   if(!t.dataset||!t.dataset.act)return;
   const c=TRK.chars.find(x=>x.id==t.dataset.id);
-  if(t.dataset.act==='con'&&c){c.con=Math.max(1,Math.min(99,parseInt(t.value,10)||50));trkSave();}
+  if(t.dataset.act==='con'&&c){c.con=Math.max(1,Math.min(99,parseInt(t.value,10)||50));trkSave();trkRenderAll();}
   else if(t.dataset.act==='contact'&&c){c.contact=t.checked;trkSave();}
+  else if(t.dataset.act==='san'&&c){c.san=c.san||{cur:0,max:60};c.san.cur=Math.max(0,parseInt(t.value,10)||0);
+    if(c.san.cur>c.san.max)c.san.max=c.san.cur;trkSave();trkRenderAll();}
+  else if(t.dataset.act==='pv'&&c){c.pv=c.pv||{cur:0,max:12};c.pv.cur=Math.max(0,parseInt(t.value,10)||0);
+    if(c.pv.cur>c.pv.max)c.pv.max=c.pv.cur;trkSave();trkRenderAll();}
 });
 const trkImp=document.getElementById('trkImport');
 if(trkImp)trkImp.addEventListener('change',()=>{
