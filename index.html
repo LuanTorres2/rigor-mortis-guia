@@ -596,6 +596,56 @@
   .siege-step.done .sn{color:var(--blood);}
   .siege-step.now{border-left-color:var(--gold);background:rgba(156,122,60,.16);box-shadow:0 0 0 1px var(--gold) inset;}
 
+  /* ---------- Teia de Relações ---------- */
+  .web-wrap{
+    position:relative;margin:1.2em 0;border:1px solid var(--paper-edge);border-radius:5px;
+    background:
+      radial-gradient(ellipse at 42% 46%, rgba(90,120,80,.10), transparent 62%),
+      linear-gradient(160deg,rgba(60,80,55,.07),rgba(20,30,20,.05));
+    overflow:hidden;
+  }
+  .web-scroll{overflow-x:auto;overflow-y:hidden;}
+  .web-svg{display:block;width:100%;min-width:900px;height:auto;--halo:var(--paper);}
+  body.night .web-svg{--halo:var(--paper);}
+  .wn{cursor:pointer;transition:opacity .3s;}
+  .wn .plate{fill:#16211a;stroke:#39472f;}
+  .wn .nm{font-family:'IM Fell English SC',serif;font-size:11px;fill:#e9edcc;text-anchor:middle;pointer-events:none;}
+  .wn .init{font-family:'IM Fell English SC',serif;font-size:13px;fill:#e9edcc;text-anchor:middle;pointer-events:none;}
+  .wn .ring{fill:#1a231b;stroke:var(--gold);stroke-width:1.5;}
+  .wn .frame{fill:none;stroke:var(--gold);stroke-width:2;}
+  .wn.dead .frame,.wn.dead .ring{stroke:#6b1a17;stroke-dasharray:4 3;}
+  .wn.dead image{filter:grayscale(1) brightness(.62);}
+  .wn.dead .plate{fill:#241010;stroke:#5a2320;}
+  .wn.hub .frame{stroke:#d8c34e;stroke-width:3.5;}
+  .wn.hub .plate{fill:#2a3520;stroke:#d8c34e;}
+  .wn:hover .frame,.wn:hover .ring{stroke:#e8e4b0;}
+  .wn.dim{opacity:.14;}
+  .wn.sel .frame,.wn.sel .ring{stroke:#fff0b0;stroke-width:3.5;}
+  .we{transition:opacity .3s,stroke-width .2s;pointer-events:none;}
+  .we.dim{opacity:.05;}
+  .we.hi{stroke-width:2.6;}
+  .wl{font-family:'Special Elite',monospace;font-size:9.5px;text-anchor:middle;pointer-events:none;
+      paint-order:stroke;stroke:var(--halo);stroke-width:3.4px;stroke-linejoin:round;transition:opacity .3s;}
+  .wl.dim{opacity:.05;}
+  .k-bad{stroke:#8f2a22;} text.k-bad{fill:#a8382c;stroke:var(--halo);}
+  .k-ally{stroke:#4f7d63;} text.k-ally{fill:#3f7057;stroke:var(--halo);}
+  .k-neu{stroke:#5f6b4a;} text.k-neu{fill:#4d5a3c;stroke:var(--halo);}
+  body.night text.k-bad{fill:#cf6a5c;} body.night text.k-ally{fill:#7fb798;} body.night text.k-neu{fill:#9aa87c;}
+  body.night .k-bad{stroke:#b0503f;} body.night .k-ally{stroke:#6fa384;} body.night .k-neu{stroke:#8b976c;}
+  .web-legend{display:flex;flex-wrap:wrap;gap:14px;padding:9px 14px;border-top:1px solid var(--paper-edge);
+    font-family:'Special Elite',monospace;font-size:.68rem;color:var(--sepia);align-items:center;}
+  .web-legend i{display:inline-block;width:22px;height:2.5px;margin-right:5px;vertical-align:2px;}
+  .web-detail{
+    margin:1.1em 0;padding:16px 20px;border:1px solid var(--gold);border-left:5px solid var(--gold);
+    border-radius:4px;background:rgba(141,154,85,.10);min-height:96px;
+  }
+  .web-detail h4{margin:.1em 0 .35em;color:var(--blood);font-size:1.16rem;}
+  .web-detail .wd-role{font-family:'Special Elite',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--sepia);text-transform:uppercase;}
+  .web-detail .wd-cw{margin-top:.7em;padding-top:.6em;border-top:1px dotted var(--rust);}
+  .web-detail .wd-cw b{color:var(--blood);}
+  .web-detail p{margin:.45em 0;font-size:.95rem;}
+  .web-detail .wd-empty{color:var(--sepia);font-style:italic;}
+
   /* ---------- Cartões do Tomo (Cultes des Goules) ---------- */
   .tome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin:1.5em 0;}
   .tome-card{perspective:1200px;cursor:pointer;}
@@ -1969,6 +2019,59 @@ PANELS.tracker = `
 <h3>Diário de rolagens</h3>
 <div id="trkLog" class="trk-log"></div>
 `;
+/* ---------- TEIA DE RELAÇÕES ---------- */
+PANELS.web = `
+<div class="act-eyebrow">Quem é quem, e quem deve o quê a quem</div>
+<h2 class="act-title">A Teia</h2>
+<p class="lead">Shellburne Falls tem um <b>centro de gravidade</b>: o Dr. Clark Crawford. Todo NPC importante desta história chegou até os Investigadores por uma linha que passa por ele — e é por isso que a culpa dele é o motor emocional da campanha. As setas abaixo mostram <b>apenas relações entre NPCs</b>; os Investigadores ficam de fora de propósito, porque o lugar deles é no meio dessa teia, puxando fios.</p>
+
+<div class="tip"><span class="tag">Como usar</span>
+<p><b>Clique num retrato</b> para isolar as ligações dele e ler a ficha embaixo — inclusive <i>como</i> ele conheceu Crawford. Clique fora (ou no mesmo) para voltar. Nomes em <b>moldura dourada grossa</b> são os pilares da narrativa; molduras <b>vermelhas tracejadas</b> são os mortos.</p></div>
+
+<div class="web-wrap">
+  <div class="web-scroll"><svg class="web-svg" id="webSvg" viewBox="0 0 1240 920" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div class="web-legend">
+    <span><i class="k-bad" style="background:#8f2a22"></i>conflito · culpa · ameaça</span>
+    <span><i class="k-ally" style="background:#4f7d63"></i>aliança · afeto · lealdade</span>
+    <span><i class="k-neu" style="background:#5f6b4a"></i>vínculo prático · histórico</span>
+    <span style="margin-left:auto;">arraste na horizontal se a teia não couber →</span>
+  </div>
+</div>
+
+<div class="web-detail" id="webDetail"><p class="wd-empty">Clique num personagem da teia para ver a ficha, a relação com Crawford e como jogá-lo.</p></div>
+
+<hr class="div">
+
+<h3>O nó de Crawford — a corrente de culpa</h3>
+<p>Se a mesa perguntar "como tudo isso aconteceu?", a resposta cabe em cinco elos, e todos são o mesmo homem tentando fazer a coisa certa:</p>
+<ol class="steps">
+  <li><b>Ele ficou.</b> Formou-se, podia ter clinicado em qualquer lugar, e voltou para a cidade natal. Cinco anos como <b>único cirurgião</b>, com a aprovação de todos. Ficou até depois de enterrar os pais.</li>
+  <li><b>Ele não viu o começo.</b> Os primeiros a morrer foram <b>trabalhadores da fazenda de Brooks</b> — e ninguém notificou ninguém. Quando <b>Samuel Giggs</b> deu entrada no hospital municipal, a peste já tinha um mês de vantagem.</li>
+  <li><b>Ele pediu socorro — e foi atendido pelo homem errado.</b> Chamou o Departamento de Controle de Doenças. Veio <b>Mendel</b>, olhou, se maravilhou e foi embora no mesmo dia. Foi Mendel quem inflou o relato em Washington. <b>O cerco lá fora existe porque Crawford pegou o telefone.</b> Ele ainda não sabe disso.</li>
+  <li><b>Ele improvisou sozinho.</b> Sem hospital, sem colegas (o velho médico municipal sumiu há uma semana), montou o barracão com camas emprestadas e mulheres da cidade — <b>Kelly, Jordan</b> — que adoeceram cuidando.</li>
+  <li><b>E então ele falhou uma vez.</b> Ouviu <b>Kelly</b> gritar à noite, teve medo, e não foi. Só apareceu de manhã. É a única coisa que ele não consegue justificar — e é por isso que aceita qualquer ordem dos Investigadores desde então.</li>
+</ol>
+<div class="lore"><span class="tag">O que Crawford ignora · e vale ouro na mesa</span>
+<p>Ele <b>não sabe</b> que Mendel o traiu; acha que o governo veio ajudar. Quando descobrir — e é ótimo que descubra de um Investigador, não de você — a reação dele deve ser <b>silêncio</b>, não fúria. Um homem entendendo que matou a própria cidade com um pedido de ajuda. Guarde essa cena.</p></div>
+
+<hr class="div">
+
+<h3>Regras rápidas para conduzir os NPCs centrais</h3>
+<div class="twocol">
+  <div>
+    <h4>Crawford · faz o que mandarem</h4>
+    <p>Depois de Kelly, ele obedece. Se os Investigadores mandarem queimar a vala, ele queima. Isso é <b>perigoso para eles</b>: cada ordem dada vira responsabilidade deles. Ele só resiste em <b>uma</b> coisa: ser examinado (esconde o próprio estágio).</p>
+    <h4>Mendel · nunca acredita</h4>
+    <p>Nenhuma prova o convence de nada sobrenatural — mas <b>tudo</b> o desperta como oportunidade científica. Ele não quer matar a cidade; quer <b>publicar</b>. Se souber da caixa de ingredientes, ela vira amostra dele. Trate cada conversa com Mendel como um risco de perder a cura.</p>
+  </div>
+  <div>
+    <h4>Warren Justice · cumpre a ordem</h4>
+    <p>Não é cruel: é <b>convicto</b>. Não negocia saída, não recua, não se interessa por explicações. Mas <b>despreza Mendel</b> — militar de carreira não confia em civil de gabinete. É a única rachadura no cerco, e a melhor alavanca que os jogadores têm.</p>
+    <h4>Charles · vai onde o empurrarem</h4>
+    <p>Triste e só, com a igreja vazia. Depois da conversa com David, quer reerguê-la. Se o grupo o tratar com respeito, ele abre o templo como abrigo e vira aliado logístico. Se profanarem corpos, ele endurece — e leva a cidade junto.</p>
+  </div>
+</div>
+`;
 /* ---------- O CERCO ---------- */
 PANELS.siege = `
 <div class="act-eyebrow">Onde a campanha está agora</div>
@@ -2016,6 +2119,75 @@ PANELS.siege = `
 
 <div class="warn"><span class="tag">O nó da campanha</span>
 <p>São <b>7 ou 8 porções</b> de Pó de Kzhoba para <b>1.256 habitantes</b>. Os Investigadores vão terminar a tradução com a cura na mão e a certeza de que ela não alcança nem uma rua. A pergunta que fecha a campanha não é "conseguimos a cura?" — é <b>"quem a gente escolhe?"</b>. Comece a plantar essa pergunta agora: cada NPC que eles salvarem hoje é um rosto na lista depois. Jr Hall. Evelyn. Crawford. Carrie. Yoshi.</p></div>
+
+<hr class="div">
+
+<h3>Protocolo Militar — como a guarnição age</h3>
+<p>Quarenta homens, um general convicto e ordens que não admitem discussão. Os soldados <b>não são vilões</b>: são funcionários armados de uma decisão tomada em Washington. Conduza-os por procedimento, não por humor — é isso que os torna assustadores.</p>
+
+<div class="lore"><span class="tag">Cadeia de comando · e a rachadura</span>
+<p><b>General Warren Justice</b> manda na tropa e no perímetro. <b>Dr. Mendel</b> manda na ciência e nos exames. <b>Os dois se detestam</b>: militar de carreira não confia em civil de gabinete, e cientista não aceita ser mandado por quem "não entende do assunto". <b>Essa fricção é a única alavanca real dos Investigadores</b> — nenhum argumento sobrenatural funciona, mas "o senhor sabe o que o Dr. Mendel andou fazendo com os corpos?" funciona muito bem.</p></div>
+
+<h4>Ordens permanentes (não negociáveis)</h4>
+<ul class="cl">
+  <li><b>Ninguém sai.</b> Autorização de <b>atirar em quem tentar fugir</b> — e eles atiram. Não é blefe.</li>
+  <li><b>Ninguém entra</b> sem ordem escrita. Nem imprensa, nem parentes, nem médicos de fora.</li>
+  <li><b>Cooperação obrigatória</b> com os exames de Mendel.</li>
+  <li>A partir da <b>fase 3</b>: confisco de armas de fogo civis. A partir da <b>fase 5</b>: toque de recolher ao anoitecer.</li>
+</ul>
+
+<h4>O que eles sempre fazem</h4>
+<div class="twocol">
+  <div>
+    <ul class="cl" style="margin:.3em 0;">
+      <li>Revistam <b>veículos e bolsas</b> em qualquer barreira, toda vez.</li>
+      <li>Usam máscara e luvas; <b>evitam contato físico</b> a todo custo.</li>
+      <li>Trabalham <b>em duplas ou mais</b> — nunca há um soldado sozinho, exceto em posto fixo.</li>
+      <li>Relatam qualquer coisa estranha <b>para cima</b>, e obedecem sem discutir.</li>
+    </ul>
+  </div>
+  <div>
+    <ul class="cl" style="margin:.3em 0;">
+      <li><b>Não acreditam</b> em uma palavra sobre maldição, feitiço ou mortos que andam.</li>
+      <li><b>Não entram</b> em casa de infectado sem ordem direta (puro medo).</li>
+      <li><b>Não negociam</b> passagem para fora do perímetro. Nunca.</li>
+      <li><b>Não sabem da missão real</b> — a ordem de incinerar a cidade está com Warren, não com a tropa.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tip"><span class="tag">A brecha humana</span>
+<p><b>Cerca de um quarto da tropa tem pavor de pegar a doença.</b> Esses evitam postos perto do barracão, aceitam ser convencidos a "não chegar perto", e são os que mais rápido abandonam um posto. Um ou dois podem simpatizar com algum morador. É por aí que se fura um cerco — não pela força.</p></div>
+
+<h4>Tensão do Cerco — o modificador que muda tudo</h4>
+<p>A <b>fase do cerco</b> (relógio acima) define a disposição da tropa. Aplique o modificador a <b>todo</b> teste social com militares:</p>
+<table class="stages">
+<thead><tr><th>Fase</th><th>Postura da tropa · efeito em Lábia, Persuasão, Crédito</th></tr></thead>
+<tbody>
+<tr><td>1–2</td><td><b>Tensos, mas corretos.</b> Testes <b>normais</b>. Ainda tratam civis como civis; alguns pedem notícias de casa.</td></tr>
+<tr><td>3–4</td><td><b>Desconfiados.</b> Testes <b>Difíceis</b>. Revistas viram rotina; perguntas repetidas para pegar contradição.</td></tr>
+<tr><td>5–6</td><td><b>Hostis.</b> Testes <b>Difíceis</b>; falha desastrosa (96–00) = <b>detenção</b> para "verificação". Empurrões, gritos, armas apontadas por reflexo.</td></tr>
+<tr><td>7+</td><td><b>Terminal.</b> Testes <b>Extremos</b>. Movimento brusco perto de um posto = <b>tiro</b>, sem aviso. A esta altura a tropa também tem infectados, e sabe disso.</td></tr>
+</tbody>
+</table>
+
+<h4>Procedimentos — o que rolar em cada situação</h4>
+<table class="stages">
+<thead><tr><th>Situação</th><th>Como resolver</th></tr></thead>
+<tbody>
+<tr><td>Abordagem<br>na rua</td><td>Exigem identificação e destino. <b>Persuasão</b> ou <b>Crédito</b> (com Tensão). Ser <b>médico</b> dá dado de bônus até a fase 4 — depois disso, "médico" virou sinônimo de "esteve com doentes".</td></tr>
+<tr><td>Revista de<br>bagagem</td><td>Automática nas barreiras. Esconder objeto pequeno: <b>Furtividade</b>. Esconder <b>o tomo, a caixa ou as cartas</b>: teste <b>Difícil</b> — são volumosos e óbvios. Melhor solução é não carregá-los.</td></tr>
+<tr><td>Exame médico<br>obrigatório</td><td>Fase 3. Mendel ou assistente colhe sangue. <b>Estágio 1–3 é indetectável a olho nu</b>, mas o exame de sangue <b>acha</b>. Escapar exige trocar a amostra: <b>Ciência/Medicina Difícil</b> + uma distração.</td></tr>
+<tr><td>Furar o<br>perímetro</td><td><b>Furtividade em grupo</b>: rola o pior valor do grupo. Falha = disparo (1D10+2, à distância) e alarme geral. À noite, perícias dos soldados caem pela metade — a escuridão vale mais que qualquer plano.</td></tr>
+<tr><td>Suborno</td><td>Funciona <b>só</b> para pequenos favores (passar um recado, virar as costas por um minuto) e <b>só</b> com os amedrontados. Jamais para saída. <b>Barganha</b> + um motivo humano.</td></tr>
+<tr><td>Disfarce<br>de soldado</td><td>Possível com farda roubada, mas <b>interagir</b> com qualquer militar quase certamente expõe (a tropa se conhece). Use para <b>sair rápido</b>, nunca para conviver. <b>Disfarce Difícil</b>, e um teste por interação.</td></tr>
+<tr><td>Violência<br>contra a tropa</td><td>Médicos com armas velhas contra soldados treinados = tragédia. E <b>um único tiro ecoa por quilômetros</b> no silêncio do interior: a cidade inteira fica sabendo, e o cerco pula <b>duas fases</b> de tensão na hora.</td></tr>
+<tr><td>Delatar<br>Mendel a Warren</td><td>A jogada esperta. <b>Persuasão</b> com evidência concreta (um rapto, um corpo levado, o testemunho de Almeida) faz Warren <b>restringir</b> Mendel por alguns dias — atrasa uma fase do cerco. Sem evidência, é palavra de civil contra Ph.D.</td></tr>
+</tbody>
+</table>
+
+<div class="warn"><span class="tag">A regra que não se quebra</span>
+<p>Em qualquer hipótese, será <b>impossível</b> convencer soldados, Mendel ou Warren de que isto é uma maldição de outro mundo. Não dê a eles uma saída racional; não deixe um NPC militar "quase acreditar". <b>O horror do Ato 5 é ninguém acreditar</b> — e os Investigadores terem a cura na mão sem conseguir explicar de onde ela veio.</p></div>
 
 <hr class="div">
 
@@ -2311,6 +2483,7 @@ const TABS = [
   {id:"act4",         label:"No Coração da Besta",  num:"IV"},
   {id:"act5",         label:"Salvando a Cidade",   num:"V"},
   {id:"npcs",         label:"Personagens",         num:""},
+  {id:"web",          label:"A Teia",              num:""},
   {id:"creatures",    label:"Criaturas & Mortos",  num:""},
   {id:"disease",      label:"A Doença",            num:""},
   {id:"tracker",      label:"Painel & Tracker",    num:""},
@@ -2413,6 +2586,225 @@ document.addEventListener('click',e=>{
 
 /* initial */
 renderPrompts('all');
+
+/* ================= TEIA DE RELAÇÕES ================= */
+const WEB_N=[
+ /* --- o culto --- */
+ {id:'mordigian',n:'Mordigian',r:'O Deus dos Goules',x:120,y:70,t:3,
+  b:'A entidade a que Brooks servia. Nunca aparece; só o rastro. "Tudo o que apodrece sobe até Ele."',
+  cw:'Nenhuma. Crawford não acredita no sobrenatural — e essa incredulidade é a armadura que o mantém funcional.'},
+ {id:'jm',n:'J.M. · "Christian"',r:'Irmão de culto · vivo, longe',x:335,y:62,t:2,
+  b:'O correspondente de Brooks. Mandou a caixa de ingredientes das Terras do Sonho e o contrafeitiço — de má vontade, cobrando que Brooks se curasse e voltasse para prestar contas.',
+  cw:'Nenhuma — e é justamente por isso que ele é o futuro da campanha. Brooks nunca voltou, e a encomenda dele está agora com quatro forasteiros.'},
+ {id:'brooks',n:'Kevin Brooks',r:'Meio-Carniçal · o autor',x:250,y:200,t:1,d:1,
+  p:"img/kevin-brooks.jpg",
+  b:'Fazendeiro, cervejeiro e necromante. Criou a variante da Podridão da Cova e perdeu o controle dela. Morreu nos túneis sem dizer uma palavra.',
+  cw:'<b>Vizinhos cordiais.</b> O homem mais rico da cidade e o único médico dela se conheciam de festa e de negócio — Brooks fornecia a cerveja, Crawford atendia quem passava mal. Crawford nunca soube que os primeiros mortos foram <b>empregados de Brooks</b>, um mês antes de Giggs, enterrados sem notificação. Se souber agora, entenderá que atendeu o assassino da própria cidade tomando cerveja com ele.'},
+ {id:'javali',n:'O Javali Albino',r:'Guardião remendado · destruído',x:95,y:335,t:3,d:1,
+  b:'Um lobo morto, costurado com pele de urso, patas de porco e arame. Vivia nos túneis; alimentava a lenda que afastava curiosos.',
+  cw:'Nenhuma direta — mas Crawford ouviu os relatos do "lobisomem" nos pacientes e os descartou como delírio da febre. Mais uma coisa em que ele estava errado.'},
+ /* --- os mortos do começo --- */
+ {id:'giggs',n:'Samuel Giggs',r:'O primeiro caso · falecido',x:400,y:335,t:2,d:1,
+  b:'Rapaz da adega que revendia a cerveja de Brooks. Internado há seis meses, morto cinco semanas depois. O "paciente zero" oficial — e falso.',
+  cw:'<b>Foi o caso que acendeu o alarme.</b> Crawford acompanhou a internação e não achou explicação. É a ficha que ainda está no arquivo do hospital municipal, no topo da pilha.'},
+ {id:'joseph',n:'Joseph',r:'O que sobreviveu mais tempo · destruído',x:350,y:520,t:2,d:1,
+  p:"img/joseph-em-vida-doente-terminal.jpg",
+  b:'Camponês de saúde de ferro. Doze semanas de doença, morreu e continuou falando. Erguido, matou Kelly. Os Investigadores o destruíram a tiros na Sessão 3.',
+  cw:'<b>O paciente que Crawford não conseguiu abandonar.</b> Trancou-o num casebre afastado, levava comida, conversava com ele como quem visita um convalescente. Chamava-o pelo nome e esperava resposta. Era o experimento e o amigo ao mesmo tempo.'},
+ {id:'kelly',n:'Kelly',r:'Enfermeira · assassinada',x:545,y:645,t:2,d:1,
+  b:'Voluntária do barracão. Foi levar comida a Joseph e tentar a coleta de sangue que Grace pediu. Morreu ali, dilacerada.',
+  cw:'<b>A ferida aberta.</b> Crawford ouviu os gritos dela no meio da noite, teve medo e não saiu de casa. Só foi de manhã. Chorou na frente dos Investigadores ao confessar. Desde então, obedece a qualquer ordem que lhe deem — é penitência, não confiança.'},
+ /* --- a cidade --- */
+ {id:'charles',n:'Reverendo Charles',r:'Pastor · a fé esvaziada',x:185,y:505,t:1,
+  p:"img/reverendo-charles.jpg",
+  b:'Prega para bancos vazios numa igreja que a cidade foi abandonando. Triste e solitário, não fanático. Depois da conversa com David, pode querer reerguer o templo.',
+  cw:'<b>As duas autoridades da cidade.</b> Medicina e fé dividiam Shellburne Falls entre si — e as duas fracassaram ao mesmo tempo. Crawford enterra corpos que Charles não consegue mais velar direito. Respeitam-se sem intimidade; cada um vê no outro o próprio fracasso.'},
+ {id:'halls',n:'Família Hall',r:'Terrence, Cristina e Jr · o hotel',x:150,y:685,t:2,
+  b:'Donos do hotel de 5 quartos, herdado da avó de Terence — relíquia de uma rota comercial que nunca veio. Não contaminados. Abrigam os Investigadores.',
+  cw:'<b>Foram eles que hospedaram a equipe do governo</b> quando Crawford a chamou. Os últimos hóspedes antes dos Investigadores foram Mendel e seus homens — os Hall os viram de perto e vão reconhecê-los quando voltarem de farda.'},
+ {id:'bastiao',n:'Seu Bastião',r:'Mercadinho · os canários',x:305,y:795,t:3,
+  b:'Dono da mercearia da praça. Cria canários e pássaros na loja. Ponto de fofoca da cidade.',
+  cw:'Freguesia de anos. Crawford compra ali. Se os pássaros começarem a morrer, é a Crawford que Bastião vai perguntar por quê — e ele não terá resposta.'},
+ {id:'fred',n:'Fred Ericson',r:'Correios · jovem de boné',x:172,y:835,t:3,
+  b:'Rapaz que atende (e entrega) no correio minúsculo. Conhece toda correspondência que entra e sai.',
+  cw:'<b>Foi por ele que a carta saiu.</b> Todo o pedido de socorro de Crawford — inclusive as cartas aos velhos colegas de faculdade — passou pelas mãos desse garoto.'},
+ {id:'timoteo',n:'Timóteo',r:'Bar · zona limpa',x:455,y:840,t:3,
+  b:'Dono do bar na parte menos contaminada da cidade. Onde Shellburne Falls ainda finge normalidade.',
+  cw:'Crawford é o homem que manda parar de beber — e ninguém para. Se a cerveja do bar vier da fazenda, a "zona limpa" tem prazo de validade.'},
+ {id:'solbonaro',n:'Jay Solbonaro',r:'Loja de caça · estágio 4',x:610,y:855,t:2,
+  b:'Velho dono da loja de caça. Vendeu o arsenal do grupo — inclusive a dinamite que virou a fazenda em cratera. Já apodrecendo, ainda atrás do balcão.',
+  cw:'Paciente teimoso: sabe que está doente e não procura o médico. Crawford já o mandou fechar a loja duas vezes. Um homem armado, febril e chegando ao estágio da fúria.'},
+ /* --- o hub --- */
+ {id:'crawford',n:'Dr. Clark Crawford',r:'O elo · médico obstinado',x:625,y:430,t:1,hub:1,
+  p:"img/dr-clark-crawford.jpg",
+  b:'Único cirurgião de Shellburne Falls. Voltou à cidade natal depois de formado e nunca mais saiu. Está contaminado (estágio 5) e esconde. Fala francês — é o par de estudo da Grace no tomo.',
+  cw:'—'},
+ /* --- barracão e hospital --- */
+ {id:'jordan',n:'Jordan',r:'Enfermeira · estágio 3',x:705,y:700,t:3,
+  b:'Voluntária do barracão que adoeceu cuidando. O rosto da verdade cruel: quem cuida também pega.',
+  cw:'Uma das mulheres que Crawford treinou às pressas. Ele sabe exatamente em que estágio ela está, e sabe que foi ele quem a colocou ali.'},
+ {id:'mary',n:'Mary',r:'Camponesa · Joshua e West',x:770,y:840,t:2,
+  p:"img/mary-velha-camponesa.jpg",
+  b:'Velha camponesa que implorou ajuda para o marido (morto) e o filho West (terminal). Ambos frequentavam a cervejaria.',
+  cw:'<b>A dívida.</b> A família devia dinheiro a Crawford e por isso não o procurou — morreram de vergonha antes de morrer da peste. Crawford nem sabia que estavam doentes. É a prova de que o dinheiro matou nesta cidade tanto quanto a maldição.'},
+ {id:'evelyn',n:'Evelyn',r:'Menina de 8 anos · infectada',x:905,y:810,t:2,
+  p:"img/evelyn-crianca-doente.jpg",
+  b:'A primeira criança que os Investigadores encontraram contaminada. Não é pista nem monstro: é uma criança.',
+  cw:'Crawford a conhece desde que nasceu — provavelmente foi ele quem a trouxe ao mundo. Quando chegar a hora de escolher quem recebe as 7 porções de cura, o nome dela vai estar na mesa.'},
+ {id:'margareth',n:'Margareth Happiness',r:'Enfermeira · Hospital Municipal',x:885,y:625,t:2,
+  b:'Mantém o hospital municipal de pé desde que o velho médico da casa parou de aparecer. Recebeu o grupo e liberou o exame do corpo da garotinha.',
+  cw:'<b>Colegas de trincheira, em prédios diferentes.</b> Ela cuida do hospital municipal; ele, do barracão. Nenhum dos dois tem tempo de ajudar o outro, e ambos sabem disso.'},
+ {id:'carrie',n:'Carrie Blissfull',r:'Enfermeira · estágio 3',x:1035,y:695,t:2,
+  b:'A outra enfermeira do hospital, já infectada e disfarçando. Ouviu mais de dois pacientes falarem do "lobisomem" e descartou como confusão da doença.',
+  cw:'Crawford é o médico a quem ela deveria recorrer — e não recorreu, porque ele já tem doentes demais. Quando ela cair, o hospital fica sem ninguém.'},
+ {id:'gabriel',n:'Gabriel Bah',r:'Paciente · testemunha',x:1135,y:815,t:3,
+  b:'Viu a criatura branca perto da nascente, junto com o sobrinho. Mentalmente confuso. O sobrinho morreu há três dias e ninguém lhe contou.',
+  cw:'Mais um leito. Crawford não tem como tratá-lo — e não tem coragem de lhe contar sobre o sobrinho.'},
+ /* --- governo e exército --- */
+ {id:'almeida',n:'Manuel Almeida',r:'Parasitologista · o aliado',x:760,y:150,t:2,
+  p:"img/manuel-almeida.jpg",
+  b:'Chileno, vinte e poucos anos, extrovertido e com dúvidas morais fortes. Evita tarefas que prejudiquem os moradores. Mendel acabará por declará-lo contaminado e abandoná-lo.',
+  cw:'Nenhuma prévia — mas é o único da equipe do governo que trataria Crawford como colega, e não como fonte de dados. Quando for descartado por Mendel, é a Crawford (ou aos Investigadores) que ele vai recorrer.'},
+ {id:'redford',n:'Robert Redford',r:'Mestrando · a dúvida',x:935,y:85,t:2,
+  p:"img/robert-redford.jpg",
+  b:'Idolatrava Mendel até ouvir a palavra "erradicação". Foi convencido de que destruir a cidade salva milhares, mas não dorme direito.',
+  cw:'Nenhuma. Para ele, Crawford é "o médico local que não deu conta" — até conversar com ele e perceber que Crawford fez sozinho o que a equipe inteira não fez.'},
+ {id:'farber',n:'Dr. Walter Farber',r:'Microbiologia · o puxa-saco',x:1105,y:145,t:2,
+  p:"img/dr-walter-farber.jpg",
+  b:'Segue Mendel cegamente e não faz nada sem autorização. Obstáculo burocrático perfeito.',
+  cw:'Nenhuma. Trataria Crawford com a condescendência de quem tem um Ph.D. falando com um clínico do interior.'},
+ {id:'mendel',n:'Dr. Richard Mendel',r:'O cientista corrupto',x:905,y:270,t:1,
+  p:"img/dr-richard-mendel.jpg",
+  b:'Ph.D. em Microbiologia. Ficou aterrorizado e maravilhado com os campos de mortos: viu ali a chance de entrar para a história. Inflou os fatos em Washington.',
+  cw:'<b>Crawford o chamou.</b> Esse é o pecado original da campanha. Mendel veio, passou um dia, anotou tudo, foi embora sem prestar socorro — e denunciou a cidade. Crawford ainda acredita que pediu ajuda a um colega. Não sabe que assinou a sentença de Shellburne Falls com esse telefonema.'},
+ {id:'warren',n:'General Warren Justice',r:'O cerco em pessoa',x:1110,y:405,t:1,
+  p:"img/general-warren-justice.jpg",
+  b:'Comanda 40 homens com ordem de quarentena absoluta e autorização para atirar em quem fugir. Não é cruel — é convicto. Incineraria a cidade pelo bem da nação.',
+  cw:'Nenhuma pessoal, e é isso que assusta: para Warren, Crawford é <b>um número numa lista de infectados</b>, não o médico que segurou a cidade sozinho por dois meses. Ele nem sabe o nome dele.'},
+ {id:'soldados',n:'A Guarnição',r:'40 homens · as mãos de Justice',x:1155,y:585,t:2,
+  p:"img/soldados.jpg",
+  b:'Quarenta homens armados que não sabem da missão: recebem ordens e cumprem. Cerca de um quarto tem pavor de pegar a doença — e isso pode ser explorado.',
+  cw:'São eles que vão examinar, revistar e, se a ordem vier, executar Crawford. Alguns já foram atendidos por ele desde que chegaram. Nenhum deles vai desobedecer por isso.'}
+];
+const WEB_E=[
+ {a:'crawford',b:'mendel',l:'EU O CHAMEI',k:'bad',c:-.16},
+ {a:'mendel',b:'warren',l:'DENUNCIOU A CIDADE',k:'bad',c:.2},
+ {a:'warren',b:'mendel',l:'DESPREZA O CIVIL',k:'bad',c:.2},
+ {a:'warren',b:'soldados',l:'COMANDA',k:'neu',c:.16},
+ {a:'mendel',b:'farber',l:'PUXA-SACO',k:'neu',c:.14},
+ {a:'mendel',b:'redford',l:'DISCÍPULO EM DÚVIDA',k:'neu',c:-.14},
+ {a:'mendel',b:'almeida',l:'VAI ABANDONÁ-LO',k:'bad',c:.16},
+ {a:'almeida',b:'redford',l:'OS QUE DUVIDAM',k:'ally',c:.18},
+ {a:'crawford',b:'charles',l:'AS DUAS AUTORIDADES',k:'ally',c:.13},
+ {a:'crawford',b:'joseph',l:'MEU PACIENTE',k:'neu',c:.14},
+ {a:'crawford',b:'kelly',l:'NÃO FUI SOCORRER',k:'bad',c:-.12},
+ {a:'joseph',b:'kelly',l:'MATOU',k:'bad',c:.2},
+ {a:'kelly',b:'jordan',l:'COLEGAS DO BARRACÃO',k:'ally',c:.14},
+ {a:'jordan',b:'crawford',l:'ENFERMEIRA DELE',k:'ally',c:.12},
+ {a:'crawford',b:'mary',l:'A DÍVIDA',k:'bad',c:.14},
+ {a:'crawford',b:'brooks',l:'VIZINHO E CLIENTE',k:'neu',c:.16},
+ {a:'crawford',b:'margareth',l:'HOSPITAL SEM MÉDICO',k:'ally',c:-.13},
+ {a:'crawford',b:'halls',l:'HOSPEDOU MEUS CONVIDADOS',k:'neu',c:.17},
+ {a:'crawford',b:'evelyn',l:'TROUXE-A AO MUNDO',k:'neu',c:-.15},
+ {a:'crawford',b:'giggs',l:'O CASO QUE ACENDEU O ALARME',k:'neu',c:.14},
+ {a:'brooks',b:'mordigian',l:'ADORA',k:'bad',c:.16},
+ {a:'jm',b:'brooks',l:'IRMÃO DE CULTO',k:'ally',c:.16},
+ {a:'brooks',b:'jm',l:'PEDIU SOCORRO',k:'neu',c:.16},
+ {a:'brooks',b:'javali',l:'COSTUROU',k:'bad',c:.15},
+ {a:'brooks',b:'joseph',l:'TRABALHAVA PRA MIM',k:'neu',c:.15},
+ {a:'brooks',b:'giggs',l:'VENDIA MINHA CERVEJA',k:'neu',c:-.14},
+ {a:'brooks',b:'timoteo',l:'FORNECIA O BAR',k:'neu',c:-.22},
+ {a:'halls',b:'brooks',l:'"PAPO DE BÊBADO"',k:'neu',c:-.2},
+ {a:'halls',b:'mendel',l:'JÁ O HOSPEDARAM',k:'neu',c:-.3},
+ {a:'charles',b:'halls',l:'OS QUE AINDA REZAM',k:'ally',c:.14},
+ {a:'mary',b:'charles',l:'REZA POR ELES',k:'ally',c:.26},
+ {a:'margareth',b:'carrie',l:'SOZINHAS NO HOSPITAL',k:'ally',c:.14},
+ {a:'carrie',b:'gabriel',l:'OUVIU DO LOBISOMEM',k:'neu',c:.14},
+ {a:'bastiao',b:'fred',l:'A PRAÇA',k:'neu',c:.14},
+ {a:'warren',b:'solbonaro',l:'VAI RASTREAR A DINAMITE',k:'bad',c:-.3},
+ {a:'soldados',b:'evelyn',l:'EXAMES OBRIGATÓRIOS',k:'bad',c:.2}
+];
+const WEB_R={1:46,2:34,3:21};
+function webBuild(){
+  const svg=document.getElementById('webSvg'); if(!svg) return;
+  const M={}; WEB_N.forEach(n=>M[n.id]=n);
+  let defs='<defs>';
+  [['bad','#8f2a22'],['ally','#4f7d63'],['neu','#5f6b4a']].forEach(([k,c])=>{
+    defs+='<marker id="ar-'+k+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="'+c+'"/></marker>';
+  });
+  WEB_N.filter(n=>n.p).forEach(n=>{
+    const r=WEB_R[n.t];
+    defs+='<clipPath id="cp-'+n.id+'"><rect x="'+(n.x-r*.78)+'" y="'+(n.y-r*.86)+'" width="'+(r*1.56)+'" height="'+(r*1.56)+'" rx="3"/></clipPath>';
+  });
+  defs+='</defs>';
+  let eg='',lg='';
+  WEB_E.forEach((e,i)=>{
+    const A=M[e.a],B=M[e.b]; if(!A||!B) return;
+    const dx=B.x-A.x,dy=B.y-A.y,d=Math.hypot(dx,dy)||1;
+    const ra=WEB_R[A.t]+6, rb=WEB_R[B.t]+12;
+    const ax=A.x+dx/d*ra, ay=A.y+dy/d*ra, bx=B.x-dx/d*rb, by=B.y-dy/d*rb;
+    const mx=(ax+bx)/2,my=(ay+by)/2, nx=-(by-ay)/d, ny=(bx-ax)/d;
+    const cx=mx+nx*d*e.c, cy=my+ny*d*e.c;
+    eg+='<path class="we k-'+e.k+'" id="we-'+i+'" data-a="'+e.a+'" data-b="'+e.b+'" d="M'+ax+','+ay+' Q'+cx+','+cy+' '+bx+','+by+'" fill="none" stroke-width="1.5" marker-end="url(#ar-'+e.k+')"/>';
+    const lx=(ax+2*cx+bx)/4, ly=(ay+2*cy+by)/4;
+    lg+='<text class="wl k-'+e.k+'" data-a="'+e.a+'" data-b="'+e.b+'" x="'+lx+'" y="'+(ly-3)+'">'+e.l+'</text>';
+  });
+  let ng='';
+  WEB_N.forEach(n=>{
+    const r=WEB_R[n.t], s=r*1.56;
+    let inner;
+    if(n.p) inner='<rect x="'+(n.x-r*.78)+'" y="'+(n.y-r*.86)+'" width="'+s+'" height="'+s+'" rx="3" fill="#0e1611"/>'+
+      '<image href="'+n.p+'" x="'+(n.x-r*.78)+'" y="'+(n.y-r*.86)+'" width="'+s+'" height="'+s+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#cp-'+n.id+')"/>'+
+      '<rect class="frame" x="'+(n.x-r*.78)+'" y="'+(n.y-r*.86)+'" width="'+s+'" height="'+s+'" rx="3"/>';
+    else{
+      const ini=n.n.replace(/["'·]/g,'').split(/\s+/).filter(w=>w.length>2).slice(0,2).map(w=>w[0].toUpperCase()).join('');
+      inner='<circle class="ring" cx="'+n.x+'" cy="'+(n.y-r*.1)+'" r="'+(r*.8)+'"/>'+
+            '<text class="init" x="'+n.x+'" y="'+(n.y-r*.1+4.5)+'">'+ini+'</text>';
+    }
+    const ty=n.y+r*.86+(n.p?14:10);
+    const w=Math.max(n.n.length*5.6+14,58);
+    ng+='<g class="wn'+(n.d?' dead':'')+(n.hub?' hub':'')+'" data-id="'+n.id+'">'+inner+
+        '<rect class="plate" x="'+(n.x-w/2)+'" y="'+(ty-11)+'" width="'+w+'" height="15" rx="2"/>'+
+        '<text class="nm" x="'+n.x+'" y="'+ty+'">'+n.n+'</text></g>';
+  });
+  svg.innerHTML=defs+eg+lg+ng;
+}
+let webSel=null;
+function webSelect(id){
+  webSel=(webSel===id)?null:id;
+  const svg=document.getElementById('webSvg'); if(!svg) return;
+  const linked=new Set();
+  if(webSel){
+    linked.add(webSel);
+    WEB_E.forEach(e=>{ if(e.a===webSel) linked.add(e.b); if(e.b===webSel) linked.add(e.a); });
+  }
+  svg.querySelectorAll('.wn').forEach(g=>{
+    g.classList.toggle('dim',!!webSel&&!linked.has(g.dataset.id));
+    g.classList.toggle('sel',g.dataset.id===webSel);
+  });
+  svg.querySelectorAll('.we,.wl').forEach(el=>{
+    const on=!webSel||el.dataset.a===webSel||el.dataset.b===webSel;
+    el.classList.toggle('dim',!on);
+    if(el.classList.contains('we')) el.classList.toggle('hi',!!webSel&&on);
+  });
+  const d=document.getElementById('webDetail'); if(!d) return;
+  if(!webSel){ d.innerHTML='<p class="wd-empty">Clique num personagem da teia para ver a ficha, a relação com Crawford e como jogá-lo.</p>'; return; }
+  const n=WEB_N.find(x=>x.id===webSel);
+  const rel=WEB_E.filter(e=>e.a===webSel||e.b===webSel).map(e=>{
+    const o=WEB_N.find(x=>x.id===(e.a===webSel?e.b:e.a));
+    return '<span class="kit">'+(e.a===webSel?'→ ':'← ')+o.n+' · '+e.l.toLowerCase()+'</span>';
+  }).join('');
+  d.innerHTML='<span class="wd-role">'+n.r+(n.d?' · falecido':'')+'</span><h4>'+n.n+'</h4><p>'+n.b+'</p>'+
+    (n.id!=='crawford'?'<div class="wd-cw"><p><b>Com Crawford:</b> '+n.cw+'</p></div>':
+     '<div class="wd-cw"><p><b>É o centro da teia.</b> Todo NPC desta lista chegou aos Investigadores por uma linha que passa por ele.</p></div>')+
+    (rel?'<div class="inv-kit" style="margin-top:.7em;">'+rel+'</div>':'');
+}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('.wn');
+  if(g){ webSelect(g.dataset.id); return; }
+  if(e.target.closest('#webSvg')) webSelect(null);
+});
+webBuild();
 
 /* ================= TRACKER DA PESTE ================= */
 const STG_FX=['—',
