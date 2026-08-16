@@ -583,6 +583,28 @@
   body.night .inv-card{background:linear-gradient(170deg,#18211a,#191410);}
   body.night .kit{background:rgba(200,170,110,.08);}
 
+  /* estado atual (consulta rápida) */
+  .qr.state{grid-column:1/-1;border-top-color:var(--gold);background:
+    linear-gradient(160deg,rgba(141,154,85,.16),rgba(92,110,70,.07));}
+  .st-top{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-bottom:11px;}
+  .st-num{display:flex;flex-direction:column;line-height:1;}
+  .st-num b{font-family:'Special Elite',monospace;font-size:2.1rem;color:var(--blood);}
+  .st-num span{font-family:'Special Elite',monospace;font-size:.6rem;letter-spacing:.16em;color:var(--sepia);margin-top:3px;}
+  .st-phase{flex:1;min-width:190px;font-size:.86rem;color:var(--ink-soft);line-height:1.45;}
+  .st-phase b{color:var(--blood);}
+  .st-pcs{display:flex;flex-wrap:wrap;gap:7px;margin:.5em 0;}
+  .st-pc{display:inline-flex;align-items:center;gap:6px;background:rgba(92,110,70,.13);
+    border:1px solid var(--paper-edge);border-radius:16px;padding:3px 11px 3px 4px;font-size:.8rem;}
+  .st-pc img{width:24px;height:24px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);}
+  .st-pc i{font-style:normal;font-family:'Special Elite',monospace;font-size:.72rem;
+    padding:1px 6px;border-radius:9px;color:#f0f2e2;}
+  .st-keys{display:flex;align-items:center;gap:9px;margin-top:.6em;}
+  .st-keys .track{flex:1;height:8px;background:rgba(92,110,70,.2);border-radius:4px;overflow:hidden;}
+  .st-keys .fill{height:100%;background:linear-gradient(90deg,var(--green-rot),var(--gold));}
+  .st-keys .lb{font-family:'Special Elite',monospace;font-size:.7rem;color:var(--sepia);white-space:nowrap;}
+  .st-facts{margin-top:.9em;padding-top:.7em;border-top:1px dotted var(--rust);font-size:.83rem;line-height:1.55;}
+  .st-facts b{color:var(--blood);}
+
   /* consulta rápida (mesa) */
   .qr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px;margin:1.2em 0;align-items:start;}
   .qr{background:rgba(92,110,70,.09);border:1px solid var(--paper-edge);border-top:3px solid var(--blood);
@@ -2011,6 +2033,8 @@ PANELS.quick = `
 <p class="lead">Tudo o que você precisa <b>com o dado na mão</b>, sem prosa. Regras da 5.6/7ª conforme o Livro Básico da mesa, mais os números próprios desta aventura.</p>
 
 <div class="qr-grid">
+
+  <div class="qr state" id="qrState"></div>
 
   <div class="qr">
     <h5>☠ Sanidade — o fluxo</h5>
@@ -3502,6 +3526,37 @@ function trkRenderAll(){
   ['siegeSteps','siegeStepsTrk'].forEach(id=>{
     const sg=document.getElementById(id); if(sg) sg.innerHTML=sgHTML;
   });
+  /* painel de estado na Consulta Rápida */
+  const qs=document.getElementById('qrState');
+  if(qs){
+    TRK.k4=TRK.k4||{};
+    const tot=K4.reduce((a,k)=>a+(TRK.k4[k.id]||0),0);
+    const ph=TRK.siege||0;
+    const sevCol=st=>st>=9?'#4a0d0d':st>=7?'#8f2a22':st>=4?'#a35a1e':st>=1?'#8a7a3c':'#3f5738';
+    const pcs=TRK.chars.filter(c=>c.pc).map(c=>{
+      const st=c.status==='infectado'?c.stage:0;
+      const lbl=c.status==='curado'?'CURADO':(c.status==='sao'?'SÃO':'E'+st);
+      return '<span class="st-pc">'+(c.photo?'<img src="'+c.photo+'" alt="">':'')+
+        c.name.split(' ')[0]+' <i style="background:'+(c.status==='curado'?'#8d9a55':sevCol(st))+'">'+lbl+'</i></span>';
+    }).join('');
+    const tens=ph>=7?'Extremo · movimento brusco = tiro':ph>=5?'Difícil · 96–00 = detenção':ph>=3?'Difícil · revistas de rotina':'Normal';
+    qs.innerHTML=
+      '<h5>◈ Estado da campanha</h5>'+
+      '<div class="st-top">'+
+        '<div class="st-num"><b>'+TRK.day+'</b><span>DIA DE JOGO</span></div>'+
+        '<div class="st-num"><b>'+(ph||'—')+'</b><span>FASE DO CERCO</span></div>'+
+        '<div class="st-phase">'+(ph?'<b>'+SIEGE[ph-1]+'</b>':'<b>Cerco ainda não marcado</b> — clique numa fase no Painel &amp; Tracker.')+
+          '<br>Tensão militar: <b>'+tens+'</b></div>'+
+      '</div>'+
+      '<div class="st-pcs">'+pcs+'</div>'+
+      '<div class="st-keys"><span class="lb">TOMO</span><div class="track"><div class="fill" style="width:'+
+        Math.round(tot/12*100)+'%"></div></div><span class="lb">'+tot+'/12 chaves</span></div>'+
+      '<div class="st-facts">'+
+        '<b>Brooks está morto</b> e não falou · <b>o laboratório foi dinamitado</b> (some o melhor esconderijo do Ato 5) · '+
+        'os quatro têm <b>tomo, cartas e a caixa de ingredientes</b> · Joseph e Kelly mortos · '+
+        '<b>a peste continua</b> apesar de Brooks · Crawford (estágio 5) não sabe que <b>foi ele quem chamou Mendel</b>.'+
+      '</div>';
+  }
   const kw=document.getElementById('keys4');
   if(kw){
     TRK.k4=TRK.k4||{};
