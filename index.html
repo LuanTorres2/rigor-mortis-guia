@@ -728,6 +728,19 @@
     font-size:.95rem;color:#3a423a;transform:rotate(-1.6deg);
   }
   .tome-card.marginalia .tome-fr::first-letter{font-family:inherit;font-size:inherit;color:inherit;}
+  /* cartões de "objeto": o que Cornélius, Artemy e David encontram (não é texto em francês) */
+  .tome-card.obj .tome-front{background:linear-gradient(160deg,#e9e6d0,#d5d3b4);}
+  .tome-card.obj .tome-fr{font-family:'Crimson Pro',Georgia,serif;font-style:normal;font-size:.97rem;color:var(--ink-soft);}
+  .tome-card.obj .tome-fr::first-letter{font-family:inherit;font-size:inherit;color:inherit;}
+  .tome-card.obj .tome-tag{color:#5a6b2e;}
+  .tome-sig{display:flex;gap:14px;justify-content:center;align-items:center;margin:2px 0 4px;color:#3d3a24;}
+  .tome-sig svg{width:78px;height:78px;}
+  .tome-day{
+    grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:1.3em 0 .1em;
+    font-family:'IM Fell English SC',serif;font-size:.9rem;letter-spacing:.18em;color:var(--blood);
+  }
+  .tome-day::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--rust),transparent);}
+  .tome-day span{font-family:'Special Elite',monospace;font-size:.66rem;color:var(--sepia);letter-spacing:.06em;}
 </style>
 </head>
 <body>
@@ -2249,100 +2262,195 @@ PANELS.tome = `
 
 <hr class="div">
 
-<h3>Cartões de tradução — lendo o tomo na mesa</h3>
-<p>Mostre a face em <b>francês</b> na tela (é o que a personagem vê); depois <b>clique no cartão para virá-lo</b> e entregue a tradução para a jogadora declamar à mesa, como quem decifra na hora. A nota de Guardião em cada verso diz quando usar.</p>
+<h3>O que eles encontram, dia a dia</h3>
+<p>Cada dia de estudo rende <b>uma descoberta concreta por Investigador que teve sucesso</b> — não um "+1 ponto". Os cartões abaixo estão na ordem em que a mesa deve encontrá-los. <b>Clique para virar</b>: a frente é o que a personagem vê (o texto em francês, a gravura, o papel na contraluz); o verso é o que aquilo significa e o que destrava.</p>
 
 <div class="tome-grid">
-  <div class="tome-card" title="Clique para virar">
+
+  <div class="tome-day">DIA 1 <span>· o livro se apresenta</span></div>
+  <div class="tome-card " title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 1 · a folha de rosto</span>
-        <p class="tome-fr">« Cultes des Goules, contenant la vraie relation des sociétés des mangeurs de morts, de leurs rites, de leur langue et de leur dieu. Par François-Honoré Balfour, Comte d'Erlette. À Paris, M.DCC.III. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-tag">GRACE · A Língua · ponto 1</span>
+        <p class="tome-fr">« Cultes des Goules, contenant la vraie relation des sociétés des mangeurs de morts, de leurs rites, de leur langue et de leur dieu. Par François-Honoré Balfour, Comte d&#39;Erlette. À Paris, M.DCC.III. »</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Cultos dos Goules, contendo a verdadeira relação das sociedades dos comedores de mortos, de seus ritos, de sua língua e de seu deus. Por François-Honoré Balfour, Conde d'Erlette. Em Paris, 1703."</p>
-        <span class="tome-note">Primeiro contato. Deixe a data (1703) e a palavra "comedores" fazerem o trabalho.</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;Cultos dos Goules, contendo a verdadeira relação das sociedades dos comedores de mortos, de seus ritos, de sua língua e de seu deus. Por François-Honoré Balfour, Conde d&#39;Erlette. Em Paris, 1703.&quot;</p>
+        <span class="tome-note">Estabelece o que é o livro: não um tratado de superstição, mas um <b>relato de campo</b> — alguém conviveu com essa gente para escrever isso. A data (1703) e a palavra &quot;comedores&quot; fazem o trabalho sozinhas.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tome-card obj" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">CORNÉLIUS · O Rito · ponto 1</span><div class="tome-sig" aria-hidden="true"><svg viewBox="0 0 80 80"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="40" cy="40" r="30"/><path d="M29 33a11 11 0 0 1 22 0v7l-3 4h-16l-3-4z"/><path d="M34 44v5M40 44v6M46 44v5"/><path d="M22 52c-4 5-9 6-13 4M58 52c4 5 9 6 13 4M31 60c-3 6-8 9-13 9M49 60c3 6 8 9 13 9M40 63c0 7-2 11-6 14"/></g><g fill="currentColor"><circle cx="35" cy="34" r="2.6"/><circle cx="45" cy="34" r="2.6"/></g></svg><svg viewBox="0 0 80 80"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="40" cy="40" r="30"/><path d="M40 10 L57.6 64.3 L11.5 30.7 L68.5 30.7 L22.4 64.3 Z"/><circle cx="40" cy="24" r="5"/><path d="M40 29v21M22 36h36M40 50l-12 12M40 50l12 12"/></g></svg></div>
+        <p class="tome-fr">Uma gravura de página inteira, repetida em três capítulos diferentes: <b>dois sigilos</b>. Um disco com um crânio cercado de tentáculos. E um homem de braços e pernas abertos, inscrito num pentagrama.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">O primeiro é <b>Mordigian</b> — o mesmo símbolo que estava na nota cifrada do covil. O segundo não representa um homem: representa <b>o corpo humano como recipiente</b>. Nesse sistema, gente não é gente; é vasilha.</p>
+        <span class="tome-note">Cornélius reconhece a linguagem visual porque já viu isso em sítios antigos: onde há um corpo inscrito num polígono, há uma doutrina de <b>continência</b> — algo é guardado dentro. Ligue à Pista 4.</span>
       </div>
     </div>
   </div>
 
-  <div class="tome-card" title="Clique para virar">
+  <div class="tome-day">DIA 2 <span>· o culto mostra os dentes</span></div>
+  <div class="tome-card " title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 2 · folheando ao acaso</span>
-        <p class="tome-fr">« La chair du mort n'appartient point aux vers, mais à ceux qui savent prier en mangeant. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-tag">GRACE · A Língua · ponto 2</span>
+        <p class="tome-fr">« La chair du mort n&#39;appartient point aux vers, mais à ceux qui savent prier en mangeant. »</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"A carne do morto não pertence aos vermes, mas àqueles que sabem rezar enquanto comem."</p>
-        <span class="tome-note">O primeiro arrepio. Bom para encerrar uma cena de estudo, dito num tom neutro demais.</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;A carne do morto não pertence aos vermes, mas àqueles que sabem rezar enquanto comem.&quot;</p>
+        <span class="tome-note">O primeiro arrepio de verdade. Diga em tom neutro, como quem lê uma receita, e encerre a cena aí. É também a primeira pista de que <b>a doença tem dono</b> — tema que volta no fim.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tome-card obj" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">ARTEMY · A Procedência · ponto 1</span>
+        <p class="tome-fr">As duas cartas de J.M. contra a luz da janela. O antiquário percebe na hora: o papel tem <b>fibras longas demais</b>, a marca-d&#39;água não corresponde a nenhuma manufatura conhecida, e a tinta é preta-parda e <b>não desbotou</b> onde deveria.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">Isso não é papel europeu do século XIX, nem de lugar nenhum que um antiquário de 58 anos já tenha visto em leilão, arquivo ou catálogo. O material é <b>estrangeiro num sentido que Artemy não consegue formular em voz alta</b>.</p>
+        <span class="tome-note">Artemy lê objetos como Grace lê palavras — deixe a competência dele brilhar. Ele não sabe de onde vem; sabe, com certeza profissional, <b>de onde não vem</b>.</span>
       </div>
     </div>
   </div>
 
-  <div class="tome-card" title="Clique para virar">
+  <div class="tome-day">DIA 3 <span>· a chave da nota cifrada</span></div>
+  <div class="tome-card " title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 3 · sobre o deus</span>
-        <p class="tome-fr">« Il ne promet rien qu'il ne tienne : tout ce qui pourrit monte vers Lui. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-tag">GRACE · A Língua · ponto 3</span>
+        <p class="tome-fr">« Chapitre Quatrième : De la langue des goules, et de la manière de l&#39;enseigner aux hommes. »</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Ele nada promete que não cumpra: tudo o que apodrece sobe até Ele."</p>
-        <span class="tome-note">É a frase que <b>Brooks disse a eles</b>. Não aponte — deixe a mesa reconhecer sozinha que o fazendeiro citava as escrituras de cor.</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;Capítulo Quarto: Da língua dos goules, e da maneira de ensiná-la aos homens.&quot;</p>
+        <span class="tome-note"><b>É a fechadura da Pista 4.</b> A partir daqui a nota cifrada do covil pode ser lida. Fecha a chave da Língua — Grace passa a poder ajudar os outros.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tome-card obj" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">DAVID · A Prática · ponto 1</span>
+        <p class="tome-fr">Lendo por cima do ombro da Grace, David para numa página e diz que já ouviu aquilo. Não as palavras — <b>a forma</b>. Invocação, oferta, dispensa: as três partes, sempre na mesma ordem, exatamente como os sussurros no pântano.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">Ele é o único que sabe que <b>rituais têm gramática de execução</b>, não só de escrita. Um texto ritual é partitura: tem entrada, tem sustentação, tem hora de calar.</p>
+        <span class="tome-note">É a deixa para o Álvaro trazer o passado de David para a mesa. Se ele descrever o pântano de Legrasse em voz alta, dê o ponto de graça — memória é perícia aqui.</span>
       </div>
     </div>
   </div>
 
-  <div class="tome-card" title="Clique para virar">
+  <div class="tome-day">DIA 4 <span>· o deus e o preço</span></div>
+  <div class="tome-card " title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">O sumário · a chave da Pista 4</span>
-        <p class="tome-fr">« Chapitre Quatrième : De la langue des goules, et de la manière de l'enseigner aux hommes. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-tag">GRACE · leitura livre</span>
+        <p class="tome-fr">« Il ne promet rien qu&#39;il ne tienne : tout ce qui pourrit monte vers Lui. »</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Capítulo Quarto: Da língua dos goules, e da maneira de ensiná-la aos homens."</p>
-        <span class="tome-note">A placa de sinalização: é este capítulo que permite decifrar a <b>nota cifrada</b> (Pista 4) com o contrafeitiço.</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;Ele nada promete que não cumpra: tudo o que apodrece sobe até Ele.&quot;</p>
+        <span class="tome-note"><b>É a frase que Brooks disse a eles na fazenda.</b> Não aponte. Deixe a mesa perceber sozinha que o fazendeiro simpático citava escritura de cor — e que estava falando sério.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tome-card obj" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">CORNÉLIUS · O Rito · ponto 2</span>
+        <p class="tome-fr">Comparando três rituais diferentes do livro, Cornélius nota o que o texto <b>nunca explica porque a cultura já sabia</b>: em todos, alguém paga. Sangue, anos de vida, um dedo, um nome. Nada é dado.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">A gramática do <i>Cultes des Goules</i> é de <b>troca</b>. É por isso que o contrafeitiço vai cobrar <b>essência de quem o fizer</b> (os 2D6 Pontos de Magia) — e por isso ninguém deveria esperar que a cura saia de graça.</p>
+        <span class="tome-note">Descoberta de arqueólogo: entender uma cultura pelo que ela <b>não precisa dizer</b>. Prepare a mesa para o custo antes que ele chegue.</span>
       </div>
     </div>
   </div>
 
+  <div class="tome-day">DIA 5 <span>· as duas caligrafias</span></div>
   <div class="tome-card marginalia" title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 4–5 · anotação a lápis, na margem</span>
+        <span class="tome-tag">GRACE · a marginália a lápis</span>
         <p class="tome-fr">« Le rite exige la bouche. Et si la maladie devenait elle-même la bouche ? »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"O rito exige a boca. E se a doença se tornasse, ela mesma, a boca?"</p>
-        <span class="tome-note">A letra é de <b>Brooks</b>. É o rascunho da epidemia — o instante em que a ideia nasceu. Reserve para o meio da leitura: é o soco do arco da leitora.</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;O rito exige a boca. E se a doença se tornasse, ela mesma, a boca?&quot;</p>
+        <span class="tome-note">A letra é de <b>Brooks</b>. É o rascunho da epidemia — o instante exato em que a ideia nasceu, escrito a lápis por um homem entediado com as limitações do próprio feitiço. Guarde para o meio da leitura: é o soco do arco da Grace.</span>
+      </div>
+    </div>
+  </div>
+  <div class="tome-card obj" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">ARTEMY · A Procedência · pontos 2 e 3</span>
+        <p class="tome-fr">Artemy compara a caligrafia das cartas de J.M. com as anotações nas margens do tomo — e encontra <b>a mesma mão</b>. Só que a tinta das margens está <b>muito mais envelhecida</b> que a de Brooks. Décadas mais.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">J.M. não é um correspondente distante que mandou uma encomenda. <b>O livro foi dele primeiro.</b> Ele emprestou, ensinou, e depois cobrou. Quando escreve &quot;nossa comunidade&quot; e &quot;nossa terra&quot;, não fala da Europa — fala de onde vêm as especiarias que &quot;não pertencem ao território mundano&quot;.</p>
+        <span class="tome-note">Fecha a chave da Procedência <b>e</b> planta o gancho de fim de campanha: existe um dono, ele está esperando a devolução, e a encomenda não voltou.</span>
       </div>
     </div>
   </div>
 
+  <div class="tome-day">DIA 6 <span>· o contrafeitiço, e o que ele cobra</span></div>
   <div class="tome-card marginalia" title="Clique para virar">
     <div class="tome-inner">
       <div class="tome-face tome-front">
-        <span class="tome-tag">A outra caligrafia · mais antiga</span>
-        <p class="tome-fr">« Ce que la prière a fait lever, le fer ne le fait point recoucher. Défaites la couture, et l'ouvrage se défait. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+        <span class="tome-tag">J.M. · nas margens, letra antiga</span>
+        <p class="tome-fr">« Ce que la prière a fait lever, le fer ne le fait point recoucher. Défaites la couture, et l&#39;ouvrage se défait. »</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
       </div>
       <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"O que a oração fez erguer, o ferro não faz deitar de novo. Desfazei a costura, e a obra se desfaz."</p>
-        <span class="tome-note">Como matar o que já está morto: <b>fogo</b> e <b>as costuras</b>. Esta é a letra de <b>J.M.</b> — e ela é mais velha que a de Brooks (chave da Procedência, ponto 3).</span>
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">&quot;O que a oração fez erguer, o ferro não faz deitar de novo. Desfazei a costura, e a obra se desfaz.&quot;</p>
+        <span class="tome-note">Como matar o que já está morto: <b>fogo</b> (dano cheio) e <b>as costuras</b> (o Javali). Se a mesa já enfrentou essas coisas na tentativa e erro, este é o momento em que descobrem que havia um manual — e que o autor achava aquilo elementar.</span>
       </div>
     </div>
   </div>
+  <div class="tome-card " title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">GRACE + DAVID · o contrafeitiço</span>
+        <p class="tome-fr">O texto final, na língua dos Goules. E, ao traduzir o verbo central, Grace trava: <b>não existe palavra para &quot;curar&quot; nessa língua</b>. O verbo usado significa, ao pé da letra, <b>&quot;devolver ao dono&quot;</b>.</p>
+        <span class="tome-hint">clique para revelar ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">O que isso destrava</span>
+        <p class="tome-pt">A cura não expulsa a doença — <b>restitui</b>. E, se o canto parar no meio, o que estava sendo devolvido <b>não volta ao dono: fica com quem estava cantando</b>. Aplicar a cura sob interrupção exige <b>POD×5</b>; a falha transfere a maldição para o cantor.</p>
+        <span class="tome-note">Fecho de todo o arco do tomo, e a regra que transforma &quot;usar a cura&quot; em <b>decisão</b>. Entregue com cerimônia — de preferência quando o Exército já estiver batendo em portas.</span>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<div class="tip"><span class="tag">Roteiro de bolso</span>
+<p><b>D1</b> o livro se apresenta · <b>D2</b> o culto mostra os dentes · <b>D3</b> abre a Pista 4 · <b>D4</b> o deus e o preço · <b>D5</b> as duas caligrafias · <b>D6</b> o contrafeitiço e a transferência. Se o grupo estiver rápido (todos passando), comprima dois dias num só; se estiver lento, repita o dia sem entregar cartão novo — mas <b>sempre</b> entregue o evento do Exército.</p></div>
 
 <hr class="div">
 
