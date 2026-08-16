@@ -583,6 +583,26 @@
   body.night .inv-card{background:linear-gradient(170deg,#18211a,#191410);}
   body.night .kit{background:rgba(200,170,110,.08);}
 
+  /* placar das quatro chaves */
+  .k4-total{display:flex;align-items:center;gap:12px;margin:.8em 0 1em;}
+  .k4-total .track{flex:1;height:12px;background:rgba(92,110,70,.2);border-radius:6px;overflow:hidden;border:1px solid var(--paper-edge);}
+  .k4-total .fill{height:100%;background:linear-gradient(90deg,var(--green-rot),var(--gold));transition:width .5s ease;}
+  .k4-total .n{font-family:'Special Elite',monospace;font-size:.8rem;color:var(--sepia);white-space:nowrap;}
+  .k4-total .n b{color:var(--blood);font-size:1.4rem;vertical-align:-2px;}
+  .keys4{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:12px;margin:1em 0;}
+  .key4{background:rgba(92,110,70,.10);border:1px solid var(--paper-edge);border-left:4px solid var(--gold);
+        border-radius:4px;padding:11px 14px;}
+  .key4 .k4t{font-family:'IM Fell English SC',serif;font-size:1rem;color:var(--blood);display:block;}
+  .key4 .k4w{font-family:'Special Elite',monospace;font-size:.66rem;letter-spacing:.08em;color:var(--sepia);display:block;margin:2px 0 8px;}
+  .key4 .k4s{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin-top:7px;line-height:1.4;}
+  .k4pips{display:flex;gap:5px;}
+  .k4pips i{flex:1;height:13px;border-radius:2px;background:rgba(92,110,70,.22);border:1px solid var(--paper-edge);
+            cursor:pointer;transition:background .3s,transform .15s;}
+  .k4pips i:hover{transform:translateY(-2px);}
+  .k4pips i.on{background:var(--gold);border-color:var(--gold);}
+  .key4.done{border-left-color:var(--green-rot);background:rgba(63,87,56,.18);}
+  .key4.done .k4t::after{content:" ✔";color:var(--green-rot);}
+
   /* relógio do cerco */
   .siege{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin:1.3em 0;}
   .siege-step{
@@ -2002,6 +2022,14 @@ PANELS.tracker = `
 <p class="footnote">As nove fases do Ato 5. Clique numa fase para marcar onde a campanha está — regra prática: <b>uma fase por dia de leitura</b>. (Detalhes e eventos na aba <b>O Cerco</b>.)</p>
 <div class="siege" id="siegeStepsTrk"></div>
 
+<h3>Placar das Quatro Chaves</h3>
+<p class="footnote">O contrafeitiço não se abre só com francês — precisa das <b>quatro</b> competências do grupo. Clique nos degraus para marcar o progresso de cada um. <b>12 pontos = a cura pode ser preparada.</b> (Regra completa na aba <b>O Cerco</b>.)</p>
+<div class="k4-total">
+  <span class="n">PROGRESSO <b id="k4n">0</b>/12</span>
+  <div class="track"><div class="fill" id="k4fill" style="width:0%"></div></div>
+</div>
+<div class="keys4" id="keys4"></div>
+
 <h3>Os Investigadores</h3>
 <p class="footnote">Clique nos degraus da <b>espinha</b> para ajustar o estágio · clique nos números de SAN/PV para editar · a foto abre ampliada.</p>
 <div class="inv-grid" id="trkInv"></div>
@@ -2110,6 +2138,60 @@ PANELS.siege = `
 </div>
 <div class="lore"><span class="tag">Crawford, o quinto jogador</span>
 <p>Ele fala francês, está no <b>estágio 5</b> e carrega a culpa de não ter socorrido Kelly. Dê a ele uma função mecânica: <b>ler junto</b> (2 leitores = ~metade do tempo, se você quiser aliviar o relógio) e, em troca, uma cena de expiação por dia — queimar a vala, atender os doentes, confessar-se ao Reverendo. Se ele morrer antes do fim da tradução, o francês morre com ele. A mesa deveria sentir isso.</p></div>
+
+<hr class="div">
+
+<h3>As Quatro Chaves — a correção de raiz</h3>
+<div class="warn"><span class="tag">O problema real</span>
+<p>Se o contrafeitiço exige <b>apenas francês</b>, a Nyara joga sozinha por três sessões e os outros três assistem. Isso não é um problema de ritmo — é um problema de <b>desenho</b>. A solução é mudar a fechadura: <b>o texto não abre com uma chave, abre com quatro</b>, e cada Investigador tem uma. O módulo não proíbe isso; ele só nunca imaginou um grupo que não fosse todo de médicos.</p></div>
+
+<p>Um grimório de 1703 sobre um culto necrófago não é um livro de idiomas — é um <b>manual técnico de uma cultura morta</b>. Traduzir as palavras é só a primeira camada. Declare para a mesa que serão necessárias quatro competências:</p>
+
+<table class="stages">
+<thead><tr><th>Chave</th><th>De quem · o que ela resolve</th></tr></thead>
+<tbody>
+<tr><td><b>A Língua</b></td><td><b>Grace · Língua (Francês)</b> — traduzir o francês arcaico e, com o Capítulo IV, a língua dos Goules. <i>É a chave que a mesa já esperava.</i></td></tr>
+<tr><td><b>O Rito</b></td><td><b>Cornélius · Arqueologia / Ocultismo</b> — os sigilos, o pentagrama, o disco com crânio e tentáculos. O texto <b>pressupõe</b> uma gramática ritual que não explica, do mesmo jeito que uma receita pressupõe que você saiba o que é "refogar". <i>Finalmente o arqueólogo faz arqueologia.</i></td></tr>
+<tr><td><b>A Procedência</b></td><td><b>Artemy · Avaliação / História / Antiquário</b> — as cartas de J.M.: tinta, papel, marca-d'água, giro de linguagem. De onde vem a caixa, o que significa "não pertence ao território mundano", quem é Christian. <i>Ele lê objetos como Grace lê palavras.</i></td></tr>
+<tr><td><b>A Prática</b></td><td><b>David · Ocultismo / Psicologia</b> — o único que <b>já viu um ritual funcionar</b>, no pântano de Legrasse. Sabe que há ritmo, cadência, gesto e canto; que a palavra escrita é partitura, não texto. <i>Descobre COMO entoar — e essa é a parte que mata quem erra.</i></td></tr>
+</tbody>
+</table>
+
+<div class="tip"><span class="tag">Mecânica · Placar da Tradução</span>
+<p>Cada chave tem <b>3 pontos</b>; o total é <b>12</b>. Por dia de trabalho, cada Investigador rola a perícia da sua chave <b>uma vez</b>:</p>
+<ul class="cl" style="margin:.35em 0;">
+  <li><b>Sucesso:</b> +1 ponto na chave dele. <b>Sucesso Decisivo/Extremo:</b> +2.</li>
+  <li><b>Falha:</b> nada — mas descreva <i>o que não fecha</i>, nunca "você falhou". O erro é conteúdo.</li>
+  <li><b>Ajuda:</b> quem já fechou a própria chave pode gastar o dia ajudando outro: dado de bônus.</li>
+  <li>Uma chave só pode receber pontos de <b>quem a domina</b> — ninguém termina o trabalho dos outros.</li>
+</ul>
+<p><b>Efeito colateral bem-vindo:</b> com quatro pessoas trabalhando, a tradução leva de <b>3 a 5 dias</b> em vez de dez. Isso resolve de uma vez o tédio <b>e</b> o seu problema de calendário — cinco sessões, dois dias.</p>
+<p class="footnote">Há um placar clicável na aba <b>Painel &amp; Tracker</b> para acompanhar as quatro chaves na tela compartilhada.</p></div>
+
+<hr class="div">
+
+<h3>Seis técnicas de mesa para os dias de estudo</h3>
+
+<div class="lore"><span class="tag">1 · Anuncie o câmbio de marcha</span>
+<p>Abra a próxima sessão dizendo, fora do personagem: <i>"Até agora, cada cena nossa durava minutos. A partir de hoje, cada rodada da mesa é um dia inteiro."</i> Parece bobo; não é. Jogadores calibram o próprio nível de detalhe pelo que você sinaliza — se ninguém avisar, eles vão continuar perguntando o que tem na gaveta. <b>Uma frase compra três horas de ritmo.</b></p></div>
+
+<div class="lore"><span class="tag">2 · Regra dos cinco minutos</span>
+<p>Nenhuma cena individual passa de ~5 minutos. Ao bater o limite, <b>corte no meio da ação</b> e vá para outro jogador — literalmente como série de TV. "Grace, você vira a página e o nome que aparece é… segura essa. David, você está no telhado quando o caminhão para na esquina." A mesa inteira fica ligada porque <b>o corte cria dívida</b>: todos querem voltar.</p></div>
+
+<div class="lore"><span class="tag">3 · A leitura fora da mesa</span>
+<p>Resolva a leitura da Grace <b>entre as sessões</b>, por mensagem: ela rola, você narra o trecho, ela responde. Chega na sessão com o resultado pronto — e, melhor, com <b>informação que só ela tem</b>. O tempo de mesa é o recurso mais caro do grupo; leitura solitária é justamente o que <i>não</i> precisa de mesa. Vale o mesmo para a perícia do Artemy nas cartas.</p></div>
+
+<div class="lore"><span class="tag">4 · A cena da noite — o único momento coletivo</span>
+<p>Todo dia termina com o grupo na mesma sala (o hotel, a cozinha dos Hall, a igreja), <b>trocando o que descobriram</b>. É roleplay puro, sem rolagem, e é onde a campanha respira: as quatro chaves só se encaixam quando eles <b>conversam</b>. Você não precisa preparar nada — os jogadores fazem a cena sozinhos. É também o momento natural para os testes de CON.</p></div>
+
+<div class="lore"><span class="tag">5 · Elipse agressiva</span>
+<p>Quando um dia não tem nada em jogo, <b>não jogue o dia</b>. "Passam-se dois dias. Me digam <b>uma</b> coisa que cada um fez, e uma coisa que cada um perdeu." Colhe quatro frases, rola as CON, e siga. Elipse não é preguiça — é edição.</p></div>
+
+<div class="lore"><span class="tag">6 · Interrompa sempre</span>
+<p>A leitura <b>nunca</b> transcorre em paz: soldados batendo à porta, o grito de alguém na rua, a vela acabando, a mão tremendo cedo demais. Use um evento por dia (tabela adiante). Se o dia estiver calmo demais, é sinal de que <b>você</b> esqueceu de agir com o Exército.</p></div>
+
+<div class="warn"><span class="tag">O erro clássico a evitar</span>
+<p>Não peça "sete testes de Francês" em sequência. Sete rolagens sem consequência entre elas transformam o clímax da campanha em planilha. <b>Cada teste precisa de uma cena, e cada cena precisa de um custo</b> — uma noite sem dormir, uma coceira nova, um soldado na janela, um trecho do livro que a Grace preferia não ter entendido.</p></div>
 
 <hr class="div">
 
@@ -2856,6 +2938,17 @@ function trkDefault(){
     {id:15,name:'Reverendo Charles',con:50,status:'sao',stage:0,contact:true}
   ]};
 }
+/* as quatro chaves da tradução — uma por Investigador */
+const K4=[
+ {id:'lingua',t:'A Língua',w:'GRACE · Língua (Francês)',
+  s:'Traduzir o contrafeitiço do francês de 1703 e da língua dos Goules.'},
+ {id:'rito',t:'O Rito',w:'CORNÉLIUS · Arqueologia / Ocultismo',
+  s:'Ler os sigilos, o pentagrama e o disco com crânio: a gramática ritual que o texto pressupõe.'},
+ {id:'proced',t:'A Procedência',w:'ARTEMY · Avaliação / História',
+  s:'As cartas: quem é J.M., o que é a caixa, o que significa "não pertence ao território mundano".'},
+ {id:'pratica',t:'A Prática',w:'DAVID · Ocultismo / Psicologia',
+  s:'Ele já viu um ritual funcionar no pântano. Sabe que há ritmo, canto e gesto — descobre COMO entoar.'}
+];
 /* fases do cerco — Ato 5 do módulo */
 const SIEGE=[
  'Quarentena declarada · saídas fechadas',
@@ -3003,10 +3096,26 @@ function trkRenderAll(){
   ['siegeSteps','siegeStepsTrk'].forEach(id=>{
     const sg=document.getElementById(id); if(sg) sg.innerHTML=sgHTML;
   });
+  const kw=document.getElementById('keys4');
+  if(kw){
+    TRK.k4=TRK.k4||{};
+    kw.innerHTML=K4.map(k=>{
+      const v=TRK.k4[k.id]||0;
+      let pips='';
+      for(let i=1;i<=3;i++) pips+='<i class="'+(i<=v?'on':'')+'" data-act="k4" data-k="'+k.id+'" data-v="'+i+'"></i>';
+      return '<div class="key4'+(v>=3?' done':'')+'"><span class="k4t">'+k.t+'</span>'+
+             '<span class="k4w">'+k.w+'</span><div class="k4pips">'+pips+'</div>'+
+             '<div class="k4s">'+k.s+'</div></div>';
+    }).join('');
+    const tot=K4.reduce((a,k)=>a+(TRK.k4[k.id]||0),0);
+    const n=document.getElementById('k4n'), f=document.getElementById('k4fill');
+    if(n) n.textContent=tot;
+    if(f) f.style.width=Math.round(tot/12*100)+'%';
+  }
   const lg=document.getElementById('trkLog');
   if(lg)lg.innerHTML=TRK.log.length?TRK.log.join('<br>'):'<i>— sem rolagens ainda. Ajuste as CON e clique em "Rolar o dia". —</i>';
 }
-const TRK_ACTS=['day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege'];
+const TRK_ACTS=['day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege','k4'];
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');
   if(!b||!TRK_ACTS.includes(b.dataset.act))return;
@@ -3035,6 +3144,16 @@ document.addEventListener('click',e=>{
     case 'revive':if(c){c.status='infectado';c.stage=Math.min(9,c.stage||9);trkLog(c.name+' revertido para infectado (estágio '+c.stage+', ajuste manual).');}break;
     case 'del':if(c&&confirm('Remover '+c.name+' do tracker?')){TRK.chars=TRK.chars.filter(x=>x!==c);}break;
     case 'stage':if(c){c.stage=+b.dataset.v;if(c.status!=='infectado')c.status='infectado';trkLog(c.name+' ajustado manualmente para o estágio '+c.stage+'.');}break;
+    case 'k4':{
+      TRK.k4=TRK.k4||{};
+      const k=b.dataset.k, v=+b.dataset.v;
+      TRK.k4[k]=(TRK.k4[k]===v)?v-1:v;
+      const kk=K4.find(x=>x.id===k);
+      const tot=K4.reduce((a,x)=>a+(TRK.k4[x.id]||0),0);
+      trkLog('<span class="ok">Tradução · '+kk.t+' ('+kk.w.split(' ·')[0]+') em '+TRK.k4[k]+'/3 — total '+tot+'/12.</span>');
+      if(tot>=12) trkLog('<span class="dayhdr">— AS QUATRO CHAVES ESTÃO COMPLETAS: o Pó de Kzhoba pode ser preparado —</span>');
+      break;
+    }
     case 'siege':{
       const n=+b.dataset.v;
       TRK.siege=(TRK.siege===n)?n-1:n;
