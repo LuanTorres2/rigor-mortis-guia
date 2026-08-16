@@ -583,6 +583,27 @@
   body.night .inv-card{background:linear-gradient(170deg,#18211a,#191410);}
   body.night .kit{background:rgba(200,170,110,.08);}
 
+  /* consulta rápida (mesa) */
+  .qr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px;margin:1.2em 0;align-items:start;}
+  .qr{background:rgba(92,110,70,.09);border:1px solid var(--paper-edge);border-top:3px solid var(--blood);
+      border-radius:4px;padding:12px 15px 14px;}
+  .qr.ok{border-top-color:var(--green-rot);}
+  .qr.gold{border-top-color:var(--gold);}
+  .qr h5{margin:0 0 8px;font-family:'IM Fell English SC',serif;font-size:1rem;color:var(--blood);letter-spacing:.03em;}
+  .qr.ok h5{color:var(--green-rot);} .qr.gold h5{color:#6b7534;}
+  body.night .qr.gold h5{color:var(--gold);}
+  .qr table{width:100%;border-collapse:collapse;font-size:.82rem;}
+  .qr td{padding:3px 4px;vertical-align:top;border-bottom:1px dotted rgba(120,130,90,.3);}
+  .qr tr:last-child td{border-bottom:none;}
+  .qr td:first-child{font-family:'Special Elite',monospace;color:var(--blood);white-space:nowrap;padding-right:9px;}
+  .qr.ok td:first-child{color:var(--green-rot);}
+  .qr ul{margin:.2em 0;padding-left:0;list-style:none;font-size:.83rem;}
+  .qr ul li{padding:2.5px 0 2.5px 15px;position:relative;line-height:1.4;}
+  .qr ul li::before{content:"▸";position:absolute;left:0;color:var(--rust);}
+  .qr .big{font-family:'Special Elite',monospace;font-size:1.5rem;color:var(--blood);}
+  .qr p{font-size:.83rem;margin:.35em 0;}
+  .qr .hint{font-size:.74rem;color:var(--sepia);font-style:italic;margin-top:7px;}
+
   /* placar das quatro chaves */
   .k4-total{display:flex;align-items:center;gap:12px;margin:.8em 0 1em;}
   .k4-total .track{flex:1;height:12px;background:rgba(92,110,70,.2);border-radius:6px;overflow:hidden;border:1px solid var(--paper-edge);}
@@ -1432,85 +1453,8 @@ PANELS.act5 = `
 <div class="tip"><span class="tag">Tradução e aprendizado — 3 dias</span>
 <p>Mais <b>2 dias</b> para traduzir e compreender o contrafeitiço (na língua dos Goules) e <b>1 dia</b> para aprendê-lo: 3 dias de trabalho. Cada dia exige um teste de <b>Língua (Francês)</b> e um de <b>Ideia</b>; precisa de dois sucessos para concluir a tradução. Quem dominou tudo pode <b>ensinar outro</b>: ambos testam <b>Ideia</b> com sucesso e mais um dia dedicado.</p></div>
 
-<h3>Cartões de tradução — lendo o tomo na mesa</h3>
-<p>A leitora do grupo domina o francês — então o livro fala <b>pela voz dela</b>. Mostre a face em <b>francês</b> na tela (é o que a personagem vê); depois <b>clique no cartão para virá-lo</b> e leia/mande a tradução para a jogadora declamar à mesa, como quem decifra na hora. A nota de Guardião em cada verso diz quando usar. Quem lê, paga: os testes diários de Língua (Francês) e a Sanidade da leitura são dela.</p>
-
-<div class="tome-grid">
-  <div class="tome-card" title="Clique para virar">
-    <div class="tome-inner">
-      <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 1 · a folha de rosto</span>
-        <p class="tome-fr">« Cultes des Goules, contenant la vraie relation des sociétés des mangeurs de morts, de leurs rites, de leur langue et de leur dieu. Par François-Honoré Balfour, Comte d'Erlette. À Paris, M.DCC.III. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
-      </div>
-      <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Cultos dos Goules, contendo a verdadeira relação das sociedades dos comedores de mortos, de seus ritos, de sua língua e de seu deus. Por François-Honoré Balfour, Conde d'Erlette. Em Paris, 1703."</p>
-        <span class="tome-note">Primeiro contato com o livro. Deixe a data (1703) e a palavra "comedores" fazerem o trabalho.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tome-card" title="Clique para virar">
-    <div class="tome-inner">
-      <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 2 · folheando ao acaso</span>
-        <p class="tome-fr">« La chair du mort n'appartient point aux vers, mais à ceux qui savent prier en mangeant. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
-      </div>
-      <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"A carne do morto não pertence aos vermes, mas àqueles que sabem rezar enquanto comem."</p>
-        <span class="tome-note">O primeiro arrepio. Bom para o fim de uma cena de estudo, dito num tom neutro demais.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tome-card" title="Clique para virar">
-    <div class="tome-inner">
-      <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 3 · sobre o deus</span>
-        <p class="tome-fr">« Il ne promet rien qu'il ne tienne : tout ce qui pourrit monte vers Lui. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
-      </div>
-      <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Ele nada promete que não cumpra: tudo o que apodrece sobe até Ele."</p>
-        <span class="tome-note">É a frase que <b>Brooks disse a eles</b>. Não aponte — deixe a mesa reconhecer sozinha que o fazendeiro citava as escrituras de cor.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tome-card" title="Clique para virar">
-    <div class="tome-inner">
-      <div class="tome-face tome-front">
-        <span class="tome-tag">O sumário · a chave da Pista 4</span>
-        <p class="tome-fr">« Chapitre Quatrième : De la langue des goules, et de la manière de l'enseigner aux hommes. »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
-      </div>
-      <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"Capítulo Quarto: Da língua dos goules, e da maneira de ensiná-la aos homens."</p>
-        <span class="tome-note">A placa de sinalização: é este capítulo que permite decifrar a <b>nota cifrada</b> (Pista 4) com o contrafeitiço.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="tome-card marginalia" title="Clique para virar">
-    <div class="tome-inner">
-      <div class="tome-face tome-front">
-        <span class="tome-tag">Dia 4–5 · anotação a lápis, na margem</span>
-        <p class="tome-fr">« Le rite exige la bouche. Et si la maladie devenait elle-même la bouche ? »</p>
-        <span class="tome-hint">clique para revelar a tradução ⟳</span>
-      </div>
-      <div class="tome-face tome-back">
-        <span class="tome-tag">Tradução · entregue à leitora</span>
-        <p class="tome-pt">"O rito exige a boca. E se a doença se tornasse, ela mesma, a boca?"</p>
-        <span class="tome-note">A letra é de <b>Brooks</b>. É o rascunho da epidemia — o momento exato em que a ideia nasceu. Reserve para o meio da leitura: é o soco do arco da leitora.</span>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="clue"><span class="tag">Os cartões de tradução mudaram de aba</span>
+<p>Os trechos em francês do tomo, com as traduções para a leitora declamar à mesa, agora ficam na aba <b><span class="roll">O Tomo</span></b> — junto das quatro chaves, do que cada ponto revela e do preparo do Pó.</p></div>
 
 <h3>O Pó de Kzhoba</h3>
 <p>A caixa contém ervas, temperos, incensos e pós vindos diretamente da <b>Terra dos Sonhos (Dreamlands)</b>. Com eles se prepara o <b>Pó de Kzhoba</b>, capaz de curar a maldição. Mas há um preço.</p>
@@ -2047,6 +1991,135 @@ PANELS.tracker = `
 <h3>Diário de rolagens</h3>
 <div id="trkLog" class="trk-log"></div>
 `;
+/* ---------- CONSULTA RÁPIDA ---------- */
+PANELS.quick = `
+<div class="act-eyebrow">Deixe esta aba aberta durante a sessão</div>
+<h2 class="act-title">Consulta Rápida</h2>
+<p class="lead">Tudo o que você precisa <b>com o dado na mão</b>, sem prosa. Regras da 5.6/7ª conforme o Livro Básico da mesa, mais os números próprios desta aventura.</p>
+
+<div class="qr-grid">
+
+  <div class="qr">
+    <h5>☠ Sanidade — o fluxo</h5>
+    <table>
+      <tr><td>X / Y</td><td>role <b>1D100 ≤ SAN</b>. Sucesso: perde X. Falha: perde Y.</td></tr>
+      <tr><td>5+ num teste</td><td><b>Ideia (INT×5)</b>. ⚠ <b>Sucesso = insanidade temporária</b> (compreendeu). Falha = reprime, segue funcional.</td></tr>
+      <tr><td>1/5 da SAN<br>(≈1 hora)</td><td><b>Insanidade Duradoura</b> — meses. Aplique ao fim do episódio.</td></tr>
+      <tr><td>SAN 0</td><td><b>Insanidade permanente.</b> Vira NPC.</td></tr>
+      <tr><td>Duração</td><td>Rápida: <b>1D10+4 rodadas</b> · Prolongada: <b>1D10×10 horas</b></td></tr>
+    </table>
+  </div>
+
+  <div class="qr">
+    <h5>☠ Insanidade Rápida (1D10)</h5>
+    <table>
+      <tr><td>1</td><td>Desmaia ou grita</td></tr>
+      <tr><td>2</td><td><b>Corre em pânico</b></td></tr>
+      <tr><td>3</td><td>Histeria / explosão emocional</td></tr>
+      <tr><td>4</td><td>Balbucia incoerente</td></tr>
+      <tr><td>5</td><td>Fobia intensa do que viu</td></tr>
+      <tr><td>6</td><td><b>Mania homicida ou suicida</b></td></tr>
+      <tr><td>7</td><td>Alucinações</td></tr>
+      <tr><td>8</td><td>Ecolalia / ecopraxia</td></tr>
+      <tr><td>9</td><td>Come coisas atípicas</td></tr>
+      <tr><td>10</td><td>Estupor / catatonia</td></tr>
+    </table>
+    <p class="hint">Prolongada: amnésia · fobia pesada · alucinação · fetiche · tiques · cegueira psicossomática · psicose breve · paranoia · rituais compulsivos.</p>
+  </div>
+
+  <div class="qr gold">
+    <h5>☠ SAN desta aventura</h5>
+    <table>
+      <tr><td>0/1D2</td><td>Barracão dos doentes</td></tr>
+      <tr><td>1/1D4</td><td>Joseph desperta e fala</td></tr>
+      <tr><td>1/1D8</td><td>A vala além do morro</td></tr>
+      <tr><td>1D2/1D6+1</td><td>O Javali Albino</td></tr>
+      <tr><td>1/1D6</td><td>Brooks sem a Máscara</td></tr>
+      <tr><td>1/1D8</td><td>O laboratório profano</td></tr>
+      <tr><td>0/1D4</td><td>Leitura rápida do tomo</td></tr>
+      <tr><td>1/1D4+1</td><td>O corpo de Kelly <span class="hint" style="display:inline">(sugerido)</span></td></tr>
+    </table>
+  </div>
+
+  <div class="qr">
+    <h5>⚔ Combate — o essencial</h5>
+    <table>
+      <tr><td>Ordem</td><td>DES decrescente. <b>Armas de fogo engatilhadas atiram antes de tudo.</b></td></tr>
+      <tr><td>Empalar</td><td>rolagem <b>≤ perícia ÷ 5</b> → <b>dobra os dados</b> de dano (perfurantes e balas)</td></tr>
+      <tr><td>Aparar</td><td>1×/rodada, declarado. <b>Nunca contra balas.</b></td></tr>
+      <tr><td>Escuridão</td><td>perícia <b>pela metade</b></td></tr>
+      <tr><td>Queima-roupa</td><td>pistola: chance <b>dobrada</b></td></tr>
+      <tr><td>Choque</td><td>perdeu ≥ metade dos PV num golpe → <b>CON×5</b> ou desmaia</td></tr>
+      <tr><td>1–2 PV</td><td>inconsciente automático</td></tr>
+      <tr><td>0 PV</td><td>morre no <b>fim da rodada seguinte</b> — Primeiros Socorros a tempo salva (1D3)</td></tr>
+      <tr><td>Queda</td><td>1D6 por 3 m (Pulo bem-sucedido: −1D6)</td></tr>
+    </table>
+  </div>
+
+  <div class="qr">
+    <h5>🔥 Os Reanimados — fraquezas</h5>
+    <ul>
+      <li><b>Armas de fogo e perfurantes: 1 ponto</b> de dano. Espingarda: metade.</li>
+      <li><b>Outras armas: metade</b> do dano.</li>
+      <li><b>FOGO: dano cheio.</b> Tocha estocada = <b>1D6/rodada</b>; alvo rola <b>Sorte</b> ou pega fogo (1D6 automático/rodada).</li>
+      <li><b>Cortar as costuras</b> (só o Javali): ataque <b>Difícil</b> ignora a redução. 3 amarras: 1ª → MOV 9→4 · 2ª → mordida 20% · 3ª → desmonta.</li>
+      <li>Não sentem dor, não entram em choque, não podem ser persuadidos.</li>
+    </ul>
+  </div>
+
+  <div class="qr ok">
+    <h5>🦠 A Peste — regra diária</h5>
+    <table>
+      <tr><td>Sadio</td><td><b>2 testes de CON/dia</b> (+1 se contato direto). Falha = contrai (estágio 1).</td></tr>
+      <tr><td>Infectado</td><td><b>1 teste de CON/dia.</b> Falha = <b>+1 estágio</b>. Cumulativo, não regride.</td></tr>
+      <tr><td>Est. 5</td><td>penalidade em testes sociais</td></tr>
+      <tr><td>Est. 7</td><td>concentração <b>Difícil</b> · só carne crua · fúria</td></tr>
+      <tr><td>Est. 8</td><td><b>tudo Difícil</b> (incl. CON) · −1 PV/dia (curável)</td></tr>
+      <tr><td>Est. 9</td><td><b>tudo Extremo</b> · −1 PV/dia permanente</td></tr>
+      <tr><td>Est. 10</td><td>morte · <b>25%</b> de erguer-se (ativo 12h)</td></tr>
+      <tr><td>Cura</td><td>Pó de Kzhoba: <b>2D6 PM</b>/porção · 3h de preparo · acorda em 5h regenerado e imune</td></tr>
+    </table>
+  </div>
+
+  <div class="qr">
+    <h5>🎖 Militares — Tensão do Cerco</h5>
+    <table>
+      <tr><td>Fase 1–2</td><td>testes sociais <b>normais</b></td></tr>
+      <tr><td>Fase 3–4</td><td><b>Difíceis</b> · revistas de rotina</td></tr>
+      <tr><td>Fase 5–6</td><td><b>Difíceis</b> · 96–00 = detenção</td></tr>
+      <tr><td>Fase 7+</td><td><b>Extremos</b> · movimento brusco = tiro</td></tr>
+    </table>
+    <p class="hint">Nunca acreditam no sobrenatural. A única alavanca: <b>Warren despreza Mendel</b> — delatar com evidência atrasa uma fase.</p>
+  </div>
+
+  <div class="qr gold">
+    <h5>📖 O Tomo — placar</h5>
+    <p><b>4 chaves × 3 pontos = 12.</b> Um teste por Investigador por dia.</p>
+    <ul>
+      <li><b>Grace</b> · Francês → A Língua</li>
+      <li><b>Cornélius</b> · Arqueologia → O Rito</li>
+      <li><b>Artemy</b> · Avaliação → A Procedência</li>
+      <li><b>David</b> · Ocultismo → A Prática</li>
+    </ul>
+    <p class="hint">Sucesso +1 · Decisivo +2 · Falha descreve o que não fecha. Detalhes na aba <b>O Tomo</b>.</p>
+  </div>
+
+  <div class="qr">
+    <h5>🎲 Dificuldades</h5>
+    <table>
+      <tr><td>Regular</td><td>≤ perícia</td></tr>
+      <tr><td>Difícil</td><td>≤ <b>metade</b> da perícia</td></tr>
+      <tr><td>Extremo</td><td>≤ <b>um quinto</b> da perícia</td></tr>
+      <tr><td>Decisivo</td><td>01 · <b>Desastre</b>: 96–00</td></tr>
+    </table>
+    <p class="hint">Empurrar o teste: só uma vez, e a falha tem consequência narrada — nunca "nada acontece".</p>
+  </div>
+
+</div>
+
+<div class="tip"><span class="tag">Atalhos</span>
+<p><b>Painel &amp; Tracker</b> → estágios, SAN/PV, relógio do cerco, placar das chaves · <b>O Cerco</b> → o que o Exército faz hoje · <b>A Teia</b> → quem é quem · <b>O Tomo</b> → a leitura.</p></div>
+`;
 /* ---------- TEIA DE RELAÇÕES ---------- */
 PANELS.web = `
 <div class="act-eyebrow">Quem é quem, e quem deve o quê a quem</div>
@@ -2100,6 +2173,190 @@ PANELS.web = `
   </div>
 </div>
 `;
+/* ---------- O TOMO ---------- */
+PANELS.tome = `
+<div class="act-eyebrow">A linha da cura, do começo ao fim</div>
+<h2 class="act-title">O Tomo</h2>
+<p class="lead">Tudo sobre o <i>Cultes des Goules</i> num só lugar: o objeto, as quatro chaves que o abrem, o que cada sucesso revela, os cartões de tradução para a mesa e o preparo do Pó de Kzhoba. <b>Grace tem o livro; Artemy tem as cartas.</b> Esta aba é o roteiro da reta final.</p>
+
+<div class="lore"><span class="tag">O objeto</span>
+<p>Couro verde-musgo gasto e rachado, cantos de metal corroídos, o título em douração quase apagada. Papel pesado de outro século; cheiro de cripta e cera. Escrito por <b>François Honoré-Balfour, o Comte d'Erlette</b>, publicado em <b>Paris, 1703</b>. Só existe em francês; estima-se <b>quatorze cópias</b> no mundo — esta é uma delas. Trata dos ritos de necrofagia e necrofilia de sociedades de ladrões de túmulos, da reanimação dos mortos, e traz no <b>Capítulo IV</b> a língua dos Goules. Alguém leu este livro muitas vezes: há <b>anotações a lápis nas margens</b>, em duas caligrafias diferentes.</p></div>
+
+<hr class="div">
+
+<h3>As Quatro Chaves</h3>
+<div class="warn"><span class="tag">Por que quatro, e não só o francês</span>
+<p>Se o contrafeitiço exigisse <b>apenas</b> a língua, a Grace jogaria sozinha por três sessões e os outros três assistiriam. Um grimório de 1703 sobre um culto necrófago não é um livro de idiomas — é um <b>manual técnico de uma cultura morta</b>. Traduzir as palavras é só a primeira camada. <b>O texto não abre com uma chave: abre com quatro</b>, e cada Investigador tem a sua.</p></div>
+
+<table class="stages">
+<thead><tr><th>Chave</th><th>De quem · o que ela resolve</th></tr></thead>
+<tbody>
+<tr><td><b>A Língua</b></td><td><b>Grace · Língua (Francês)</b> — o francês arcaico e, pelo Capítulo IV, a língua dos Goules. <i>A chave que a mesa já esperava.</i></td></tr>
+<tr><td><b>O Rito</b></td><td><b>Cornélius · Arqueologia / Ocultismo</b> — os sigilos, o pentagrama, o disco com crânio. O texto <b>pressupõe</b> uma gramática ritual que não explica — como uma receita pressupõe que você saiba refogar. <i>Finalmente o arqueólogo faz arqueologia.</i></td></tr>
+<tr><td><b>A Procedência</b></td><td><b>Artemy · Avaliação / História</b> — as cartas de J.M.: tinta, papel, marca-d'água, giro de linguagem. <i>Ele lê objetos como Grace lê palavras.</i></td></tr>
+<tr><td><b>A Prática</b></td><td><b>David · Ocultismo / Psicologia</b> — o único que <b>já viu um ritual funcionar</b>, no pântano de Legrasse. A palavra escrita é partitura, não texto. <i>Descobre COMO entoar.</i></td></tr>
+</tbody>
+</table>
+
+<div class="tip"><span class="tag">Mecânica · Placar da Tradução</span>
+<ul class="cl" style="margin:.35em 0;">
+  <li>Cada chave vale <b>3 pontos</b>; total <b>12</b>. Um teste por Investigador <b>por dia</b>.</li>
+  <li><b>Sucesso:</b> +1 · <b>Decisivo/Extremo:</b> +2 · <b>Falha:</b> nada, mas descreva <i>o que não fecha</i> — o erro é conteúdo, nunca "você falhou".</li>
+  <li>Quem já fechou a própria chave pode gastar o dia <b>ajudando outro</b>: dado de bônus.</li>
+  <li>Uma chave só recebe pontos de <b>quem a domina</b>. Ninguém termina o trabalho dos outros.</li>
+  <li>Com quatro trabalhando: <b>3 a 5 dias</b>, em vez de dez.</li>
+</ul>
+<p class="footnote">Placar clicável na aba <b>Painel &amp; Tracker</b>.</p></div>
+
+<hr class="div">
+
+<h3>O que cada ponto revela</h3>
+<p>Não anuncie "+1 ponto". A cada sucesso, <b>entregue uma revelação</b> — é isso que faz a leitura valer o tempo de mesa.</p>
+
+<div class="twocol">
+  <div>
+    <h4>A Língua · Grace</h4>
+    <ol class="steps" style="margin:.3em 0;">
+      <li>O contrafeitiço tem nome, e o nome não é "cura": é uma <b>desoração</b> — desfaz o que foi rezado.</li>
+      <li>A língua dos Goules <b>não tem palavra para curar</b>. O verbo usado significa, ao pé da letra, <b>"devolver ao dono"</b>. Alguém é dono daquilo que está no corpo dos doentes.</li>
+      <li>O texto completo — e a descoberta de que ele precisa ser <b>cantado</b>, não lido.</li>
+    </ol>
+    <h4>A Procedência · Artemy</h4>
+    <ol class="steps" style="margin:.3em 0;">
+      <li>O papel e a tinta das cartas de J.M. <b>não são deste século</b> — e não correspondem a nada que um antiquário já tenha visto em leilão, arquivo ou catálogo.</li>
+      <li>"Nossa terra", "nossa comunidade": J.M. não escreve da Europa. As especiarias, ele avisa, <b>não pertencem ao território mundano</b>.</li>
+      <li>A caligrafia de J.M. aparece <b>também nas margens do tomo</b> — em anotações <b>mais antigas</b> que as de Brooks. J.M. teve este livro nas mãos primeiro. Ele não é um correspondente: é o <b>dono</b>.</li>
+    </ol>
+  </div>
+  <div>
+    <h4>O Rito · Cornélius</h4>
+    <ol class="steps" style="margin:.3em 0;">
+      <li>Os dois sigilos: o disco de crânio e tentáculos (<b>Mordigian</b>) e o homem vitruviano no pentagrama — <b>o corpo humano como recipiente</b>, não como pessoa.</li>
+      <li>A gramática do livro inteiro pressupõe <b>troca</b>: nada é dado, tudo é comprado. É por isso que o contrafeitiço cobra <b>essência de quem o faz</b> (os 2D6 PM). Nenhuma linha explica isso — é a cultura que sabia.</li>
+      <li>Reconhecimento arqueológico: o forno de ossos, a câmara sob a terra, a orientação norte. <b>Brooks não construiu um laboratório. Construiu um templo.</b></li>
+    </ol>
+    <h4>A Prática · David</h4>
+    <ol class="steps" style="margin:.3em 0;">
+      <li>Ritual tem cadência. Ele reconhece a estrutura — <b>invocação, oferta, dispensa</b> — porque ouviu exatamente isso nos pântanos de Legrasse.</li>
+      <li>O canto tem um ritmo que a garganta humana quase não sustenta. Ele descobre <b>como respirar no meio</b>. Sem isso, ninguém chega ao fim.</li>
+      <li><b>O erro fatal:</b> se o canto parar no meio, a desoração <b>não se desfaz — ela se transfere</b>. Quem canta assume a maldição de quem estava sendo curado.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="warn"><span class="tag">A regra que David descobre — use no clímax</span>
+<p>Preparar o Pó já custa <span class="roll">2D6 PM</span>. Mas <b>aplicar</b> a cura exige o canto até o fim. Se o cantor for interrompido — um soldado arrombando a porta, um tiro, uma mão tremendo demais — role <b>POD×5</b>: falha significa que <b>a maldição troca de corpo</b>. O paciente acorda limpo; o cantor acorda no estágio em que o paciente estava. É o preço que transforma "usar a cura" em <b>decisão</b>, e não em contabilidade.</p></div>
+
+<hr class="div">
+
+<h3>Cartões de tradução — lendo o tomo na mesa</h3>
+<p>Mostre a face em <b>francês</b> na tela (é o que a personagem vê); depois <b>clique no cartão para virá-lo</b> e entregue a tradução para a jogadora declamar à mesa, como quem decifra na hora. A nota de Guardião em cada verso diz quando usar.</p>
+
+<div class="tome-grid">
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 1 · a folha de rosto</span>
+        <p class="tome-fr">« Cultes des Goules, contenant la vraie relation des sociétés des mangeurs de morts, de leurs rites, de leur langue et de leur dieu. Par François-Honoré Balfour, Comte d'Erlette. À Paris, M.DCC.III. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Cultos dos Goules, contendo a verdadeira relação das sociedades dos comedores de mortos, de seus ritos, de sua língua e de seu deus. Por François-Honoré Balfour, Conde d'Erlette. Em Paris, 1703."</p>
+        <span class="tome-note">Primeiro contato. Deixe a data (1703) e a palavra "comedores" fazerem o trabalho.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 2 · folheando ao acaso</span>
+        <p class="tome-fr">« La chair du mort n'appartient point aux vers, mais à ceux qui savent prier en mangeant. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"A carne do morto não pertence aos vermes, mas àqueles que sabem rezar enquanto comem."</p>
+        <span class="tome-note">O primeiro arrepio. Bom para encerrar uma cena de estudo, dito num tom neutro demais.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 3 · sobre o deus</span>
+        <p class="tome-fr">« Il ne promet rien qu'il ne tienne : tout ce qui pourrit monte vers Lui. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Ele nada promete que não cumpra: tudo o que apodrece sobe até Ele."</p>
+        <span class="tome-note">É a frase que <b>Brooks disse a eles</b>. Não aponte — deixe a mesa reconhecer sozinha que o fazendeiro citava as escrituras de cor.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">O sumário · a chave da Pista 4</span>
+        <p class="tome-fr">« Chapitre Quatrième : De la langue des goules, et de la manière de l'enseigner aux hommes. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"Capítulo Quarto: Da língua dos goules, e da maneira de ensiná-la aos homens."</p>
+        <span class="tome-note">A placa de sinalização: é este capítulo que permite decifrar a <b>nota cifrada</b> (Pista 4) com o contrafeitiço.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card marginalia" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">Dia 4–5 · anotação a lápis, na margem</span>
+        <p class="tome-fr">« Le rite exige la bouche. Et si la maladie devenait elle-même la bouche ? »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"O rito exige a boca. E se a doença se tornasse, ela mesma, a boca?"</p>
+        <span class="tome-note">A letra é de <b>Brooks</b>. É o rascunho da epidemia — o instante em que a ideia nasceu. Reserve para o meio da leitura: é o soco do arco da leitora.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tome-card marginalia" title="Clique para virar">
+    <div class="tome-inner">
+      <div class="tome-face tome-front">
+        <span class="tome-tag">A outra caligrafia · mais antiga</span>
+        <p class="tome-fr">« Ce que la prière a fait lever, le fer ne le fait point recoucher. Défaites la couture, et l'ouvrage se défait. »</p>
+        <span class="tome-hint">clique para revelar a tradução ⟳</span>
+      </div>
+      <div class="tome-face tome-back">
+        <span class="tome-tag">Tradução · entregue à leitora</span>
+        <p class="tome-pt">"O que a oração fez erguer, o ferro não faz deitar de novo. Desfazei a costura, e a obra se desfaz."</p>
+        <span class="tome-note">Como matar o que já está morto: <b>fogo</b> e <b>as costuras</b>. Esta é a letra de <b>J.M.</b> — e ela é mais velha que a de Brooks (chave da Procedência, ponto 3).</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<h3>O Pó de Kzhoba — preparo e aplicação</h3>
+<ol class="steps">
+  <li><b>Preparar:</b> moer as ervas, triturá-las com os pós e impregná-las com a fumaça dos incensos, entoando o canto na língua dos Goules. <b>~3 horas por porção.</b></li>
+  <li><b>Pagar:</b> quem prepara despende parte da própria essência — <span class="roll">2D6 Pontos de Magia</span> por porção.</li>
+  <li><b>Aplicar:</b> espalhado por toda a pele e ingerido com água — <b>com o canto até o fim</b> (ver a regra do David, acima).</li>
+  <li><b>Sofrer:</b> dores horríveis dilaceram os músculos; a impressão é de que tudo deu errado. Então o paciente cai num <b>sono profundo</b>.</li>
+  <li><b>Renascer:</b> acorda <b>5 horas depois, completamente regenerado</b> e <b>imune a novos contágios</b>. Quem observa vê a pele absorver o pó e se reconstituir.</li>
+</ol>
+<div class="warn"><span class="tag">A conta que fecha a campanha</span>
+<p><b>7 ou 8 porções</b> para <b>1.256 habitantes</b>. A pergunta final não é "conseguimos a cura?" — é <b>"quem a gente escolhe?"</b>. Cada NPC que eles salvarem até lá é um rosto nessa lista: Jr Hall, Evelyn, Crawford, Carrie, Margareth, Yoshi. Comece a plantar isso agora.</p></div>
+`;
 /* ---------- O CERCO ---------- */
 PANELS.siege = `
 <div class="act-eyebrow">Onde a campanha está agora</div>
@@ -2141,32 +2398,8 @@ PANELS.siege = `
 
 <hr class="div">
 
-<h3>As Quatro Chaves — a correção de raiz</h3>
-<div class="warn"><span class="tag">O problema real</span>
-<p>Se o contrafeitiço exige <b>apenas francês</b>, a Nyara joga sozinha por três sessões e os outros três assistem. Isso não é um problema de ritmo — é um problema de <b>desenho</b>. A solução é mudar a fechadura: <b>o texto não abre com uma chave, abre com quatro</b>, e cada Investigador tem uma. O módulo não proíbe isso; ele só nunca imaginou um grupo que não fosse todo de médicos.</p></div>
-
-<p>Um grimório de 1703 sobre um culto necrófago não é um livro de idiomas — é um <b>manual técnico de uma cultura morta</b>. Traduzir as palavras é só a primeira camada. Declare para a mesa que serão necessárias quatro competências:</p>
-
-<table class="stages">
-<thead><tr><th>Chave</th><th>De quem · o que ela resolve</th></tr></thead>
-<tbody>
-<tr><td><b>A Língua</b></td><td><b>Grace · Língua (Francês)</b> — traduzir o francês arcaico e, com o Capítulo IV, a língua dos Goules. <i>É a chave que a mesa já esperava.</i></td></tr>
-<tr><td><b>O Rito</b></td><td><b>Cornélius · Arqueologia / Ocultismo</b> — os sigilos, o pentagrama, o disco com crânio e tentáculos. O texto <b>pressupõe</b> uma gramática ritual que não explica, do mesmo jeito que uma receita pressupõe que você saiba o que é "refogar". <i>Finalmente o arqueólogo faz arqueologia.</i></td></tr>
-<tr><td><b>A Procedência</b></td><td><b>Artemy · Avaliação / História / Antiquário</b> — as cartas de J.M.: tinta, papel, marca-d'água, giro de linguagem. De onde vem a caixa, o que significa "não pertence ao território mundano", quem é Christian. <i>Ele lê objetos como Grace lê palavras.</i></td></tr>
-<tr><td><b>A Prática</b></td><td><b>David · Ocultismo / Psicologia</b> — o único que <b>já viu um ritual funcionar</b>, no pântano de Legrasse. Sabe que há ritmo, cadência, gesto e canto; que a palavra escrita é partitura, não texto. <i>Descobre COMO entoar — e essa é a parte que mata quem erra.</i></td></tr>
-</tbody>
-</table>
-
-<div class="tip"><span class="tag">Mecânica · Placar da Tradução</span>
-<p>Cada chave tem <b>3 pontos</b>; o total é <b>12</b>. Por dia de trabalho, cada Investigador rola a perícia da sua chave <b>uma vez</b>:</p>
-<ul class="cl" style="margin:.35em 0;">
-  <li><b>Sucesso:</b> +1 ponto na chave dele. <b>Sucesso Decisivo/Extremo:</b> +2.</li>
-  <li><b>Falha:</b> nada — mas descreva <i>o que não fecha</i>, nunca "você falhou". O erro é conteúdo.</li>
-  <li><b>Ajuda:</b> quem já fechou a própria chave pode gastar o dia ajudando outro: dado de bônus.</li>
-  <li>Uma chave só pode receber pontos de <b>quem a domina</b> — ninguém termina o trabalho dos outros.</li>
-</ul>
-<p><b>Efeito colateral bem-vindo:</b> com quatro pessoas trabalhando, a tradução leva de <b>3 a 5 dias</b> em vez de dez. Isso resolve de uma vez o tédio <b>e</b> o seu problema de calendário — cinco sessões, dois dias.</p>
-<p class="footnote">Há um placar clicável na aba <b>Painel &amp; Tracker</b> para acompanhar as quatro chaves na tela compartilhada.</p></div>
+<div class="clue"><span class="tag">A correção de raiz · fica na aba O Tomo</span>
+<p>O contrafeitiço <b>não abre só com francês</b>: exige <b>quatro chaves</b>, uma por Investigador (Grace/Língua, Cornélius/Rito, Artemy/Procedência, David/Prática). É o que impede a leitora de jogar sozinha por três sessões — e derruba a tradução de 10 dias para 3–5. <b>Regra completa, revelações de cada ponto e cartões de tradução: aba <span class="roll">O Tomo</span>.</b></p></div>
 
 <hr class="div">
 
@@ -2270,6 +2503,69 @@ PANELS.siege = `
 
 <div class="warn"><span class="tag">A regra que não se quebra</span>
 <p>Em qualquer hipótese, será <b>impossível</b> convencer soldados, Mendel ou Warren de que isto é uma maldição de outro mundo. Não dê a eles uma saída racional; não deixe um NPC militar "quase acreditar". <b>O horror do Ato 5 é ninguém acreditar</b> — e os Investigadores terem a cura na mão sem conseguir explicar de onde ela veio.</p></div>
+
+<hr class="div">
+
+<h3>Ações do Exército — o que eles fazem hoje</h3>
+<p>Duas camadas. As <b>temporais</b> são inevitáveis e você as agenda: são o cronograma da destruição, e cada uma escala a Tensão. As <b>aleatórias</b> são o barulho de fundo do cerco — role uma por manhã (ou escolha) para que a cidade nunca pareça parada.</p>
+
+<h4>Camada 1 · Temporais (agendadas, inevitáveis)</h4>
+<p>Sugestão de calendário se você usar <b>uma fase por dia de estudo</b>. Anuncie sempre em três frases, sem negociação — o Exército não reage aos jogadores, cumpre cronograma.</p>
+<table class="stages">
+<thead><tr><th>Dia</th><th>Ação temporal · e o que ela custa aos Investigadores</th></tr></thead>
+<tbody>
+<tr><td>D+0</td><td><b>Quarentena declarada.</b> Barricadas, o cone amplificador, ninguém sai. <i>Perdem a opção de simplesmente ir embora.</i></td></tr>
+<tr><td>D+1</td><td><b>Censo porta a porta.</b> Nomes, idades, sintomas, quem mora onde. <i>Os quatro entram numa lista — e forasteiros chamam atenção.</i></td></tr>
+<tr><td>D+2</td><td><b>Queima dos corpos da vala.</b> A fumaça cobre a cidade o dia inteiro. <i>Se Crawford já queimou por conta própria, o Exército quer saber quem autorizou.</i></td></tr>
+<tr><td>D+3</td><td><b>Exames médicos obrigatórios.</b> Mendel colhe sangue de todos. <i>Estágio 1–3 é invisível a olho nu, mas o sangue acusa. Primeiro grande teste de esconder o que são.</i></td></tr>
+<tr><td>D+4</td><td><b>Confisco de armas civis</b> e queima das casas vazias. <i>Adeus rifle da Grace, facões, munição — a menos que escondam antes.</i></td></tr>
+<tr><td>D+5</td><td><b>Toque de recolher</b> ao anoitecer. <i>A leitura noturna passa a ser feita à luz de vela, com janelas cobertas.</i></td></tr>
+<tr><td>D+6</td><td><b>Mendel começa a raptar</b> "voluntários" para estudo. <i>Um NPC querido some. Ou um Investigador — e vira missão de resgate.</i></td></tr>
+<tr><td>D+7</td><td><b>Desapropriação e zonas.</b> Famílias separadas entre contaminados e limpos, em tendas-albergue. <i>O grupo é separado: reunir-se vira uma ação por dia.</i></td></tr>
+<tr><td>D+10</td><td><b>Extermínio dos casos avançados</b> e incêndio das casas com os corpos dentro. <i>Todo NPC no estágio 8+ está em risco imediato — inclusive Crawford.</i></td></tr>
+<tr><td>D+14</td><td><b>Erradicação.</b> A cidade sai do mapa. <i>Se ainda estiverem dentro, é agora ou nunca.</i></td></tr>
+</tbody>
+</table>
+
+<h4>Camada 2 · Aleatórias (role 1D20 pela manhã)</h4>
+<table class="stages">
+<thead><tr><th>1D20</th><th>O Exército faz…</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>Patrulha dobrada.</b> Dois postos novos aparecem onde ontem não havia nada. Uma rota que eles usavam morreu.</td></tr>
+<tr><td>2</td><td><b>Revista completa</b> no lugar onde estão hospedados. Furtividade para o que não pode ser visto.</td></tr>
+<tr><td>3</td><td><b>Racionamento na praça.</b> Comida distribuída num único ponto — e todos precisam se expor e fazer fila para comer.</td></tr>
+<tr><td>4</td><td><b>Puxam um corpo da rua com ganchos</b>, sem tocar, e o levam numa carroça. A cidade assiste em silêncio.</td></tr>
+<tr><td>5</td><td><b>Interrogatório aleatório.</b> Escolhem um dos Investigadores, separam do grupo, perguntam a mesma coisa quatro vezes para pegar contradição.</td></tr>
+<tr><td>6</td><td><b>Arame farpado</b> fecha uma rua inteira. O mapa mental da cidade muda.</td></tr>
+<tr><td>7</td><td><b>Holofote noturno</b> varre as janelas de hora em hora. Dormir e ler ficam difíceis.</td></tr>
+<tr><td>8</td><td><b>Anúncio pelo cone:</b> uma regra nova (entrega de armas, apresentação obrigatória, proibição de reunião).</td></tr>
+<tr><td>9</td><td><b>Queimam uma casa vazia.</b> A fumaça e o cheiro tomam o bairro por horas.</td></tr>
+<tr><td>10</td><td><b>Um soldado vomita atrás de um muro.</b> Está com medo — ou está doente. Ninguém sabe, nem ele.</td></tr>
+<tr><td>11</td><td><b>Mendel requisita um "voluntário"</b> da rua, na frente de todos. Ninguém reage.</td></tr>
+<tr><td>12</td><td><b>Dois soldados brigam entre si.</b> A disciplina começa a rachar — e um oficial encobre.</td></tr>
+<tr><td>13</td><td><b>Um soldado procura ajuda médica em segredo.</b> Está infectado e escondendo. Oportunidade de ouro: um homem armado que agora deve um favor.</td></tr>
+<tr><td>14</td><td><b>Destroem um estoque de comida</b> declarado "contaminado". A cidade fica com menos um dia de mantimento.</td></tr>
+<tr><td>15</td><td><b>Um morador é baleado</b> tentando furar o cerco. O corpo fica no arame o dia inteiro, sem permissão de recolher.</td></tr>
+<tr><td>16</td><td><b>Reforço chega.</b> Mais caminhões, mais homens. O cerco aperta visivelmente — <b>+1 na Tensão até o fim do dia</b>.</td></tr>
+<tr><td>17</td><td><b>Um oficial pergunta pelos Investigadores pelo nome.</b> Alguém falou. Quem?</td></tr>
+<tr><td>18</td><td><b>Vasculham a fazenda de Brooks</b> e acham a cratera. A palavra "sabotagem" entra em circulação.</td></tr>
+<tr><td>19</td><td><b>Almeida ou Redford</b> aparece sozinho, fora do horário, querendo conversar. Brecha — ou armadilha de Mendel.</td></tr>
+<tr><td>20</td><td><b>Silêncio total.</b> Nenhum movimento militar o dia inteiro. É pior que tudo: alguma coisa está sendo decidida lá fora.</td></tr>
+</tbody>
+</table>
+
+<div class="tip"><span class="tag">Reação de um soldado qualquer (1D6)</span>
+<p>Quando os Investigadores abordarem um militar sem nome, role para saber com quem estão falando:</p>
+<table class="stages" style="margin:.4em 0;">
+<tbody>
+<tr><td>1</td><td><b>Assustado</b> — quer distância; cede fácil se o assunto for doença.</td></tr>
+<tr><td>2</td><td><b>Burocrata</b> — segue o manual à risca; nada de exceções.</td></tr>
+<tr><td>3</td><td><b>Cansado</b> — deixa passar se não der trabalho nem testemunha.</td></tr>
+<tr><td>4</td><td><b>Valentão</b> — provoca, testa limites, quer que reajam.</td></tr>
+<tr><td>5</td><td><b>Curioso</b> — quer saber o que está <i>realmente</i> acontecendo aqui.</td></tr>
+<tr><td>6</td><td><b>Humano</b> — reconhece alguém, aceita um recado, faz um favor pequeno. <i>Anote o nome: ele volta.</i></td></tr>
+</tbody>
+</table></div>
 
 <hr class="div">
 
@@ -2556,6 +2852,7 @@ Negative: color, modern medical equipment, clean hospital, text, watermark, cart
    RENDER
    ============================================================ */
 const TABS = [
+  {id:"quick",        label:"⚡ Consulta Rápida",   num:""},
   {id:"intro",        label:"Guardião",            num:""},
   {id:"investigators",label:"Os Investigadores",   num:""},
   {id:"chronicle",    label:"Crônica",             num:""},
@@ -2569,6 +2866,7 @@ const TABS = [
   {id:"creatures",    label:"Criaturas & Mortos",  num:""},
   {id:"disease",      label:"A Doença",            num:""},
   {id:"tracker",      label:"Painel & Tracker",    num:""},
+  {id:"tome",         label:"O Tomo",              num:""},
   {id:"siege",        label:"O Cerco",             num:""},
   {id:"locations",    label:"Localidades",         num:""},
   {id:"images",       label:"Gerador de Imagens",  num:""},
