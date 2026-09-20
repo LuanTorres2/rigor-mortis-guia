@@ -26,7 +26,7 @@
 var RigorMortis = (function () {
   'use strict';
 
-  var VERSION = '1.0';
+  var VERSION = '1.1';
 
   var SIEGE = [
     'Quarentena declarada · saídas fechadas',
@@ -85,7 +85,7 @@ var RigorMortis = (function () {
 
   /* ---------- estado ---------- */
   function ensureState() {
-    if (!state.RigorMortis || state.RigorMortis.version !== VERSION) {
+    if (!state.RigorMortis || state.RigorMortis.ruido === undefined) {
       state.RigorMortis = {
         version: VERSION,
         ruido: 0,
@@ -94,6 +94,8 @@ var RigorMortis = (function () {
         tokens: { ruido: null, dose: null, cerco: null }
       };
     }
+    state.RigorMortis.version = VERSION;
+    state.RigorMortis.tokens = state.RigorMortis.tokens || { ruido: null, dose: null, cerco: null };
     return state.RigorMortis;
   }
 
@@ -354,8 +356,14 @@ var RigorMortis = (function () {
           var kind = (args[1] || '').toLowerCase();
           if (['ruido', 'dose', 'cerco'].indexOf(kind) < 0) { say(card('Vincular', 'Use: <code>!rm vincular ruido|dose|cerco</code> com um token selecionado.'), true); break; }
           var sel = (msg.selected || [])[0];
-          if (!sel) { say(card('Vincular', 'Selecione um token primeiro.'), true); break; }
-          st.tokens[kind] = sel._id;
+          var tokId = sel ? sel._id : null;
+          if (!tokId) {
+            var rx = kind === 'ruido' ? /ru[ií]do/i : kind === 'dose' ? /dose|p[oó] de kzhoba|kzhoba/i : /cerco/i;
+            var g = findObjs({ _type: 'graphic', _pageid: Campaign().get('playerpageid') }).filter(function (x) { return rx.test(x.get('name') || ''); })[0];
+            if (g) tokId = g.id;
+          }
+          if (!tokId) { say(card('Vincular', 'Selecione um token primeiro — ou dê ao token o nome "Ruído", "Pó de Kzhoba" ou "Cerco" na página atual.'), true); break; }
+          st.tokens[kind] = tokId;
           syncToken(kind);
           say(card('Vinculado', 'O token selecionado agora mostra <b>' + kind + '</b> na barra 1.'), true);
         }
