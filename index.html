@@ -2483,6 +2483,32 @@ PANELS.quick = `
     <p class="footnote" style="margin:.4em 0 0">Para o clímax: <b>ninguém tem Disfarce</b> (rota 5 é quase suicida) · a Furtividade do grupo é fraca — o David (42) devia ir na frente e a regra do "pior rola" pune muito (Grace/Cornélius 20) · <b>Grace com 0 PM não pode preparar dose nenhuma</b>; sobra Cornélius (7) e David (8) — cada dose custa 2D6, então <b>um deles pode não ter PM para a segunda</b> · Cornélius tem Sorte 97: lembre-o de gastar.</p>
   </div>
 
+  <div class="qr">
+    <h5>🎲 Sorte — como funciona (7E, Livro do Guardião p. 90 e 99)</h5>
+    <table>
+      <tr><td>Teste de Sorte</td><td><b>1D100 ≤ Sorte</b>. Só quando <b>nenhuma perícia se aplica</b> — a mão do destino: "há um guarda nesta esquina?", "a porta está trancada?".</td></tr>
+      <tr><td>Sorte coletiva</td><td>Quem tem a <b>menor Sorte presente</b> rola pelo grupo. Hoje: <b>Grace (40)</b>.</td></tr>
+      <tr><td>Quem se dá mal?</td><td>Se algo ruim vai acontecer a <i>alguém</i> do grupo, cai em quem tem a menor Sorte no momento.</td></tr>
+      <tr><td><b>Gastar Sorte</b> <span class="footnote">(opcional — recomendo usar)</span></td><td>Depois de um teste de perícia/atributo, o jogador gasta pontos <b>1 por 1</b> para baixar o resultado até virar sucesso (ou subir o nível: Regular → Difícil). Pode gastar qualquer quantia até a Sorte atual. <b>Só nas próprias jogadas.</b></td></tr>
+      <tr><td>Não pode</td><td>Em testes de <b>Sorte</b>, <b>Sanidade</b>, dano, perda de SAN. <b>Forçou o teste? Não pode gastar</b> (é um <i>ou</i> outro). Críticos, desastres e emperros <b>não se apagam</b>. Gastou Sorte = <b>sem marca de melhoria</b> na perícia.</td></tr>
+      <tr><td>Recuperar</td><td>Fim de cada sessão: 1D100; se <b>maior</b> que a Sorte atual, <b>+1D10</b>. Máx. 99; não há "reset" ao valor inicial.</td></tr>
+      <tr><td>Ficar consciente</td><td>Com a regra opcional, 1 ponto de Sorte mantém o ferido consciente até o fim da rodada; dobra a cada rodada (2, 4, 8…).</td></tr>
+      <tr><td style="color:var(--blood)">Na mesa</td><td><b>Cornélius 97</b> — ele pode comprar quase qualquer teste; lembre-o. Testes de <b>CON da doença</b> são testes de atributo: pela regra, <b>Sorte pode ser gasta</b> neles. Decida agora se aceita (eu aceitaria — comprar a própria vida com sorte é ótimo drama, e a Grace só tem 40).</td></tr>
+    </table>
+  </div>
+
+  <div class="qr">
+    <h5>⌘ Roll20 — comandos do script (só você)</h5>
+    <table>
+      <tr><td><code>!ruido +1</code> / <code>-1</code> / <code>-2</code> / <code>zerar</code></td><td>Ruído público; o token "Ruído" no mapa acompanha. Chegar a 4 sobe o Cerco.</td></tr>
+      <tr><td><code>!dose -1</code></td><td>Uma dose a menos, anunciado; token "Pó de Kzhoba" acompanha.</td></tr>
+      <tr><td><code>!cerco +1</code> · <code>!rm status</code></td><td>Fase do cerco · cartão com tudo.</td></tr>
+      <tr><td><code>!insanidade rapida</code> / <code>prolongada</code> · <code>!reacao</code></td><td>Sussurrados. Acrescente <code>pub</code> para a mesa ver.</td></tr>
+      <tr><td><code>!rm fichas</code></td><td>Resumo das fichas (CON/SAN/Sorte/Furtividade).</td></tr>
+      <tr><td colspan="2" class="footnote">Ponha <code>gm</code> no fim para não anunciar (<code>!ruido +1 gm</code>). Handouts "Clímax ·" e tabelas <code>/roll 1t[po-rapida]</code> já existem no jogo.</td></tr>
+    </table>
+  </div>
+
     <div class="qr">
     <h5>☠ Sanidade — o fluxo</h5>
     <table>
@@ -4051,6 +4077,26 @@ function trkLoad(){
   if(TRK.siege===undefined) TRK.siege=0;
   if(TRK.doses===undefined) TRK.doses=3;
   if(!TRK.clx) TRK.clx=clxDefault();
+  /* migração Sessão 9 (20/09): curados, Grace est. 4, fichas reais do Roll20, doses, cerco, chaves */
+  if(!TRK.mig9){
+    const S9={
+      'Grace Rivers':{status:'infectado',stage:4,con:50,san:{cur:40,max:50},pv:{cur:8,max:10}},
+      'Cornélius':{status:'curado',stage:0,con:60,san:{cur:41,max:50},pv:{cur:11,max:11}},
+      'Artemy Burakh':{status:'curado',stage:0,con:38,san:{cur:46,max:60},pv:{cur:8,max:8}},
+      'David Jasper':{status:'curado',stage:0,con:50,san:{cur:47,max:60},pv:{cur:7,max:10}}
+    };
+    TRK.chars.forEach(c=>{
+      const k=Object.keys(S9).find(n=>c.name.split(' ')[0]===n.split(' ')[0]);
+      if(k)Object.assign(c,S9[k]);
+      if(/Crawford/.test(c.name)){c.stage=Math.max(c.stage||0,6);c.status='infectado';}
+    });
+    if(TRK.doses===undefined||TRK.doses===3)TRK.doses=3;
+    TRK.siege=Math.max(TRK.siege||0,5);
+    TRK.k4={lingua:3,rito:3,proced:3,pratica:3};
+    TRK.day=Math.max(TRK.day||1,3);
+    TRK.mig9=true;
+    trkLog('<span class="dayhdr">— Sessão 8 aplicada: Cornélius, David e Artemy CURADOS · Grace estágio 4 · SAN/PV das fichas do Roll20 · 3 doses · cerco fase 5 —</span>');
+  }
   /* migração: registros antigos não tinham fichas de PC — enriquece pelo nome, preservando estágio/status já jogados */
   if(!TRK.chars.some(c=>c.pc)){
     const def=trkDefault();
