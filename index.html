@@ -2455,7 +2455,35 @@ PANELS.quick = `
 
   <div class="qr state" id="qrState"></div>
 
-  <div class="qr">
+<div class="qr">
+    <h5>▤ Fichas do Roll20 — lidas em 20/09 (Sessão 9)</h5>
+    <div style="overflow-x:auto"><table>
+      <tr><th></th><th>Grace</th><th>Cornélius</th><th>Artemy</th><th>David</th><th>Crawford</th></tr>
+      <tr><td>CON</td><td>50</td><td>60</td><td><b>38</b></td><td>50</td><td>65</td></tr>
+      <tr><td>SAN</td><td>40/50</td><td>41/50</td><td>46/60</td><td>47/60</td><td>38/43</td></tr>
+      <tr><td>PV</td><td>8/10</td><td>11/11</td><td>8/8</td><td>7/10</td><td>13/13</td></tr>
+      <tr><td>PM</td><td><b style="color:var(--blood)">0/10</b></td><td>7/10</td><td>6/12</td><td>8/12</td><td>?/13</td></tr>
+      <tr><td>Sorte</td><td>40</td><td><b>97</b></td><td>60</td><td>55</td><td>—</td></tr>
+      <tr><td>POD</td><td>50</td><td>50</td><td>60</td><td>60</td><td>65</td></tr>
+      <tr><td>DES</td><td>60</td><td>70</td><td>55</td><td><b>80</b></td><td>45</td></tr>
+      <tr><td><b>Furtividade</b></td><td>20</td><td>20</td><td>38</td><td><b>42</b></td><td>—</td></tr>
+      <tr><td>Escutar</td><td>20</td><td>22</td><td>40</td><td>20</td><td>—</td></tr>
+      <tr><td>Encontrar</td><td>74</td><td>74</td><td>74</td><td>77</td><td>—</td></tr>
+      <tr><td>Esquiva</td><td>30</td><td>70</td><td>48</td><td>65</td><td>22</td></tr>
+      <tr><td>Lábia / Persuasão</td><td>5 / 10</td><td>5 / 10</td><td>5 / <b>50</b></td><td><b>69</b> / 10</td><td>—</td></tr>
+      <tr><td>Disfarce</td><td>5</td><td>5</td><td>5</td><td>5</td><td>—</td></tr>
+      <tr><td>Prestidigitação</td><td>10</td><td>10</td><td>10</td><td><b>85</b></td><td>—</td></tr>
+      <tr><td>Primeiros Socorros / Medicina</td><td><b>85</b> / 1</td><td>30 / 1</td><td>30 / 1</td><td>30 / 1</td><td>80 / <b>80</b></td></tr>
+      <tr><td>Psicologia</td><td><b>80</b></td><td>10</td><td>10</td><td>30</td><td>50</td></tr>
+      <tr><td>Ocultismo</td><td>25</td><td>5</td><td>30</td><td>25</td><td>—</td></tr>
+      <tr><td>Uso de Bibliotecas</td><td><b>92</b></td><td>60</td><td>60</td><td>20</td><td>—</td></tr>
+      <tr><td>Armas</td><td>—</td><td>Briga 10</td><td>Facão 44 (1D8) · .38 30 (1D10)</td><td>Pistola 63 (1D10)</td><td>—</td></tr>
+      <tr><td>Outros</td><td>Francês 80 · Química 88</td><td>Arqueologia 51 · Antropologia 50 · Navegação 60 · Arremesso 33</td><td>Avaliação 79 · História 60 · Grego 20 · Aramaico 20 · Falsificação 22</td><td>Locksmith 0</td><td>—</td></tr>
+    </table></div>
+    <p class="footnote" style="margin:.4em 0 0">Para o clímax: <b>ninguém tem Disfarce</b> (rota 5 é quase suicida) · a Furtividade do grupo é fraca — o David (42) devia ir na frente e a regra do "pior rola" pune muito (Grace/Cornélius 20) · <b>Grace com 0 PM não pode preparar dose nenhuma</b>; sobra Cornélius (7) e David (8) — cada dose custa 2D6, então <b>um deles pode não ter PM para a segunda</b> · Cornélius tem Sorte 97: lembre-o de gastar.</p>
+  </div>
+
+    <div class="qr">
     <h5>☠ Sanidade — o fluxo</h5>
     <table>
       <tr><td>X / Y</td><td>role <b>1D100 ≤ SAN</b>. Sucesso: perde X. Falha: perde Y.</td></tr>
@@ -3960,22 +3988,22 @@ function trkDefault(){
   return {day:3,siege:5,seq:20,doses:3,k4:{lingua:3,rito:3,proced:3,pratica:3},log:[],chars:[
     {id:1,name:'Grace Rivers',pc:true,role:'Pesquisadora · Oxford',player:'Nyara',
      photo:'img/grace.jpg',con:50,status:'infectado',stage:4,contact:true,
-     san:{cur:45,max:60},pv:{cur:11,max:11},
+     san:{cur:40,max:50},pv:{cur:8,max:10},
      items:['rifle','6 balas','corda','lanterna','facão'],keys:['Cultes des Goules','caixa de ingredientes'],hurt:[],
      note:'Zerou os Pontos de Magia no ritual; descansando. Avançou 1 estágio pelo cansaço. Ainda NÃO curada — falta a dose dela.'},
     {id:2,name:'Cornélius',pc:true,role:'Arqueólogo',player:'Caio',
      photo:'img/cornelius.jpg',con:60,status:'curado',stage:0,contact:true,
-     san:{cur:50,max:60},pv:{cur:12,max:12},
+     san:{cur:41,max:50},pv:{cur:11,max:11},
      items:['lanterna','corda'],keys:[],hurt:[],
      note:'CURADO (15h–17h). Preparou o Pó com David — aprendeu a respirar e cantar ao mesmo tempo. O único acordado às 20h30.'},
     {id:3,name:'Artemy Burakh',pc:true,role:'Antiquário · 58 anos',player:'Brian',
      photo:'img/artemy-burakh.jpg',con:38,status:'curado',stage:0,contact:true,
-     san:{cur:42,max:60},pv:{cur:10,max:10},
+     san:{cur:46,max:60},pv:{cur:8,max:8},
      items:['facão','lanterna'],keys:['as cartas (Pistas 2-4)'],hurt:[],
      note:'CURADO (acorda 20h30) — com ALUCINAÇÕES pela Sanidade perdida no ritual. Tem as cartas.'},
     {id:4,name:'David Jasper',pc:true,role:'Ilusionista · "Mr. Lapin"',player:'Álvaro',
      photo:'img/david-jasper.jpg',con:50,status:'curado',stage:0,contact:true,
-     san:{cur:44,max:60},pv:{cur:8,max:12},
+     san:{cur:47,max:60},pv:{cur:7,max:10},
      items:['canivete','lanterna','Derringer .25'],keys:[],hurt:['braço mordido (Javali)'],
      note:'CURADO (acorda 20h). Fez 2 doses. Tem a chave da loja de caça — que o Exército já tomou.'},
     {id:5,name:'Dr. Clark Crawford (em custódia)',con:65,status:'infectado',stage:6,contact:true,
@@ -4225,7 +4253,7 @@ function trkRenderAll(){
       '<div class="st-keys"><span class="lb">TOMO</span><div class="fill" style="width:'+
         Math.round(tot/12*100)+'%"></div></div><span class="lb">'+tot+'/12 chaves</span></div>'+
       '<div class="st-facts">'+
-        '<b>Cornélius, David e Artemy CURADOS</b> (Sessão 8) · Grace ainda infectada (estágio 4, exausta, PM zerados) · <b>3 doses sobrando</b> + Grace e Yoshi por curar · escondidos na <b>casa de Joseph</b> · <b>Crawford preso na Base</b>, estágio 6 · galpão dos doentes queimado por eles · a cidade em cinzas (o fogo morreu ao anoitecer), <b>hospital queimado</b>, Exército ocupou a loja de caça · '+
+        '<b>Cornélius, David e Artemy CURADOS</b> (Sessão 8) · Grace ainda infectada (estágio 4, exausta, <b>0 PM</b>; Cornélius 7 PM, David 8 PM) · <b>3 doses sobrando</b> + Grace e Yoshi por curar · escondidos na <b>casa de Joseph</b> · <b>Crawford preso na Base</b>, estágio 6 · galpão dos doentes queimado por eles · a cidade em cinzas (o fogo morreu ao anoitecer), <b>hospital queimado</b>, Exército ocupou a loja de caça · '+
         '<b>Solbonaro se explodiu na praça</b> (Sessão 6): civis mortos, <b>Warren ferido e internado</b> (o <b>Major Halloran assumiu o comando</b>), fogo cruzado — e o rastro da dinamite da fazenda <b>caiu no colo dele</b>, inocentando o grupo. <b>David tem a chave da loja de caça</b> · <b>Brooks está morto</b> e não falou · <b>o laboratório foi dinamitado</b> · os quatro têm <b>tomo, cartas e a caixa</b> · <b>a peste continua</b> apesar de Brooks · Crawford operou o general e <b>está abalado</b> · <b>Warren foi exposto ao contágio na cirurgia</b> (role em segredo) · um <b>Morto que Anda</b> está trancado no galpão · Crawford ainda não sabe que <b>foi ele quem chamou Mendel</b>.'+
       '</div>';
   }
