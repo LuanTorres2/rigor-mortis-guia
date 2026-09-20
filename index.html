@@ -668,6 +668,21 @@
   .clx-routes .trk-btn.sel{background:var(--blood);color:#fff;border-color:var(--blood);}
   .clx-post.fail{border-left-color:var(--gold);background:rgba(156,122,60,.16);text-decoration:line-through;}
   .clx-post.fail .sn{color:var(--gold);}
+  .chase-ctl{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-bottom:8px;font-size:.8rem;}
+  .chase-ctl label{display:flex;align-items:center;gap:4px;color:var(--ink-soft);}
+  .chase-ctl input{width:42px;background:transparent;border:none;border-bottom:1px dotted var(--rust);color:var(--blood);font-family:inherit;text-align:center;font-size:.95rem;}
+  .chase-ctl .acts{font-family:'Special Elite',monospace;font-size:.7rem;color:var(--gold);}
+  .chase-track{display:flex;overflow-x:auto;gap:0;padding:6px 2px 10px;align-items:stretch;}
+  .chase-loc{min-width:118px;flex:0 0 118px;background:rgba(92,74,50,.09);border:1px solid var(--paper-edge);border-radius:3px;padding:6px 7px;font-size:.7rem;line-height:1.3;color:var(--ink-soft);position:relative;}
+  .chase-loc .ln{font-family:'Special Elite',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--sepia);display:block;}
+  .chase-loc .veh{display:flex;gap:3px;flex-wrap:wrap;margin-top:5px;min-height:20px;}
+  .chase-loc .veh b{display:inline-block;padding:1px 6px;border-radius:9px;font-size:.66rem;color:#fff;background:var(--blood);cursor:pointer;}
+  .chase-loc .veh b.p{background:#4a5a3a;} .chase-loc .veh b.m{background:#6b5a2a;}
+  .chase-haz{flex:0 0 26px;display:flex;align-items:center;justify-content:center;font-size:.62rem;color:var(--gold);font-family:'Special Elite',monospace;writing-mode:vertical-rl;text-orientation:mixed;padding:2px 0;}
+  .chase-haz.h2{color:var(--blood);} .chase-haz.h3{color:#d9534f;font-weight:bold;} .chase-haz.bar{color:#fff;background:var(--blood);border-radius:2px;}
+  .chase-legend{font-size:.72rem;color:var(--ink-soft);margin-top:4px;}
+  .chase-legend b{padding:1px 6px;border-radius:9px;color:#fff;background:var(--blood);font-size:.66rem;} .chase-legend b.p{background:#4a5a3a;} .chase-legend b.m{background:#6b5a2a;}
+
 
   .siege-step .sn{font-family:'Special Elite',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--sepia);display:block;margin-bottom:3px;}
   .siege-step.done{background:rgba(143,29,29,.14);border-left-color:var(--blood);color:var(--ink);}
@@ -3133,6 +3148,47 @@ PANELS.climax = `
 
 <hr class="div">
 
+<h3>A perseguição de carro — se o motor ligar</h3>
+<p>Regras do <b>Livro do Guardião 7E, cap. 7</b> (p. 132–147), já traduzidas para o que eles têm: um sedã de 1924 empurrado para dentro do matagal, <b>quatro motoristas com Dirigir Automóveis 20</b>, uma cidade escura e um Exército com caminhões, um carro de comando e fuzis. <b>Ligar o motor é o fim da furtividade e o começo disto.</b></p>
+
+<div class="lore"><span class="tag">Os veículos (Tabela V, valores modernos −20% para 1924)</span>
+<table class="stages">
+<thead><tr><th>Veículo</th><th>MOV</th><th>Corpo</th><th>Armadura p/ ocupantes</th><th>Lugares</th><th>Nota</th></tr></thead>
+<tbody>
+<tr><td><b>O sedã deles</b> (carro padrão)</td><td><b>11</b></td><td>5</td><td>2</td><td>4</td><td>Com 5+ pessoas (eles são 4 + Grace carregada + Yoshi + Crawford?): <b>MOV −1</b> e um dado de penalidade em Dirigir. Faça-os escolher quem vai.</td></tr>
+<tr><td><b>Caminhão pequeno do Exército</b></td><td><b>10</b></td><td>7</td><td>2</td><td>2 + 8 na caçamba</td><td>Motorista Dirigir 40. Fuzileiros na caçamba atiram com um dado de penalidade (em movimento).</td></tr>
+<tr><td><b>Carro de comando</b> (Halloran / Mendel)</td><td><b>11</b></td><td>5</td><td>2</td><td>4</td><td>Motorista Dirigir 50. É o único que <b>empata</b> com eles em velocidade.</td></tr>
+<tr><td><b>Moto do estafeta</b></td><td><b>10</b></td><td>1</td><td>0</td><td>1</td><td>Alcança rápido, morre rápido: o sedã causa 5D10 nela (e sofre no máximo 1 de Corpo).</td></tr>
+</tbody>
+</table></div>
+
+<ol class="steps">
+  <li><b>Estabelecer.</b> Cada motorista rola <b>Dirigir Automóveis</b> uma vez: sucesso = MOV mantido; Extremo = +1; <b>falha = −1</b>. Com Dirigir 20, o motorista deles falha <b>80% das vezes</b> → sedã MOV 10. Caminhão MOV 10 empata, carro de comando MOV 11 supera. <b>Se o MOV do fugitivo for maior que o do perseguidor mais rápido, escapou sem cena.</b> Se for igual ou menor, corte para o perseguidor <b>duas locações atrás</b> — e a perseguição começa.</li>
+  <li><b>Ações de movimento.</b> Todo mundo tem <b>1 + (seu MOV − o MOV do mais lento)</b>. Empate de MOV = 1 ação cada. O carro de comando com MOV 11 contra o sedã em 10 tem <b>2 ações</b> por rodada.</li>
+  <li><b>Ordem: DES.</b> David 80 → Cornélius 70 → Grace 60 → Artemy 55 → soldados (DES 50–60) → Crawford 45. <b>Quem dirige deve ser o David</b> (age primeiro; Dirigir igual para todos), com <b>Cornélius navegando</b>.</li>
+  <li><b>Rodada.</b> Na sua vez, o motorista gasta ações para avançar locações (1 ação = 1 locação) ou <b>mete o pé</b>: 2–3 locações por 1 ação com <b>um dado de penalidade</b> nos riscos, 4–5 locações com <b>dois</b>. Anuncie antes de mover; uma vez acelerando, vai até o fim ou até falhar num risco. Só dá para acelerar pelo que <b>enxerga</b>: à noite, sem chamas, com faróis, <b>1D3 locações</b> à frente; sem faróis, <b>1</b>.</li>
+  <li><b>Riscos</b> (entre locações). Teste de Dirigir na dificuldade indicada. Cautela: gastar 1 ação de movimento = 1 dado de bônus (máx. 2). <b>Falha:</b> perde <b>1D3 ações</b> de movimento (vira dívida para a próxima rodada) e sofre a colisão que você escolher: <b>menor 1D3 de Corpo · moderada 1D6 · severa 1D10 · destruição 2D10</b>. O sedã tem Corpo 5: <b>uma colisão severa acaba com ele</b>. Corpo ≤ 2 = avariado, dado de penalidade em tudo.</li>
+  <li><b>Barreiras</b> (bloqueiam até serem vencidas). Furar: o veículo causa <b>1D10 por ponto de Corpo</b> (sedã: 5D10). Se não destruir a barreira, <b>o veículo é destruído</b>. Se destruir, sofre metade dos PV que a barreira tinha. Cavalete e corda: 5 PV. Sacos de areia empilhados: 20 PV. <b>Caminhão atravessado: 70 PV — não tente.</b></li>
+  <li><b>Passageiros</b> agem na sua DES, sem ações de movimento. <b>Navegar</b> (Encontrar ou Navegação): sucesso = a próxima aceleração custa <b>um dado de penalidade a menos</b> — eles têm Encontrar 74–77 e Cornélius Navegação 60: <b>é o único trunfo real do carro</b>. Atirar de um veículo em movimento: <b>um dado de penalidade</b>; pneus: dois, armadura 3, só empaladoras, 2 pontos = estoura = <b>Corpo −1</b>.</li>
+  <li><b>Fuzil no motorista.</b> Se o motorista sofre <b>lesão grave</b> (≥ metade dos PV: David 5) e fica acordado, testa Dirigir <b>Difícil</b> ou perde o controle; inconsciente = perde automaticamente. Armadura 2 do carro protege todos. Fuzil do Exército: 2D6+4, perícia 40, alcance longo.</li>
+  <li><b>Riscos repentinos.</b> A qualquer momento, você <b>ou</b> um jogador pode pedir um <b>teste coletivo de Sorte</b> (quem tem a menor presente: <b>Grace 40</b>). Sucesso: <b>o jogador dita</b> onde e quando surge um risco (uma viga em chamas cai na frente do caminhão). Falha: <b>você</b> impõe um risco Regular a eles. Revezam: quem pediu não pede de novo até o outro lado pedir.</li>
+  <li><b>Abalroar.</b> Manobra de luta com Dirigir contra Dirigir; o alvo com 1 ponto a mais de Corpo dá 1 dado de penalidade, 2 a mais = 2, 3 a mais = impossível. <b>O caminhão (7) pode empurrar o sedã (5); o sedã não pode empurrar o caminhão.</b> Sucesso = o alvo perde 1D3 ações e sofre colisão à sua escolha.</li>
+  <li><b>Terminar.</b> Escapa quem fica <b>fora do alcance de visão</b> do perseguidor com MOV maior, ou quem se esconde: esconder <b>o carro</b> exige Furtividade <b>e</b> Dirigir com sucesso nas duas — para eles, <b>~4%</b>. Não é opção. As saídas reais: (a) <b>abandonar o carro</b> numa locação com esconderijo e sumir a pé (Furtividade, David 42 na frente); (b) <b>meter o carro onde o caminhão não passa</b> — o matagal, o morro, o leito da ferrovia; (c) o perseguidor falhar num risco e perder 1D3 ações enquanto eles somem numa curva.</li>
+</ol>
+
+<div class="tip"><span class="tag">Locações e riscos aleatórios (quando você não quiser planejar)</span>
+<p>1D100 por locação: <b>01–59 livre · 60+ risco Regular · 85+ Difícil · 96+ Extremo</b>. Esta noite é "estrada mal cuidada à meia-noite": role com <b>um dado de penalidade</b> (pega o pior dos dois dados de dezena). Traduzindo: quase metade das locações tem risco.</p></div>
+
+<div class="warn"><span class="tag">A conta honesta</span>
+<p>Com Dirigir 20, o carro deles perde a maioria dos riscos. <b>Isso é a regra, não a sua maldade.</b> O que os salva não são os dados de direção: é <b>o navegador</b> (Encontrar 74), <b>a Sorte do Cornélius</b> (97 — ele pode comprar o teste de Dirigir do David? <b>Não</b>: só as próprias jogadas. Mas se <b>ele</b> dirigir, compra), <b>os riscos repentinos</b> jogados contra o caminhão, e <b>o terreno</b>. Se o Caio quiser dirigir para poder pagar com Sorte, é uma decisão excelente de jogador — deixe.</p></div>
+
+<div class="clue"><span class="tag">Pista de perseguição · ao vivo</span>
+<p class="footnote" style="margin:.2em 0 .5em">Escolha o trajeto, ajuste os MOV depois do teste de velocidade (as ações de movimento são calculadas), e mova cada veículo pelas locações. Salvo com o tracker.</p>
+<div id="clxChase"></div>
+</div>
+
+<hr class="div">
+
 <h3>O que pode acontecer esta noite — eventos do clímax</h3>
 <table class="stages">
 <thead><tr><th>Quando</th><th>Evento</th></tr></thead>
@@ -4234,6 +4290,61 @@ const CLX_ROUTES=[
  {n:'5 · O disfarce',posts:['Vestir as fardas dos mortos','Bloqueio no escuro (Disfarce Difícil)','Fora do anel']},
  {n:'6 · Porta da frente',posts:['Warren vivo, curado e devendo','Passe e caminhão ao amanhecer','Halloran não interfere (Lábia)']}];
 function clxDefault(){return {ruido:0,steps:[false,false,false,false,false],route:0,posts:[]};}
+
+/* ---- pista de perseguição ---- */
+const CHASE_ROUTES=[
+ {n:'Sul · pela 249',locs:[
+  ['Matagal de Joseph','Sair para a estrada — risco Regular (campo, escuro)',1],
+  ['Estrada 249, reta','livre',0],
+  ['Ponte do córrego','Curva fechada e tábuas soltas — Difícil',2],
+  ['Casas queimadas','Vigas e cinza na pista — Regular',1],
+  ['Bloqueio da 249','BARREIRA: sacos de areia 20 PV — ou cavalete 5 PV se pegos de surpresa',9],
+  ['Campo aberto','livre (1D10 de visão se houver lua)',0],
+  ['Cerca da fazenda vizinha','Cerca de madeira 5 PV — Regular para desviar',1],
+  ['Estrada de terra','Buracos — Regular',1],
+  ['Mata baixa','Extremo: o caminhão não entra; o sedã talvez',3],
+  ['Fora do anel','—',0]]},
+ {n:'Norte · pela ferrovia',locs:[
+  ['Matagal de Joseph','Sair para a estrada — Regular',1],
+  ['Rua da estação','Corpos e escombros — Regular',1],
+  ['Praça','Cratera do Solbonaro e soldados a pé — Difícil',2],
+  ['Estação','BARREIRA: cancela da ferrovia 5 PV',9],
+  ['Leito da linha','Dirigir sobre dormentes — Difícil por rodada; o caminhão não segue',2],
+  ['Bloqueio da ferrovia','BARREIRA: vagonete atravessado 20 PV',9],
+  ['Trilhos ao norte','livre',0],
+  ['Cervejaria','Portão 10 PV — esconderijo possível (Furtividade + Dirigir)',1],
+  ['Fazenda de Brooks','—',0]]}
+];
+function chaseDefault(){return {route:0,pos:{c:2,p:0,m:0},mov:{c:10,p:10,m:10},on:{c:true,p:true,m:false},debt:{c:0,p:0,m:0}};}
+function trkRenderChase(){
+  const el=document.getElementById('clxChase'); if(!el)return;
+  const ch=TRK.chase=TRK.chase||chaseDefault();
+  const R=CHASE_ROUTES[ch.route]||CHASE_ROUTES[0];
+  const active=['c','p','m'].filter(k=>ch.on[k]);
+  const minMov=Math.min.apply(null,active.map(k=>ch.mov[k]));
+  const acts=k=>1+(ch.mov[k]-minMov);
+  const NM={c:'SEDÃ',p:'CAMINHÃO',m:'CARRO DE COMANDO'};
+  let h='<div class="chase-ctl">'+CHASE_ROUTES.map((r,i)=>'<button class="trk-btn sm'+(ch.route===i?' sel':'')+'" data-act="chase-route" data-v="'+i+'">'+r.n+'</button>').join('')+
+    '<button class="trk-btn sm" data-act="chase-reset">reiniciar</button></div>';
+  h+='<div class="chase-ctl">'+['c','p','m'].map(k=>'<label><input type="checkbox" data-act="chase-on" data-v="'+k+'"'+(ch.on[k]?' checked':'')+'> <b>'+NM[k]+'</b> MOV <input type="number" min="1" max="20" value="'+ch.mov[k]+'" data-act="chase-mov" data-v="'+k+'">'+
+    (ch.on[k]?' <span class="acts">'+acts(k)+(acts(k)>1?' ações':' ação')+(ch.debt[k]?' · deve '+ch.debt[k]:'')+'</span>':'')+
+    ' <button class="trk-btn sm" data-act="chase-mv" data-v="'+k+'|-1">◀</button><button class="trk-btn sm" data-act="chase-mv" data-v="'+k+'|1">▶</button>'+
+    ' <button class="trk-btn sm" data-act="chase-debt" data-v="'+k+'|1" title="perdeu ações (falhou num risco)">dívida +1</button><button class="trk-btn sm" data-act="chase-debt" data-v="'+k+'|-1">−</button></label>').join('')+'</div>';
+  h+='<div class="chase-track">';
+  R.locs.forEach((L,i)=>{
+    const here=active.filter(k=>ch.pos[k]===i).map(k=>'<b class="'+k+'" data-act="chase-mv" data-v="'+k+'|1" title="avançar">'+(k==='c'?'SEDÃ':k==='p'?'CAM':'CMD')+'</b>').join('');
+    h+='<div class="chase-loc"><span class="ln">LOC '+(i+1)+'</span><b>'+L[0]+'</b><div class="veh">'+here+'</div></div>';
+    if(i<R.locs.length-1&&L[2]) h+='<div class="chase-haz '+(L[2]===9?'bar':'h'+L[2])+'" title="'+L[1].replace(/"/g,'&quot;')+'">'+(L[2]===9?'BARREIRA':L[2]===3?'EXTREMO':L[2]===2?'DIFÍCIL':'REGULAR')+'</div>';
+    else if(i<R.locs.length-1) h+='<div class="chase-haz" title="livre">·</div>';
+  });
+  h+='</div>';
+  const cur=R.locs[ch.pos.c]; const nxt=R.locs[ch.pos.c]&&ch.pos.c<R.locs.length-1?R.locs[ch.pos.c]:null;
+  h+='<div class="chase-legend"><b>SEDÃ</b> os Investigadores · <b class="p">CAM</b> caminhão · <b class="m">CMD</b> carro de comando · '+
+     (nxt?'próximo risco do sedã: <i>'+nxt[1]+'</i>':'')+
+     (active.some(k=>k!=='c'&&ch.pos[k]>=ch.pos.c)?' · <span style="color:var(--blood)"><b>ALCANÇADOS</b> — manobra de luta / abalroamento possível</span>':'')+
+     (ch.pos.c>=R.locs.length-1?' · <span style="color:var(--gold)"><b>FORA DO ANEL</b></span>':'')+'</div>';
+  el.innerHTML=h;
+}
 function trkRenderClimax(){
   const c=TRK.clx=TRK.clx||clxDefault();
   const r=document.getElementById('clxRuido');
@@ -4320,10 +4431,11 @@ function trkRenderAll(){
     if(f) f.style.width=Math.round(tot/12*100)+'%';
   }
   trkRenderClimax();
+  trkRenderChase();
   const lg=document.getElementById('trkLog');
   if(lg)lg.innerHTML=TRK.log.length?TRK.log.join('<br>'):'<i>— sem rolagens ainda. Ajuste as CON e clique em "Rolar o dia". —</i>';
 }
-const TRK_ACTS=['ruido','ruido+','ruido-','ruido-2','clx-step','clx-route','clx-post','clx-reset','dose+','dose-','day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege','k4'];
+const TRK_ACTS=['chase-route','chase-reset','chase-mv','chase-debt','ruido+','ruido-','ruido-2','clx-step','clx-route','clx-post','clx-reset','dose+','dose-','day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege','k4'];
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');
   if(!b||!TRK_ACTS.includes(b.dataset.act))return;
@@ -4344,6 +4456,12 @@ document.addEventListener('click',e=>{
       if(x.posts[i]==='fail')trkLog('<span class="fail">Posto '+(i+1)+' da rota '+CLX_ROUTES[x.route-1].n+': FALHA — disparo (1D10+2) e alarme geral.</span>');
       break;}
     case 'clx-reset':TRK.clx=clxDefault();break;
+    case 'chase-route':{const x=TRK.chase=TRK.chase||chaseDefault();x.route=parseInt(b.dataset.v,10);x.pos={c:2,p:0,m:0};x.debt={c:0,p:0,m:0};break;}
+    case 'chase-reset':TRK.chase=chaseDefault();break;
+    case 'chase-mv':{const x=TRK.chase=TRK.chase||chaseDefault();const [k,d]=b.dataset.v.split('|');const R=CHASE_ROUTES[x.route]||CHASE_ROUTES[0];
+      x.pos[k]=Math.max(0,Math.min(R.locs.length-1,x.pos[k]+parseInt(d,10)));break;}
+    case 'chase-debt':{const x=TRK.chase=TRK.chase||chaseDefault();const [k,d]=b.dataset.v.split('|');x.debt[k]=Math.max(0,(x.debt[k]||0)+parseInt(d,10));
+      if(parseInt(d,10)>0)trkLog('<span class="fail">Perseguição: '+({c:'o sedã',p:'o caminhão',m:'o carro de comando'})[k]+' falhou num risco — perde ações (dívida '+x.debt[k]+').</span>');break;}
     case 'dose+':TRK.doses=(TRK.doses||0)+1;break;
     case 'dose-':TRK.doses=Math.max(0,(TRK.doses||0)-1);trkLog('<span class="fail">Uma dose do Pó de Kzhoba foi gasta — restam '+TRK.doses+'.</span>');break;
     case 'day+':TRK.day++;break;
@@ -4391,6 +4509,8 @@ document.addEventListener('change',e=>{
   const t=e.target;
   if(!t.dataset||!t.dataset.act)return;
   const c=TRK.chars.find(x=>x.id==t.dataset.id);
+  if(t.dataset.act==='chase-mov'){const x=TRK.chase=TRK.chase||chaseDefault();x.mov[t.dataset.v]=Math.max(1,Math.min(20,parseInt(t.value,10)||10));trkSave();trkRenderAll();return;}
+  if(t.dataset.act==='chase-on'){const x=TRK.chase=TRK.chase||chaseDefault();x.on[t.dataset.v]=t.checked;trkSave();trkRenderAll();return;}
   if(t.dataset.act==='con'&&c){c.con=Math.max(1,Math.min(99,parseInt(t.value,10)||50));trkSave();trkRenderAll();}
   else if(t.dataset.act==='contact'&&c){c.contact=t.checked;trkSave();}
   else if(t.dataset.act==='san'&&c){c.san=c.san||{cur:0,max:60};c.san.cur=Math.max(0,parseInt(t.value,10)||0);
