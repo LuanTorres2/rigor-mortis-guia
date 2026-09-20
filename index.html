@@ -654,6 +654,21 @@
     cursor:pointer;transition:background .25s,border-color .25s,transform .2s;
   }
   .siege-step:hover{transform:translateY(-2px);}
+  .ruido{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .ruido .pips{display:flex;gap:6px;}
+  .ruido .pips i{width:30px;height:30px;border-radius:50%;border:2px solid var(--paper-edge);background:rgba(92,74,50,.12);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;font-style:normal;font-family:'Special Elite',monospace;
+    font-size:.8rem;color:var(--sepia);transition:background .25s,border-color .25s,transform .15s;}
+  .ruido .pips i:hover{transform:scale(1.1);}
+  .ruido .pips i.on{background:var(--blood);border-color:var(--blood);color:#fff;}
+  .ruido .pips i.alarm{background:var(--gold);border-color:var(--gold);color:#1a1a1a;box-shadow:0 0 0 3px rgba(156,122,60,.35);}
+  .ruido .fx{flex:1 1 220px;font-size:.85rem;color:var(--ink);}
+  .siege-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;}
+  .clx-routes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .clx-routes .trk-btn.sel{background:var(--blood);color:#fff;border-color:var(--blood);}
+  .clx-post.fail{border-left-color:var(--gold);background:rgba(156,122,60,.16);text-decoration:line-through;}
+  .clx-post.fail .sn{color:var(--gold);}
+
   .siege-step .sn{font-family:'Special Elite',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--sepia);display:block;margin-bottom:3px;}
   .siege-step.done{background:rgba(143,29,29,.14);border-left-color:var(--blood);color:var(--ink);}
   .siege-step.done .sn{color:var(--blood);}
@@ -2888,8 +2903,64 @@ PANELS.tome = `
   <li><b>Pagar:</b> quem prepara despende parte da própria essência — <span class="roll">2D6 Pontos de Magia</span> por porção.</li>
   <li><b>Aplicar:</b> espalhado por toda a pele e ingerido com água — <b>com o canto até o fim</b> (ver a regra do David, acima).</li>
   <li><b>Sofrer:</b> dores horríveis dilaceram os músculos; a impressão é de que tudo deu errado. Então o paciente cai num <b>sono profundo</b>.</li>
-  <li><b>Renascer:</b> acorda <b>5 horas depois, completamente regenerado</b> e <b>imune a novos contágios</b>. Quem observa vê a pele absorver o pó e se reconstituir.</li>
+  <li><b>Renascer:</b> acorda <b>5 horas depois</b> (livro) — <b>2 horas na casa-regra da mesa</b> — <b>completamente regenerado</b> e <b>imune a novos contágios</b>. Quem observa vê a pele absorver o pó e se reconstituir.</li>
 </ol>
+<hr class="div">
+
+<h3>Acordar do outro lado — insanidade depois do Pó</h3>
+<p>A cura vem das Terras do Sonho, é oração de um deus carniçal, e funciona <i>devolvendo</i> a maldição ao dono: quem a toma passa horas <b>dormindo do outro lado</b> e acorda com o corpo refeito. Não é só perda de Sanidade — é uma experiência com forma. As tabelas seguem as categorias do Livro Básico, <b>traduzidas para o que aquela pessoa acabou de viver</b>. <b>Artemy acordou às 20h30 exatamente assim.</b></p>
+<div class="tip"><span class="tag">Quando rolar</span>
+<ul class="cl" style="margin:.3em 0;">
+  <li><b>Quem tomou o Pó</b>, ao acordar: <span class="san">SAN <span class="roll">1/1D6</span></span> — a dor "como nascer", as horas do outro lado, o corpo novo.</li>
+  <li><b>Quem assistiu</b> a pele absorver o pó e se reconstituir: <span class="san">SAN <span class="roll">0/1D4</span></span>.</li>
+  <li><b>Se o canto foi interrompido</b> e a maldição saltou para o cantor: o cantor rola <span class="san">SAN <span class="roll">1D3/1D8</span></span> — ele <i>sentiu</i> entrar.</li>
+  <li>Perdeu <b>5+</b> → teste de Ideia; sucesso = insanidade. Você escolhe Rápida ou Prolongada pela cena.</li>
+</ul></div>
+
+<h4>Insanidade Rápida — ao acordar <span class="footnote">· 1D10+4 rodadas</span></h4>
+<table class="stages">
+<thead><tr><th>1D10</th><th>Manifestação</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>Grito de nascimento.</b> Acorda gritando, sem ar, como quem sai da água. Não reconhece o próprio corpo.</td></tr>
+<tr><td>2</td><td><b>Foge da caixa.</b> Não suporta o mesmo cômodo que os ingredientes — ou que o frasco lacrado. Corre.</td></tr>
+<tr><td>3</td><td><b>O riso.</b> Ri sem conseguir parar. <i>"Eu estava morrendo e agora não estou."</i> Ninguém mais acha graça.</td></tr>
+<tr><td>4</td><td><b>Fala na língua dos Goules.</b> Balbucia trechos do canto que ouviu enquanto dormia. Não sabe o que diz. Grace sabe.</td></tr>
+<tr><td>5</td><td><b>Pavor da própria pele.</b> A pele nova não parece dele. Não deixa ninguém tocar; não olha as próprias mãos.</td></tr>
+<tr><td>6</td><td><b>"Devolve."</b> Tenta arrancar a pele nova com as unhas — ou agarra o frasco para "devolver o que é dele".</td></tr>
+<tr><td>7</td><td><b>Vê o dono.</b> Uma figura no canto do quarto, esperando, paciente. Ninguém mais a vê. Ela não vai embora quando ele fecha os olhos.</td></tr>
+<tr><td>8</td><td><b>Ecoa o canto.</b> Repete tudo o que ouve com um segundo de atraso — na cadência do ritual.</td></tr>
+<tr><td>9</td><td><b>Fome.</b> Pede comida. Carne. Crua. E sente vergonha no mesmo instante em que pede.</td></tr>
+<tr><td>10</td><td><b>Ainda está lá.</b> Acorda com os olhos abertos e não se move. O corpo voltou; ele não.</td></tr>
+</tbody>
+</table>
+
+<h4>Insanidade Prolongada <span class="footnote">· 1D10 × 10 horas</span></h4>
+<table class="stages">
+<thead><tr><th>1D10</th><th>Manifestação</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>As horas apagadas.</b> Não lembra de nada do sono — e tem pavor do que possa ter dito ou feito nele.</td></tr>
+<tr><td>2</td><td><b>O cheiro invertido.</b> O cheiro de podridão, que antes revirava o estômago, agora parece <b>bom</b>. Ele se odeia por isso.</td></tr>
+<tr><td>3</td><td><b>A cidade dupla.</b> Vê as Terras do Sonho sobrepostas a Shellburne Falls — outra praça sob a praça, outra igreja atrás da igreja.</td></tr>
+<tr><td>4</td><td><b>Passar adiante.</b> Compulsão de tocar os doentes. Sente que <i>deve</i> — que a cura não é dele para guardar.</td></tr>
+<tr><td>5</td><td><b>O frasco.</b> Não larga o frasco lacrado. Dorme com ele. Se alguém pegar, entra em pânico.</td></tr>
+<tr><td>6</td><td><b>As mãos.</b> Tremor constante — que <b>só para enquanto ele cantarola o canto</b>.</td></tr>
+<tr><td>7</td><td><b>Sem reflexo.</b> Não consegue se ver em espelhos ou vidros. Não é que não haja reflexo: ele não <i>consegue</i> olhar.</td></tr>
+<tr><td>8</td><td><b>A cura foi o sonho.</b> Acredita que ainda está doente; que acordou no lugar errado. Pede que o examinem, várias vezes.</td></tr>
+<tr><td>9</td><td><b>O dono sabe.</b> Certeza de que J.M. sabe exatamente onde ele está. Todo soldado é mensageiro. Toda carta é a cobrança.</td></tr>
+<tr><td>10</td><td><b>A contagem.</b> Conta as porções restantes a toda hora. Lava as mãos. Cantarola sem perceber. Alinha os frascos na caixa.</td></tr>
+</tbody>
+</table>
+
+<div class="lore"><span class="tag">A sequela — o que fica depois</span>
+<p>O Livro Básico diz que sobra uma fobia branda ou estresse pós-traumático. Aqui, o jogador escolhe <b>uma</b> para carregar até o fim da campanha:</p>
+<ul class="cl" style="margin:.3em 0;">
+  <li><b>Nunca mais dorme no escuro total</b> — porque é no escuro que a outra cidade aparece.</li>
+  <li><b>Sente o cheiro da doença nos outros</b> — a imunidade veio com um nariz de carniçal. Sabe quem está no estágio 1 antes de qualquer exame. Útil, e insuportável.</li>
+  <li><b>Ouve o canto quando há silêncio.</b> Baixo. Nunca termina.</li>
+</ul></div>
+<div class="warn"><span class="tag">A mais cruel não está na tabela</span>
+<p><b>Quem foi curado sabe que sobraram menos porções.</b> A insanidade passa; a conta, não. Quando o curado olhar para o Jr Hall, ou para a Evelyn, está olhando para a porção que gastou em si mesmo.</p></div>
+
 <div class="warn"><span class="tag">A conta que fecha a campanha</span>
 <p><b>7 ou 8 porções</b> para <b>1.256 habitantes</b>. A pergunta final não é "conseguimos a cura?" — é <b>"quem a gente escolhe?"</b>. Cada NPC que eles salvarem até lá é um rosto nessa lista: Jr Hall, Evelyn, Crawford, Carrie, Margareth, Yoshi. Comece a plantar isso agora.</p></div>
 `;
@@ -2955,6 +3026,11 @@ PANELS.climax = `
   <li><b>A Prestidigitação do David:</b> uma vez por cena, cancela <b>uma</b> falha de Furtividade de outro personagem — ele "apaga" o erro com um truque (uma pedra jogada, uma luz que some).</li>
 </ul></div>
 
+<div class="clue"><span class="tag">Marcador de Ruído · ao vivo</span>
+<p class="footnote" style="margin:.2em 0 .5em">Clique num pino para marcar. Fica salvo com o resto do tracker.</p>
+<div id="clxRuido"></div>
+</div>
+
 <hr class="div">
 
 <h3>A Base de Operações — o resgate como assalto</h3>
@@ -2968,6 +3044,9 @@ PANELS.climax = `
   <li><b>A cena.</b> Aqui a mesa decide o fim da campanha (ver "As quatro saídas" abaixo). Nenhum teste: só escolha.</li>
   <li><b>Extração.</b> Descer com um homem no estágio 6 (ou 7) é <b>Furtividade Difícil</b> para quem o carrega. Se ele estiver em fúria, é <b>Agarrar</b> antes de tudo.</li>
 </ol>
+<div class="clue"><span class="tag">Assalto à Base · fases cumpridas</span>
+<div id="clxBase" class="siege-grid"></div>
+</div>
 <div class="warn"><span class="tag">As quatro saídas do quarto</span>
 <ul class="cl" style="margin:.4em 0;">
   <li><b>Levar Crawford.</b> O óbvio. Custa a proteção que ele tinha (Warren sem médico = Halloran furioso) e o Ruído da descida.</li>
@@ -2991,6 +3070,10 @@ PANELS.climax = `
 <tr><td><b>6 · Pela porta da frente</b></td><td>Só existe se <b>Warren</b> estiver vivo, curado e devendo. Um passe assinado, um caminhão, uma saída ao amanhecer "para transporte de material de estudo". Custa uma dose e a confiança de que um general convicto <b>cumpra</b> a palavra. Ele cumpre. Halloran, não.</td></tr>
 </tbody>
 </table>
+<div class="clue"><span class="tag">Fuga · rota escolhida e postos</span>
+<p class="footnote" style="margin:.2em 0 .5em">Escolha a rota; clique num posto para alternar <b>pendente → passou → FALHOU</b>. Uma falha = disparo e alarme geral.</p>
+<div id="clxRota"></div>
+</div>
 <div class="tip"><span class="tag">O que eles carregam</span>
 <p>A caixa (volumosa), o tomo, as cartas, o frasco lacrado, <b>Grace</b> (se ainda não curada — ou dormindo as 2h da cura), <b>Yoshi</b>, e quem mais resolverem levar. <b>Cada pessoa carregada é um teste Difícil por posto.</b> Faça-os escolher o que fica. É a última vez que a caixa pesa na mão de alguém.</p></div>
 
@@ -3939,6 +4022,7 @@ function trkLoad(){
   if(!TRK.log) TRK.log=[];
   if(TRK.siege===undefined) TRK.siege=0;
   if(TRK.doses===undefined) TRK.doses=3;
+  if(!TRK.clx) TRK.clx=clxDefault();
   /* migração: registros antigos não tinham fichas de PC — enriquece pelo nome, preservando estágio/status já jogados */
   if(!TRK.chars.some(c=>c.pc)){
     const def=trkDefault();
@@ -4057,6 +4141,52 @@ function trkRenderChars(){
     w.appendChild(card);
   });
 }
+
+const RUIDO_FX=['Silêncio. Nada ainda.',
+ 'Um guarda vira a cabeça. Nada ainda — mas a próxima falha custa mais.',
+ 'Patrulha desvia a rota. Próximo teste de Furtividade é <b>Difícil</b>.',
+ 'Alerta local. Encontro obrigatório (1D6 de reação); testes Difíceis até saírem do setor.',
+ '<b>ALERTA GERAL.</b> A missão acabou — agora é fuga. Cerco sobe uma fase.'];
+const CLX_STEPS=['Aproximação — do matagal à praça (Furtividade)',
+ 'Entrada — gerador ou tenda de Mendel (Furtividade Difícil / Lábia)',
+ 'O quarto de Warren — escada, porta sem guarda (SAN 0/1D3)',
+ 'A cena — nenhum teste, só escolha',
+ 'Extração — carregar Crawford (Furtividade Difícil / Agarrar)'];
+const CLX_ROUTES=[
+ {n:'1 · A vala',posts:['Morro (Furtividade)','A vala (SAN 0/1D4 + CON)','A mata (Furtividade Difícil)']},
+ {n:'2 · O matagal',posts:['Matagal (Furtividade)','Cruzar a 249 (Difícil)','Campo aberto (Extremo sem diversão)']},
+ {n:'3 · A ferrovia',posts:['Chegar aos trilhos (Difícil)','Passar a estação (Extremo)','Reto pelos trilhos']},
+ {n:'4 · A fazenda',posts:['Chegar aos trilhos (Difícil)','Passar a estação (Extremo)','Norte pelos trilhos','Campo até a cervejaria (Difícil)']},
+ {n:'5 · O disfarce',posts:['Vestir as fardas dos mortos','Bloqueio no escuro (Disfarce Difícil)','Fora do anel']},
+ {n:'6 · Porta da frente',posts:['Warren vivo, curado e devendo','Passe e caminhão ao amanhecer','Halloran não interfere (Lábia)']}];
+function clxDefault(){return {ruido:0,steps:[false,false,false,false,false],route:0,posts:[]};}
+function trkRenderClimax(){
+  const c=TRK.clx=TRK.clx||clxDefault();
+  const r=document.getElementById('clxRuido');
+  if(r){
+    let pips='';
+    for(let i=0;i<=4;i++){pips+='<i class="'+(i>0&&i<=c.ruido?(i===4?'alarm':'on'):'')+'" data-act="ruido" data-v="'+i+'" title="Ruído '+i+'">'+i+'</i>';}
+    r.innerHTML='<div class="ruido"><div class="pips">'+pips+'</div>'+
+      '<button class="trk-btn sm" data-act="ruido+">falha +1</button><button class="trk-btn sm" data-act="ruido-">esperar 1h −1</button>'+
+      '<button class="trk-btn sm" data-act="ruido-2">diversão −2</button>'+
+      '<div class="fx">'+RUIDO_FX[c.ruido]+'</div></div>';
+  }
+  const b=document.getElementById('clxBase');
+  if(b){
+    b.innerHTML=CLX_STEPS.map((t,i)=>'<div class="siege-step '+(c.steps[i]?'done':(i===c.steps.indexOf(false)?'now':''))+'" data-act="clx-step" data-v="'+i+'"><span class="sn">FASE '+(i+1)+(c.steps[i]?' ✓':'')+'</span>'+t+'</div>').join('');
+  }
+  const ro=document.getElementById('clxRota');
+  if(ro){
+    let h='<div class="clx-routes">'+CLX_ROUTES.map((x,i)=>'<button class="trk-btn sm'+(c.route===i+1?' sel':'')+'" data-act="clx-route" data-v="'+(i+1)+'">'+x.n+'</button>').join('')+
+      '<button class="trk-btn sm" data-act="clx-reset">zerar clímax</button></div>';
+    if(c.route){
+      const R=CLX_ROUTES[c.route-1];
+      h+='<div class="siege-grid">'+R.posts.map((p,i)=>{const st=c.posts[i]||'';
+        return '<div class="siege-step clx-post '+(st==='ok'?'done':st==='fail'?'fail':'')+'" data-act="clx-post" data-v="'+i+'"><span class="sn">POSTO '+(i+1)+(st==='ok'?' · PASSOU':st==='fail'?' · FALHOU':'')+'</span>'+p+'</div>';}).join('')+'</div>';
+    } else h+='<p class="footnote">Nenhuma rota escolhida ainda.</p>';
+    ro.innerHTML=h;
+  }
+}
 function trkRenderAll(){
   const d=document.getElementById('trkDay');if(d)d.textContent=TRK.day;
   trkRenderInv();
@@ -4115,16 +4245,31 @@ function trkRenderAll(){
     if(n) n.textContent=tot;
     if(f) f.style.width=Math.round(tot/12*100)+'%';
   }
+  trkRenderClimax();
   const lg=document.getElementById('trkLog');
   if(lg)lg.innerHTML=TRK.log.length?TRK.log.join('<br>'):'<i>— sem rolagens ainda. Ajuste as CON e clique em "Rolar o dia". —</i>';
 }
-const TRK_ACTS=['dose+','dose-','day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege','k4'];
+const TRK_ACTS=['ruido','ruido+','ruido-','ruido-2','clx-step','clx-route','clx-post','clx-reset','dose+','dose-','day+','day-','roll-day','export','reset','test-cont','test-prog','st-','cure','revive','del','stage','siege','k4'];
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');
   if(!b||!TRK_ACTS.includes(b.dataset.act))return;
   const act=b.dataset.act;
   const c=TRK.chars.find(x=>x.id==b.dataset.id);
   switch(act){
+    case 'ruido':case 'ruido+':case 'ruido-':case 'ruido-2':{
+      const x=TRK.clx=TRK.clx||clxDefault();const before=x.ruido;
+      if(act==='ruido')x.ruido=parseInt(b.dataset.v,10);else if(act==='ruido+')x.ruido++;else if(act==='ruido-')x.ruido--;else x.ruido-=2;
+      x.ruido=Math.max(0,Math.min(4,x.ruido));
+      if(x.ruido!==before)trkLog('<span class="'+(x.ruido>before?'fail':'ok')+'">Ruído '+before+' → '+x.ruido+': '+RUIDO_FX[x.ruido].replace(/<[^>]+>/g,'')+'</span>');
+      if(x.ruido===4&&before<4&&TRK.siege<9){TRK.siege=(TRK.siege||0)+1;trkLog('<span class="fail">Alerta geral — o Cerco avança para a fase '+TRK.siege+'.</span>');}
+      break;}
+    case 'clx-step':{const x=TRK.clx=TRK.clx||clxDefault();const i=parseInt(b.dataset.v,10);x.steps[i]=!x.steps[i];break;}
+    case 'clx-route':{const x=TRK.clx=TRK.clx||clxDefault();const v=parseInt(b.dataset.v,10);if(x.route!==v){x.route=v;x.posts=[];trkLog('<span class="dayhdr">— fuga pela rota '+CLX_ROUTES[v-1].n+' —</span>');}break;}
+    case 'clx-post':{const x=TRK.clx=TRK.clx||clxDefault();const i=parseInt(b.dataset.v,10);const cur=x.posts[i]||'';
+      x.posts[i]=cur===''?'ok':cur==='ok'?'fail':'';
+      if(x.posts[i]==='fail')trkLog('<span class="fail">Posto '+(i+1)+' da rota '+CLX_ROUTES[x.route-1].n+': FALHA — disparo (1D10+2) e alarme geral.</span>');
+      break;}
+    case 'clx-reset':TRK.clx=clxDefault();break;
     case 'dose+':TRK.doses=(TRK.doses||0)+1;break;
     case 'dose-':TRK.doses=Math.max(0,(TRK.doses||0)-1);trkLog('<span class="fail">Uma dose do Pó de Kzhoba foi gasta — restam '+TRK.doses+'.</span>');break;
     case 'day+':TRK.day++;break;
