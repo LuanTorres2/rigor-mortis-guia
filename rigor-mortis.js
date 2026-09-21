@@ -26,7 +26,7 @@
 var RigorMortis = (function () {
   'use strict';
 
-  var VERSION = '1.1';
+  var VERSION = '1.2';
 
   var SIEGE = [
     'Quarentena declarada · saídas fechadas',
@@ -242,8 +242,8 @@ var RigorMortis = (function () {
     '<li><b>O quarto de Warren</b> — porta sem guarda. SAN 0/1D3 se Crawford estiver visivelmente no estágio 6.</li>' +
     '<li><b>A cena</b> — nenhum teste, só escolha.</li>' +
     '<li><b>Extração</b> — carregar Crawford: Furtividade Difícil. Em fúria: Agarrar antes.</li></ol>' +
-    '<p><b>As quatro saídas:</b> levar Crawford · <b>curar Crawford ali e deixá-lo</b> (médico imune, infiltrado) · Crawford recusa sair ("já abandonei uma pessoa gritando") · ' +
-    '<b>curar Warren</b> (o general devendo a vida duas vezes — abre UMA saída; custa a dose de uma criança).</p>';
+    '<p><b>A CURA GRITA.</b> Dor excruciante, convulsão, depois o sono. Ninguém é curado dentro da Base — nem Crawford, nem Warren: no primeiro grito é alarme, no segundo é fuzil. <b>Resgate é tirar primeiro, curar longe.</b></p>' +
+    '<p><b>Dia 4, 9h:</b> Crawford vai sedado para a <b>tenda de Mendel</b> (pátio lateral): lona, um guarda, muro de 2 m nos fundos. Entrada mais fácil da campanha; sair carregando um homem é o difícil. Sai da cidade no caminhão de Mendel ao anoitecer.</p>';
 
   var H_FUGA =
     '<h3>Sistema de fuga — as rotas</h3>' +
@@ -253,7 +253,7 @@ var RigorMortis = (function () {
     '<li><b>A ferrovia</b> — chegar aos trilhos (Difícil) → passar a estação (Extremo) → reto. Só com diversão grande ou Warren abrindo.</li>' +
     '<li><b>A fazenda</b> — refúgio, não fuga: rota 3 + campo até a cervejaria (Difícil). Ninguém vai lá.</li>' +
     '<li><b>O disfarce</b> — fardas dos mortos da praça; Disfarce Difícil por interação; para um ou dois passarem no escuro, nunca para o grupo.</li>' +
-    '<li><b>Pela porta da frente</b> — só com Warren vivo, curado e devendo: passe, caminhão, saída ao amanhecer. Ele cumpre. Halloran, não.</li></ol>';
+    '<li><b>O caminhão de Mendel</b> — a única coisa que sai do anel. Entrar como carga ou como "espécime": Furtividade Difícil para embarcar, Extremo para não ser revistado na 165. Saltar fora depois é a perseguição.</li></ol>';
 
   function setup() {
     var out = [];
@@ -368,6 +368,10 @@ var RigorMortis = (function () {
           say(card('Vinculado', 'O token selecionado agora mostra <b>' + kind + '</b> na barra 1.'), true);
         }
         else if (sub === 'fichas') fichas();
+        else if (sub === 'refazer') {
+          findObjs({ _type: 'handout' }).filter(function (h) { return /^Clímax ·/.test(h.get('name')); }).forEach(function (h) { h.remove(); });
+          setup();
+        }
         else if (sub === 'reset') {
           if (args[1] === 'sim') { delete state.RigorMortis; ensureState(); say(card('Reset', 'Ruído 0 · 3 doses · Cerco fase 5.'), true); }
           else say(card('Reset', 'Tem certeza? <code>!rm reset sim</code>'), true);
